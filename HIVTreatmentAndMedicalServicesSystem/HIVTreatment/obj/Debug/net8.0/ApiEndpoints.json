@@ -42,42 +42,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HIVTreatment.Controllers.EditProfileUserController",
-    "Method": "AdminOnlyEndpoint",
-    "RelativePath": "api/EditProfileUser/admin-only",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HIVTreatment.Controllers.EditProfileUserController",
-    "Method": "DoctorOnlyEndpoint",
-    "RelativePath": "api/EditProfileUser/doctor-only",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HIVTreatment.Controllers.EditProfileUserController",
-    "Method": "EditProfile",
-    "RelativePath": "api/EditProfileUser/edit-profile",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "editProfileUserDTO",
-        "Type": "HIVTreatment.DTOs.EditProfileUserDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "HIVTreatment.Controllers.LoginController",
     "Method": "Login",
     "RelativePath": "api/Login/login",
@@ -101,22 +65,6 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HIVTreatment.Controllers.RegisterController",
-    "Method": "Register",
-    "RelativePath": "api/Register/register",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "registerDTO",
-        "Type": "HIVTreatment.DTOs.RegisterDTO",
-        "IsRequired": true
-      }
-    ],
     "ReturnTypes": []
   },
   {
