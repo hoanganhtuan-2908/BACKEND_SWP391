@@ -68,61 +68,6 @@
         }
       }
     },
-    "/api/EditProfileUser/edit-profile": {
-      "put": {
-        "tags": [
-          "EditProfileUser"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/EditProfileUserDTO"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/EditProfileUserDTO"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/EditProfileUserDTO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/EditProfileUser/admin-only": {
-      "get": {
-        "tags": [
-          "EditProfileUser"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/EditProfileUser/doctor-only": {
-      "get": {
-        "tags": [
-          "EditProfileUser"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Login/logout": {
       "post": {
         "tags": [
@@ -291,40 +236,6 @@
             "format": "date-time"
           },
           "Note": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "EditProfileUserDTO": {
-        "type": "object",
-        "properties": {
-          "UserId": {
-            "type": "string",
-            "nullable": true
-          },
-          "Fullname": {
-            "type": "string",
-            "nullable": true
-          },
-          "DateOfBirth": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "Gender": {
-            "type": "string",
-            "nullable": true
-          },
-          "Phone": {
-            "type": "string",
-            "nullable": true
-          },
-          "BloodType": {
-            "type": "string",
-            "nullable": true
-          },
-          "Allergy": {
             "type": "string",
             "nullable": true
           }

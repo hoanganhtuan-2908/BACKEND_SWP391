@@ -19,7 +19,8 @@ namespace HIVTreatment.Services
             _userRepository = userRepository;
             _configuration = configuration;
         }
-
+        
+        //login jwt token
         public UserLoginResponse Login(string email, string password)
         {
             try
@@ -27,7 +28,6 @@ namespace HIVTreatment.Services
                 var user = _userRepository.GetByEmail(email);
                 if (user == null || user.Password != password)
                     return null;
-
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]);
                 
@@ -35,7 +35,6 @@ namespace HIVTreatment.Services
                 {
                     throw new Exception("JWT Key must be at least 16 characters long");
                 }
-
                 var claims = new[]
                 {
                     new Claim(ClaimTypes.NameIdentifier, user.UserId),
@@ -45,9 +44,8 @@ namespace HIVTreatment.Services
 
                 if (!double.TryParse(_configuration["Jwt:ExpiryInHours"], out double expiryHours))
                 {
-                    expiryHours = 3; // Default to 3 hours if parsing fails
+                    expiryHours = 3; //timeout
                 }
-
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(claims),
@@ -58,19 +56,19 @@ namespace HIVTreatment.Services
                 };
 
                 var token = tokenHandler.CreateToken(tokenDescriptor);
-
                 return new UserLoginResponse
                 {
-                    UserId = user.UserId,
-                    RoleId = user.RoleId,
-                    Fullname = user.Fullname,
-                    Email = user.Email,
+                    UserId =  user.UserId, 
+                    RoleId  = user.RoleId, 
+                    Fullname =  user.Fullname,
+                    Email =  user.Email,
                     Token = tokenHandler.WriteToken(token)
                 };
+
+
             }
             catch (Exception ex)
-            {
-                // Log the exception here
+            { 
                 Console.WriteLine($"Error creating token: {ex.Message}");
                 throw;
             }

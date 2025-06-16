@@ -30,8 +30,8 @@ namespace HIVTreatment.Controllers
             }
 
             // Validate required fields
-            if (string.IsNullOrEmpty(registerDTO.Fullname) || 
-                string.IsNullOrEmpty(registerDTO.Password) || 
+            if (string.IsNullOrEmpty(registerDTO.Fullname) ||
+                string.IsNullOrEmpty(registerDTO.Password) ||
                 string.IsNullOrEmpty(registerDTO.Email))
             {
                 return BadRequest("All fields are required");
