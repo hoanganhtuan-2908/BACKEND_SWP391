@@ -1,120 +1,120 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\",
+  "WorkspaceRootPath": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\controllers\\registercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\controllers\\registercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\controllers\\registercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\controllers\\staffappointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\controllers\\staffappointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\controllers\\staffappointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\dtos\\bookappointmentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\dtos\\bookappointmentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\models\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\models\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\repositories\\patientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\repositories\\patientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\repositories\\ipatientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\repositories\\ipatientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\repositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\repositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\models\\booksappointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\models\\booksappointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\services\\iprofileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\services\\iprofileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\services\\profileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\services\\profileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\models\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\models\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\hivtreatment.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
-      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\hivtreatment.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\controllers\\editprofileusercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\controllers\\editprofileusercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\controllers\\editprofileusercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\constants\\roleconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\dtos\\bookappointmentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\dtos\\bookappointmentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\models\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\models\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\repositories\\patientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\repositories\\patientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\repositories\\ipatientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\repositories\\ipatientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\repositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\repositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\models\\booksappointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\models\\booksappointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\services\\iprofileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\services\\iprofileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\services\\profileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\services\\profileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\models\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\models\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\hivtreatment.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\hivtreatment.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\constants\\roleconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\constants\\roleconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\LE QUOC VIET\\AppData\\Roaming\\Microsoft\\UserSecrets\\eb55a145-3761-48f1-b137-668a175b03c9\\secrets.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\dtos\\doctordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\dtos\\doctordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\dtos\\doctordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\dtos\\editprofileuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\dtos\\editprofileuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\dtos\\editprofileuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp\\hivtreatmentandmedicalservicessystem\\hivtreatment\\hivtreatment.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|d:\\swp391\\backend-swp391\\backend_swp391\\hivtreatmentandmedicalservicessystem\\hivtreatment\\hivtreatment.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{15FAFBB3-99E7-4995-AB8F-C9221F01E914}|HIVTreatment\\HIVTreatment.csproj|solutionrelative:hivtreatment\\hivtreatment.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
@@ -125,15 +125,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "HIVTreatment.http",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\HIVTreatment.http",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\HIVTreatment.http",
               "RelativeDocumentMoniker": "HIVTreatment\\HIVTreatment.http",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\HIVTreatment.http",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\HIVTreatment.http",
               "RelativeToolTip": "HIVTreatment\\HIVTreatment.http",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
@@ -142,36 +142,74 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "StaffAppointmentController.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Controllers\\StaffAppointmentController.cs",
-              "RelativeDocumentMoniker": "HIVTreatment\\Controllers\\StaffAppointmentController.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Controllers\\StaffAppointmentController.cs",
-              "RelativeToolTip": "HIVTreatment\\Controllers\\StaffAppointmentController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T08:32:00.338Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AppointmentController.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Controllers\\AppointmentController.cs",
-              "RelativeDocumentMoniker": "HIVTreatment\\Controllers\\AppointmentController.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Controllers\\AppointmentController.cs",
-              "RelativeToolTip": "HIVTreatment\\Controllers\\AppointmentController.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAIwEMAAAAIAAAAAAAAAA==",
+              "Title": "RegisterController.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Controllers\\RegisterController.cs",
+              "RelativeDocumentMoniker": "HIVTreatment\\Controllers\\RegisterController.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Controllers\\RegisterController.cs",
+              "RelativeToolTip": "HIVTreatment\\Controllers\\RegisterController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAAwBcAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T08:19:19.206Z",
+              "WhenOpened": "2025-06-12T14:42:21.676Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 1,
+              "Title": "StaffAppointmentController.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Controllers\\StaffAppointmentController.cs",
+              "RelativeDocumentMoniker": "HIVTreatment\\Controllers\\StaffAppointmentController.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Controllers\\StaffAppointmentController.cs",
+              "RelativeToolTip": "HIVTreatment\\Controllers\\StaffAppointmentController.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAkwFkAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-15T08:32:00.338Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "HIVTreatment\\Controllers\\LoginController.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "HIVTreatment\\Controllers\\LoginController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T13:55:27.029Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EditProfileUserController.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Controllers\\EditProfileUserController.cs",
+              "RelativeDocumentMoniker": "HIVTreatment\\Controllers\\EditProfileUserController.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Controllers\\EditProfileUserController.cs",
+              "RelativeToolTip": "HIVTreatment\\Controllers\\EditProfileUserController.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAYwEIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T14:37:58.562Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AppointmentController.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Controllers\\AppointmentController.cs",
+              "RelativeDocumentMoniker": "HIVTreatment\\Controllers\\AppointmentController.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Controllers\\AppointmentController.cs",
+              "RelativeToolTip": "HIVTreatment\\Controllers\\AppointmentController.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAIwEMAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-15T08:19:19.206Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "BooksAppointment.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Models\\BooksAppointment.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Models\\BooksAppointment.cs",
               "RelativeDocumentMoniker": "HIVTreatment\\Models\\BooksAppointment.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Models\\BooksAppointment.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Models\\BooksAppointment.cs",
               "RelativeToolTip": "HIVTreatment\\Models\\BooksAppointment.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -179,11 +217,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "BookAppointmentDTO.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\DTOs\\BookAppointmentDTO.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\DTOs\\BookAppointmentDTO.cs",
               "RelativeDocumentMoniker": "HIVTreatment\\DTOs\\BookAppointmentDTO.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\DTOs\\BookAppointmentDTO.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\DTOs\\BookAppointmentDTO.cs",
               "RelativeToolTip": "HIVTreatment\\DTOs\\BookAppointmentDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -191,11 +229,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "IUserService.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Services\\IUserService.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Services\\IUserService.cs",
               "RelativeDocumentMoniker": "HIVTreatment\\Services\\IUserService.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Services\\IUserService.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Services\\IUserService.cs",
               "RelativeToolTip": "HIVTreatment\\Services\\IUserService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -203,23 +241,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LoginController.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Controllers\\LoginController.cs",
-              "RelativeDocumentMoniker": "HIVTreatment\\Controllers\\LoginController.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Controllers\\LoginController.cs",
-              "RelativeToolTip": "HIVTreatment\\Controllers\\LoginController.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwBMAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T13:55:27.029Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\appsettings.json",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\appsettings.json",
               "RelativeDocumentMoniker": "HIVTreatment\\appsettings.json",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\appsettings.json",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\appsettings.json",
               "RelativeToolTip": "HIVTreatment\\appsettings.json",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -227,11 +253,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "UserRepository.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Repositories\\UserRepository.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Repositories\\UserRepository.cs",
               "RelativeDocumentMoniker": "HIVTreatment\\Repositories\\UserRepository.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Repositories\\UserRepository.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Repositories\\UserRepository.cs",
               "RelativeToolTip": "HIVTreatment\\Repositories\\UserRepository.cs",
               "ViewState": "AgIAABwAAAAAAAAAAAAkwDAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -239,11 +265,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "User.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Models\\User.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Models\\User.cs",
               "RelativeDocumentMoniker": "HIVTreatment\\Models\\User.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Models\\User.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Models\\User.cs",
               "RelativeToolTip": "HIVTreatment\\Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -251,11 +277,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "ProfileService.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Services\\ProfileService.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Services\\ProfileService.cs",
               "RelativeDocumentMoniker": "HIVTreatment\\Services\\ProfileService.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Services\\ProfileService.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Services\\ProfileService.cs",
               "RelativeToolTip": "HIVTreatment\\Services\\ProfileService.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAYwCIAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -263,11 +289,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "PatientRepository.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Repositories\\PatientRepository.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Repositories\\PatientRepository.cs",
               "RelativeDocumentMoniker": "HIVTreatment\\Repositories\\PatientRepository.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Repositories\\PatientRepository.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Repositories\\PatientRepository.cs",
               "RelativeToolTip": "HIVTreatment\\Repositories\\PatientRepository.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAAwBgAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -275,11 +301,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "LoginDTO.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\DTOs\\LoginDTO.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\DTOs\\LoginDTO.cs",
               "RelativeDocumentMoniker": "HIVTreatment\\DTOs\\LoginDTO.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\DTOs\\LoginDTO.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\DTOs\\LoginDTO.cs",
               "RelativeToolTip": "HIVTreatment\\DTOs\\LoginDTO.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAYwA8AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -289,9 +315,9 @@
               "$type": "Document",
               "DocumentIndex": 24,
               "Title": "RegisterDTO.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\DTOs\\RegisterDTO.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\DTOs\\RegisterDTO.cs",
               "RelativeDocumentMoniker": "HIVTreatment\\DTOs\\RegisterDTO.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\DTOs\\RegisterDTO.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\DTOs\\RegisterDTO.cs",
               "RelativeToolTip": "HIVTreatment\\DTOs\\RegisterDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -299,11 +325,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Program.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Program.cs",
               "RelativeDocumentMoniker": "HIVTreatment\\Program.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Program.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Program.cs",
               "RelativeToolTip": "HIVTreatment\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAIwBIAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -311,11 +337,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "UserService.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Services\\UserService.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "HIVTreatment\\Services\\UserService.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Services\\UserService.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Services\\UserService.cs",
               "RelativeToolTip": "HIVTreatment\\Services\\UserService.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAQwBYAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -323,23 +349,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "EditProfileUserController.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Controllers\\EditProfileUserController.cs",
-              "RelativeDocumentMoniker": "HIVTreatment\\Controllers\\EditProfileUserController.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Controllers\\EditProfileUserController.cs",
-              "RelativeToolTip": "HIVTreatment\\Controllers\\EditProfileUserController.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAYwEIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-11T14:37:58.562Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Doctor.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Models\\Doctor.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Models\\Doctor.cs",
               "RelativeDocumentMoniker": "HIVTreatment\\Models\\Doctor.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Models\\Doctor.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Models\\Doctor.cs",
               "RelativeToolTip": "HIVTreatment\\Models\\Doctor.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -359,9 +373,9 @@
               "$type": "Document",
               "DocumentIndex": 23,
               "Title": "RoleConstants.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Constants\\RoleConstants.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Constants\\RoleConstants.cs",
               "RelativeDocumentMoniker": "HIVTreatment\\Constants\\RoleConstants.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Constants\\RoleConstants.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Constants\\RoleConstants.cs",
               "RelativeToolTip": "HIVTreatment\\Constants\\RoleConstants.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -371,9 +385,9 @@
               "$type": "Document",
               "DocumentIndex": 26,
               "Title": "DoctorDTO.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\DTOs\\DoctorDTO.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\DTOs\\DoctorDTO.cs",
               "RelativeDocumentMoniker": "HIVTreatment\\DTOs\\DoctorDTO.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\DTOs\\DoctorDTO.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\DTOs\\DoctorDTO.cs",
               "RelativeToolTip": "HIVTreatment\\DTOs\\DoctorDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -381,23 +395,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "RegisterController.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Controllers\\RegisterController.cs",
-              "RelativeDocumentMoniker": "HIVTreatment\\Controllers\\RegisterController.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Controllers\\RegisterController.cs",
-              "RelativeToolTip": "HIVTreatment\\Controllers\\RegisterController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T14:42:21.676Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "IProfileService.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Services\\IProfileService.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Services\\IProfileService.cs",
               "RelativeDocumentMoniker": "HIVTreatment\\Services\\IProfileService.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Services\\IProfileService.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Services\\IProfileService.cs",
               "RelativeToolTip": "HIVTreatment\\Services\\IProfileService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -405,11 +407,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Data\\ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "HIVTreatment\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Data\\ApplicationDbContext.cs",
               "RelativeToolTip": "HIVTreatment\\Data\\ApplicationDbContext.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAA7wA8AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -417,11 +419,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "Patient.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Models\\Patient.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Models\\Patient.cs",
               "RelativeDocumentMoniker": "HIVTreatment\\Models\\Patient.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Models\\Patient.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Models\\Patient.cs",
               "RelativeToolTip": "HIVTreatment\\Models\\Patient.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAuwAYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -431,9 +433,9 @@
               "$type": "Document",
               "DocumentIndex": 27,
               "Title": "EditProfileUserDTO.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\DTOs\\EditProfileUserDTO.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\DTOs\\EditProfileUserDTO.cs",
               "RelativeDocumentMoniker": "HIVTreatment\\DTOs\\EditProfileUserDTO.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\DTOs\\EditProfileUserDTO.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\DTOs\\EditProfileUserDTO.cs",
               "RelativeToolTip": "HIVTreatment\\DTOs\\EditProfileUserDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -441,11 +443,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "IPatientRepository.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Repositories\\IPatientRepository.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Repositories\\IPatientRepository.cs",
               "RelativeDocumentMoniker": "HIVTreatment\\Repositories\\IPatientRepository.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Repositories\\IPatientRepository.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Repositories\\IPatientRepository.cs",
               "RelativeToolTip": "HIVTreatment\\Repositories\\IPatientRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -453,11 +455,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "IUserRepository.cs",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Repositories\\IUserRepository.cs",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Repositories\\IUserRepository.cs",
               "RelativeDocumentMoniker": "HIVTreatment\\Repositories\\IUserRepository.cs",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Repositories\\IUserRepository.cs",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\Repositories\\IUserRepository.cs",
               "RelativeToolTip": "HIVTreatment\\Repositories\\IUserRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -467,9 +469,9 @@
               "$type": "Document",
               "DocumentIndex": 28,
               "Title": "HIVTreatment.csproj",
-              "DocumentMoniker": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\HIVTreatment.csproj",
+              "DocumentMoniker": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\HIVTreatment.csproj",
               "RelativeDocumentMoniker": "HIVTreatment\\HIVTreatment.csproj",
-              "ToolTip": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\HIVTreatment.csproj",
+              "ToolTip": "D:\\SWP391\\Backend-SWP391\\BACKEND_SWP391\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\HIVTreatment.csproj",
               "RelativeToolTip": "HIVTreatment\\HIVTreatment.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",

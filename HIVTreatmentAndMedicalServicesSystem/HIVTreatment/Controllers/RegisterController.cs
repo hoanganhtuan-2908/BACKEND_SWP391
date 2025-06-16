@@ -21,6 +21,7 @@ namespace HIVTreatment.Controllers
             _configuration = configuration;
         }
 
+        //phân quyền chỉ có ng ười dùng mới có thể đăng ký
         [HttpPost("register")]
         public IActionResult Register([FromBody] RegisterDTO registerDTO)
         {
