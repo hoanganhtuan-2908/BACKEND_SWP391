@@ -33,6 +33,7 @@ namespace HIVTreatment.Controllers
             if (string.IsNullOrEmpty(loginDTO.Email) || string.IsNullOrEmpty(loginDTO.Password)) //check password and email
                 return BadRequest("Email và mật khẩu không được để trống");
             var result = _userService.Login(loginDTO.Email, loginDTO.Password);
+
             if (result == null)
                 return Unauthorized("Sai email hoặc mật khẩu");
             return Ok(result);

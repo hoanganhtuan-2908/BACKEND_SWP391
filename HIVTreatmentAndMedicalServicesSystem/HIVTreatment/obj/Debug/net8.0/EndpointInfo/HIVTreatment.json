@@ -68,61 +68,6 @@
         }
       }
     },
-    "/api/EditProfileUser/edit-profile": {
-      "put": {
-        "tags": [
-          "EditProfileUser"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/EditProfileUserDTO"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/EditProfileUserDTO"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/EditProfileUserDTO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/EditProfileUser/admin-only": {
-      "get": {
-        "tags": [
-          "EditProfileUser"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/EditProfileUser/doctor-only": {
-      "get": {
-        "tags": [
-          "EditProfileUser"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Login/logout": {
       "post": {
         "tags": [
@@ -155,37 +100,6 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/LoginDTO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Register/register": {
-      "post": {
-        "tags": [
-          "Register"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegisterDTO"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegisterDTO"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegisterDTO"
               }
             }
           }
@@ -297,40 +211,6 @@
         },
         "additionalProperties": false
       },
-      "EditProfileUserDTO": {
-        "type": "object",
-        "properties": {
-          "UserId": {
-            "type": "string",
-            "nullable": true
-          },
-          "Fullname": {
-            "type": "string",
-            "nullable": true
-          },
-          "DateOfBirth": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "Gender": {
-            "type": "string",
-            "nullable": true
-          },
-          "Phone": {
-            "type": "string",
-            "nullable": true
-          },
-          "BloodType": {
-            "type": "string",
-            "nullable": true
-          },
-          "Allergy": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "LoginDTO": {
         "type": "object",
         "properties": {
@@ -339,24 +219,6 @@
             "nullable": true
           },
           "Password": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "RegisterDTO": {
-        "type": "object",
-        "properties": {
-          "Fullname": {
-            "type": "string",
-            "nullable": true
-          },
-          "Password": {
-            "type": "string",
-            "nullable": true
-          },
-          "Email": {
             "type": "string",
             "nullable": true
           }
