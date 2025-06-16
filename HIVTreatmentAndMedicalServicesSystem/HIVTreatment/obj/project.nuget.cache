@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dOOi0G6ltKY=",
+  "dgSpecHash": "PvHyU+jInLA=",
   "success": true,
-  "projectFilePath": "D:\\SWPBE\\SWP391-BE\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\HIVTreatment.csproj",
+  "projectFilePath": "D:\\SWP\\HIVTreatmentAndMedicalServicesSystem\\HIVTreatment\\HIVTreatment.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HOANG ANH TUAN\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\HOANG ANH TUAN\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
