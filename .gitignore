@@ -1,0 +1,23 @@
+# Ignore Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignore build outputs
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+*.tmp
+
+# Ignore misc
+*.db
+*.bak
+*.json
