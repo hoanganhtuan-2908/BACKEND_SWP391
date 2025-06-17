@@ -1,6 +1,7 @@
 ﻿using HIVTreatment.Data;
 using HIVTreatment.Models;
 using HIVTreatment.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace HIVTreatment.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "R004")]
     public class AppointmentController : ControllerBase
     {
         private readonly IAppointmentRepository _repository;
