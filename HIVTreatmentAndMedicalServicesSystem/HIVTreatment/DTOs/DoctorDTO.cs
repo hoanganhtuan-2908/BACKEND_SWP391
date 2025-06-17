@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 ﻿namespace HIVTreatment.DTOs
 {
     public class DoctorDTO
@@ -9,6 +9,3 @@
         public int ExperienceYears { get; set; }
     }
 }
-=======
-﻿//a
->>>>>>> a4da4ed (roleback)
