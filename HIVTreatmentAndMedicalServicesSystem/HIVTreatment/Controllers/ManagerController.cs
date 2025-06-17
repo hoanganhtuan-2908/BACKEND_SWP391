@@ -12,6 +12,9 @@ namespace HIVTreatment.Controllers
     [ApiController]
     [Route("api/[controller]")]
     [Authorize(Roles = "R001")]
+    // R001 là RoleId của Manager
+    [Authorize(Roles = "R002")]
+
     public class ManagerController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
