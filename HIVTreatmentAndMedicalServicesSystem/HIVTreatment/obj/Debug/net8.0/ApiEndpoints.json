@@ -68,6 +68,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HIVTreatment.Controllers.RegisterController",
+    "Method": "Register",
+    "RelativePath": "api/Register/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registerDTO",
+        "Type": "HIVTreatment.DTOs.RegisterDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "HIVTreatment.Controllers.StaffAppointmentController",
     "Method": "ApproveAppointment",
     "RelativePath": "api/staff/appointments/approve/{id}",
