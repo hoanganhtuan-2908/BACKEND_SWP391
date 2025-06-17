@@ -26,7 +26,7 @@ namespace HIVTreatment.Controllers
             HttpContext.Session.Clear();
             return Ok("Đăng xuất thành công");
         }
-
+        //login lqv
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginDTO loginDTO)
         {
