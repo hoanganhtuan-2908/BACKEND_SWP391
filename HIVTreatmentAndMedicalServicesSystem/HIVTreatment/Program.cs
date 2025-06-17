@@ -103,9 +103,9 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IPatientRepository, PatientRepository>();
+//builder.Services.AddScoped<IPatientRepository, PatientRepository>();
 builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
-builder.Services.AddScoped<IProfileService, ProfileService>();
+//builder.Services.AddScoped<IProfileService, ProfileService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
 // In Program.cs
 builder.Services.AddControllers()
