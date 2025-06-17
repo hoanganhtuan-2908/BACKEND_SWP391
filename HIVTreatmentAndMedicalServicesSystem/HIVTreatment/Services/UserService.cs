@@ -19,7 +19,12 @@ namespace HIVTreatment.Services
             _userRepository = userRepository;
             _configuration = configuration;
         }
-        
+
+        public User GetByUserId(string userId)
+        {
+            return _userRepository.GetByUserId(userId);
+        }
+
         //login jwt token
         public UserLoginResponse Login(string email, string password)
         {
@@ -76,7 +81,20 @@ namespace HIVTreatment.Services
 
         public User Register(User user)
         {
-            throw new NotImplementedException();
+            if (_userRepository.EmailExists(user.Email)) return null;
+
+            var lastUser = _userRepository.GetLastUser();
+            int nextId = 1;
+            if (lastUser != null)
+            {
+                string numberPart = lastUser.UserId.Substring(3);
+                if (int.TryParse(numberPart, out int parsed))
+                    nextId = parsed + 1;
+            }
+
+            user.UserId = "UID" + nextId.ToString("D6");
+            _userRepository.Add(user);
+            return user;
         }
     }
 }

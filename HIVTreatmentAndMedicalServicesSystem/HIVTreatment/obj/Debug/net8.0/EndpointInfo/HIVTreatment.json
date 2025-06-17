@@ -68,6 +68,104 @@
         }
       }
     },
+    "/api/EditProfileUser/edit-profile": {
+      "put": {
+        "tags": [
+          "EditProfileUser"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditProfileUserDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditProfileUserDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditProfileUserDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/EditProfileUser/edit-doctor-profile": {
+      "put": {
+        "tags": [
+          "EditProfileUser"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditprofileDoctorDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditprofileDoctorDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditprofileDoctorDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/EditProfileUser": {
+      "get": {
+        "tags": [
+          "EditProfileUser"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/EditProfileUser/admin-only": {
+      "get": {
+        "tags": [
+          "EditProfileUser"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/EditProfileUser/doctor-only": {
+      "get": {
+        "tags": [
+          "EditProfileUser"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Login/logout": {
       "post": {
         "tags": [
@@ -238,6 +336,66 @@
           "Note": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EditProfileUserDTO": {
+        "type": "object",
+        "properties": {
+          "UserId": {
+            "type": "string",
+            "nullable": true
+          },
+          "Fullname": {
+            "type": "string",
+            "nullable": true
+          },
+          "DateOfBirth": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Gender": {
+            "type": "string",
+            "nullable": true
+          },
+          "Phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "BloodType": {
+            "type": "string",
+            "nullable": true
+          },
+          "Allergy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EditprofileDoctorDTO": {
+        "type": "object",
+        "properties": {
+          "UserId": {
+            "type": "string",
+            "nullable": true
+          },
+          "Fullname": {
+            "type": "string",
+            "nullable": true
+          },
+          "Specialization": {
+            "type": "string",
+            "nullable": true
+          },
+          "LicenseNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "ExperienceYears": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
