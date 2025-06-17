@@ -209,6 +209,37 @@
         }
       }
     },
+    "/api/Manager/AddDoctor": {
+      "post": {
+        "tags": [
+          "Manager"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDoctorDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDoctorDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDoctorDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Register/register": {
       "post": {
         "tags": [
@@ -336,6 +367,36 @@
           "Note": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateDoctorDTO": {
+        "type": "object",
+        "properties": {
+          "FullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "Password": {
+            "type": "string",
+            "nullable": true
+          },
+          "Email": {
+            "type": "string",
+            "nullable": true
+          },
+          "Specialization": {
+            "type": "string",
+            "nullable": true
+          },
+          "LicenseNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "ExperienceYears": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
