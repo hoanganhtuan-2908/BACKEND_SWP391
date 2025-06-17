@@ -42,6 +42,68 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HIVTreatment.Controllers.EditProfileUserController",
+    "Method": "GetAllPatient",
+    "RelativePath": "api/EditProfileUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIVTreatment.Controllers.EditProfileUserController",
+    "Method": "AdminOnlyEndpoint",
+    "RelativePath": "api/EditProfileUser/admin-only",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIVTreatment.Controllers.EditProfileUserController",
+    "Method": "DoctorOnlyEndpoint",
+    "RelativePath": "api/EditProfileUser/doctor-only",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIVTreatment.Controllers.EditProfileUserController",
+    "Method": "EditDoctorProfile",
+    "RelativePath": "api/EditProfileUser/edit-doctor-profile",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "editProfileDoctorDTO",
+        "Type": "HIVTreatment.DTOs.EditprofileDoctorDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIVTreatment.Controllers.EditProfileUserController",
+    "Method": "EditProfile",
+    "RelativePath": "api/EditProfileUser/edit-profile",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "editProfileUserDTO",
+        "Type": "HIVTreatment.DTOs.EditProfileUserDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "HIVTreatment.Controllers.LoginController",
     "Method": "Login",
     "RelativePath": "api/Login/login",
