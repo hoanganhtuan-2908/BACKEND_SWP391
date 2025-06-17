@@ -5,11 +5,13 @@ using HIVTreatment.Models;
 using HIVTreatment.Data;
 using HIVTreatment.DTOs;
 using HIVTreatment.Repositories;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HIVTreatment.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "R001")]
     public class ManagerController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
