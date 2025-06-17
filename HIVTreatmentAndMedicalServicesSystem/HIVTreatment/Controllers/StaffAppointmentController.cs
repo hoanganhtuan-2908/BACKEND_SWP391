@@ -59,7 +59,7 @@ namespace HIVTreatment.Controllers
             appointment.Status = "Đã xác nhận";
             _context.SaveChanges();
 
-            // Gửi thông báo
+            // Gửi thông báo 
             _notifier.Send(appointment.PatientID, "Lịch hẹn của bạn đã được duyệt.");
             _notifier.Send(appointment.DoctorID, $"Bạn có lịch hẹn mới vào {appointment.BookDate:dd/MM/yyyy HH:mm}");
 
@@ -92,3 +92,4 @@ namespace HIVTreatment.Controllers
         public string Reason { get; set; }
     }
 }
+//e pull về xem có thấy dòng này ko:10h40
