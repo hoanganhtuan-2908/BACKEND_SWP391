@@ -99,6 +99,18 @@ namespace HIVTreatment.Controllers
 
         }
 
+        [HttpGet("{userId}")]
+        public IActionResult GetInfoPatientById(string userId)
+        {
+            var result = iProfileService.GetInfoPatientById(userId);
+            if (result == null)
+            {
+                return NotFound("Không tìm thấy thông tin bệnh nhân");
+            }
+            return Ok(result);
+
+        }
+
 
         // Example of a role-specific endpoint
         [HttpGet("admin-only")]

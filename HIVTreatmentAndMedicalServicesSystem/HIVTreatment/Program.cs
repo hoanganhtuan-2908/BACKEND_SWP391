@@ -108,6 +108,7 @@ builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 builder.Services.AddScoped<IProfileService, ProfileService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+builder.Services.AddScoped<IDoctorService, DoctorService>();
 // In Program.cs
 builder.Services.AddControllers()
     .AddJsonOptions(options =>

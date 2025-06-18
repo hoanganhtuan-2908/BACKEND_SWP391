@@ -18,15 +18,23 @@ namespace HIVTreatment.Repositories
             context.SaveChanges();
         }
 
-        ///// <summary>
-        ///// Retrieves all ARV protocols from the ARVRegimen table
-        ///// </summary>
-        //public List<ARVRegimenDTO> GetAllARVRegimens()
-        //{
+        public List<ARVRegimenDTO> GetAllARVRegimens()
+        {
+            var result = (from a in context.ARVRegimen
+                          select new ARVRegimenDTO
+                          {
+                              ARVRegimenID = a.ARVRegimenID,
+                              DoctorID = a.DoctorID,
+                              MedicalRecordID = a.MedicalRecordID,
+                              RegimenCode = a.RegimenCode,
+                              ARVName = a.ARVName,
+                              Description = a.Description,
+                              AgeRange = a.AgeRange,
+                              ForGroup = a.ForGroup
 
-        //    return null;
-
-        //}
+                          }).ToList();
+            return result;
+        }
 
         public Doctor GetByDoctorId(string doctorId)
         {
