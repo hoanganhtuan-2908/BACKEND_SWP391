@@ -44,11 +44,37 @@
   {
     "ContainingType": "HIVTreatment.Controllers.DoctorController",
     "Method": "GetAllARVRegiemns",
-    "RelativePath": "api/Doctor",
+    "RelativePath": "api/Doctor/AllARVProtocol",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIVTreatment.Controllers.DoctorController",
+    "Method": "GetAllDoctors",
+    "RelativePath": "api/Doctor/AllDoctors",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIVTreatment.Controllers.DoctorController",
+    "Method": "GetInfoDoctorById",
+    "RelativePath": "api/Doctor/InfoDoctor/{doctorId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "doctorId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
