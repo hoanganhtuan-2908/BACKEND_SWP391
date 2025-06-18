@@ -58,6 +58,25 @@ namespace HIVTreatment.Repositories
             return context.Doctors.FirstOrDefault(d => d.DoctorId == doctorId);
         }
 
+        public InfoDoctorDTO GetInfoDoctorById(string DoctorID)
+        {
+            var result = (from d in context.Doctors
+                          join u in context.Users on d.UserId equals u.UserId
+                          where d.UserId == DoctorID
+                          select new InfoDoctorDTO
+                          {
+                              UserID = u.UserId,
+                              Fullname = u.Fullname,
+                              Email = u.Email,
+                              Specialization = d.Specialization,
+                              LicenseNumber = d.LicenseNumber,
+                              ExperienceYears = d.ExperienceYears
+                          }).FirstOrDefault();
+            return result;
+        }
+
+
+
         public Doctor GetLastDoctorId()
         {
             return context.Doctors.OrderByDescending(d => Convert.ToInt32(d.DoctorId.Substring(3))).FirstOrDefault();

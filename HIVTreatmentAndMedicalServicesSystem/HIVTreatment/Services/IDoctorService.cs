@@ -6,5 +6,7 @@ namespace HIVTreatment.Services
     {
         List<ARVRegimenDTO> GetAllARVRegimens();
         public List<InfoDoctorDTO> GetAllDoctors();
+
+        InfoDoctorDTO GetInfoDoctorById(string doctorId);
     }
 }

@@ -14,5 +14,6 @@ namespace HIVTreatment.Repositories
         void Update(Doctor doctor);
         List<ARVRegimenDTO> GetAllARVRegimens();
         List<InfoDoctorDTO> GetAllDoctors();
+        InfoDoctorDTO GetInfoDoctorById(string patientId);
     }
 }
