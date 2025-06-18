@@ -14,7 +14,7 @@ namespace HIVTreatment.Controllers
         {
             _doctorService = doctorService;
         }
-        [HttpGet]
+        [HttpGet("AllARVProtocol")]
         public IActionResult GetAllARVRegiemns()
         {
             var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -31,6 +31,24 @@ namespace HIVTreatment.Controllers
                 return NotFound("Không có phác đồ ARV nào.");
             }
             return Ok(arvProtocols);
+        }
+
+        [HttpGet("AllDoctors")]
+        public IActionResult GetAllDoctors()
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            var allowedRoles = new[] { "R001", "R003", "R005" };
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền xem danh sách bác sĩ!");
+            }
+            var doctors = _doctorService.GetAllDoctors();
+            if (doctors == null || !doctors.Any())
+            {
+                return NotFound("Không có bác sĩ nào.");
+            }
+            return Ok(doctors);
         }
     }
 }

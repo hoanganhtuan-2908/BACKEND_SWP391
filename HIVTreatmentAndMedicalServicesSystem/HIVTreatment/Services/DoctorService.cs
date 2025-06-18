@@ -16,6 +16,9 @@ namespace HIVTreatment.Services
             return idoctorRepository.GetAllARVRegimens();
         }
 
-
+        public List<InfoDoctorDTO> GetAllDoctors()
+        {
+            return idoctorRepository.GetAllDoctors();
+        }
     }
 }
