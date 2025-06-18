@@ -1,8 +1,10 @@
 ﻿using HIVTreatment.DTOs;
 using HIVTreatment.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Security.Claims;
 
 namespace HIVTreatment.Controllers
 {
@@ -38,6 +40,25 @@ namespace HIVTreatment.Controllers
                 return Unauthorized("Sai email hoặc mật khẩu");
             return Ok(result);
         }
+
+        // GET: api/login/me
+        [HttpGet("me")]
+        [Authorize]
+        public IActionResult GetCurrentUser()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var role = User.FindFirstValue(ClaimTypes.Role);
+
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized("Không xác định được người dùng");
+
+            var user = _userService.GetByUserId(userId);
+            if (user == null)
+                return NotFound("Không tìm thấy người dùng");
+
+            return Ok(user);
+        }
+
 
     }
 
