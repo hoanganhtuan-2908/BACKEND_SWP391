@@ -130,6 +130,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HIVTreatment.Controllers.ManagerController",
+    "Method": "AddDoctor",
+    "RelativePath": "api/Manager/AddDoctor",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "HIVTreatment.DTOs.CreateDoctorDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "HIVTreatment.Controllers.RegisterController",
     "Method": "Register",
     "RelativePath": "api/Register/register",
