@@ -20,5 +20,10 @@ namespace HIVTreatment.Services
         {
             return idoctorRepository.GetAllDoctors();
         }
+
+        public InfoDoctorDTO GetInfoDoctorById(string doctorId)
+        {
+            return idoctorRepository.GetInfoDoctorById(doctorId);
+        }
     }
 }
