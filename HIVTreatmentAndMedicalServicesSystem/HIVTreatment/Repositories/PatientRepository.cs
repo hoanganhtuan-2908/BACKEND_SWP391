@@ -59,5 +59,24 @@ namespace HIVTreatment.Repositories
 
             return result;
         }
+
+        public InfoPatientDTO GetInfoPatientById(string patientId)
+        {
+            var result = (from p in context.Patients
+                          join u in context.Users on p.UserID equals u.UserId
+                          where p.UserID == patientId
+                          select new InfoPatientDTO
+                          {
+                              UserID = u.UserId,
+                              Fullname = u.Fullname,
+                              Email = u.Email,
+                              DateOfBirth = p.DateOfBirth,
+                              Phone = p.Phone,
+                              Gender = p.Gender,
+                              BloodType = p.BloodType,
+                              Allergy = p.Allergy
+                          }).FirstOrDefault();
+            return result;
+        }
     }
 }

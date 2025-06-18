@@ -42,6 +42,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HIVTreatment.Controllers.DoctorController",
+    "Method": "GetAllARVRegiemns",
+    "RelativePath": "api/Doctor",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "HIVTreatment.Controllers.EditProfileUserController",
     "Method": "GetAllPatient",
     "RelativePath": "api/EditProfileUser",
@@ -49,6 +59,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIVTreatment.Controllers.EditProfileUserController",
+    "Method": "GetInfoPatientById",
+    "RelativePath": "api/EditProfileUser/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -124,6 +150,16 @@
     "Method": "Logout",
     "RelativePath": "api/Login/logout",
     "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIVTreatment.Controllers.LoginController",
+    "Method": "GetCurrentUser",
+    "RelativePath": "api/Login/me",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],

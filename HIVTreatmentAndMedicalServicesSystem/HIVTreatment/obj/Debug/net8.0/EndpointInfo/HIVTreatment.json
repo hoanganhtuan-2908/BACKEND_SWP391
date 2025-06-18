@@ -68,6 +68,18 @@
         }
       }
     },
+    "/api/Doctor": {
+      "get": {
+        "tags": [
+          "Doctor"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/EditProfileUser/edit-profile": {
       "put": {
         "tags": [
@@ -142,6 +154,28 @@
         }
       }
     },
+    "/api/EditProfileUser/{userId}": {
+      "get": {
+        "tags": [
+          "EditProfileUser"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/EditProfileUser/admin-only": {
       "get": {
         "tags": [
@@ -202,6 +236,18 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Login/me": {
+      "get": {
+        "tags": [
+          "Login"
+        ],
         "responses": {
           "200": {
             "description": "OK"
