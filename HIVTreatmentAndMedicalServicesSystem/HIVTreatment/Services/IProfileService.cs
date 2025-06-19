@@ -10,5 +10,6 @@ namespace HIVTreatment.Services
         List<PatientDTO> GetAllPatient();
 
         InfoPatientDTO GetInfoPatientById(string patientId);
+
     }
 }

@@ -8,5 +8,7 @@ namespace HIVTreatment.Services
         public List<InfoDoctorDTO> GetAllDoctors();
 
         InfoDoctorDTO GetInfoDoctorById(string doctorId);
+        ARVRegimenDTO GetARVById(string ARVRegimenID);
+        bool updateARVRegimen(ARVRegimenDTO ARVRegimenDTO);
     }
 }
