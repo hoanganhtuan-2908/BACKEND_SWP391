@@ -53,6 +53,24 @@ namespace HIVTreatment.Repositories
             return result;
         }
 
+        public ARVRegimenDTO GetARVById(string ARVRegimenID)
+        {
+            var result = (from a in context.ARVRegimen
+                          where a.ARVRegimenID == ARVRegimenID
+                          select new ARVRegimenDTO
+                          {
+                              ARVRegimenID = a.ARVRegimenID,
+                              DoctorID = a.DoctorID,
+                              MedicalRecordID = a.MedicalRecordID,
+                              RegimenCode = a.RegimenCode,
+                              ARVName = a.ARVName,
+                              Description = a.Description,
+                              AgeRange = a.AgeRange,
+                              ForGroup = a.ForGroup
+                          }).FirstOrDefault();
+            return result;
+        }
+
         public Doctor GetByDoctorId(string doctorId)
         {
             return context.Doctors.FirstOrDefault(d => d.DoctorId == doctorId);
@@ -87,5 +105,12 @@ namespace HIVTreatment.Repositories
             context.Update(doctor);
             context.SaveChanges();
         }
+
+        public void updateARVRegimen(ARVRegimen ARVRegimen)
+        {
+            context.Update(ARVRegimen);
+            context.SaveChanges();
+        }
+
     }
 }
