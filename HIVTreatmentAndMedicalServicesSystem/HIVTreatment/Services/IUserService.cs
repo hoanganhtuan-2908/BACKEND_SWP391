@@ -8,5 +8,7 @@ namespace HIVTreatment.Services
         UserLoginResponse Login(string email, string password);
         User Register(User user);
         User GetByUserId(string userId);
+        bool ResetPassword(string email, string newPassword);
+
     }
 }
