@@ -127,6 +127,7 @@ namespace HIVTreatment.Controllers
 
             return Ok($"Đã xoá lịch hẹn {id}");
         }
+        //Xác nhận hoặc từ chối lịch hẹn
         [HttpPut("{id}/approval")]
         [Authorize(Roles = "R004")]
         public async Task<IActionResult> ApproveAppointment(string id, [FromBody] AppointmentApprovalDTO dto)
@@ -162,5 +163,27 @@ namespace HIVTreatment.Controllers
             await _context.SaveChangesAsync();
             return Ok(appointment);
         }
+
+        [HttpGet("approved")]
+        [Authorize(Roles = "R003")]
+        public async Task<IActionResult> GetApprovedAppointments()
+        {
+            var userId = User.FindFirst("DoctorID")?.Value
+                ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized("Doctor not logged in");
+
+            var doctor = await _context.Doctors.FirstOrDefaultAsync(d => d.UserId == userId);
+            if (doctor == null)
+                return NotFound("Doctor not found");
+
+            var appointments = await _context.BooksAppointments
+                .Where(a => a.DoctorID == doctor.DoctorId && a.Status == "Đã xác nhận")
+                .ToListAsync();
+
+            return Ok(appointments);
+        }
+
     }
 }

@@ -77,6 +77,7 @@ namespace HIVTreatment.Services
                 Console.WriteLine($"Error creating token: {ex.Message}");
                 throw;
             }
+
         }
 
         public User Register(User user)
@@ -97,6 +98,10 @@ namespace HIVTreatment.Services
             return user;
         }
 
+        
+
+
+
         public bool ResetPassword(string email, string newPassword)
         {
             var user = _userRepository.GetByEmail(email);
@@ -105,5 +110,6 @@ namespace HIVTreatment.Services
             _userRepository.UpdatePassword(email, newPassword);
             return true;
         }
+
     }
 }
