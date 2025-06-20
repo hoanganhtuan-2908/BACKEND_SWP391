@@ -43,3 +43,9 @@ obj/
 *.pdb
 *.cache
 *.json
+**/bin/
+**/obj/
+*.dll
+*.exe
+*.pdb
+
