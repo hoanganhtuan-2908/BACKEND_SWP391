@@ -11,9 +11,8 @@ namespace HIVTreatment.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = "R001")]
-    // R001 là RoleId của Manager
-    [Authorize(Roles = "R002")]
+    [Authorize(Roles = "R001,R002")]
+
 
     public class ManagerController : ControllerBase
     {
