@@ -36,3 +36,10 @@ secrets.json
 # Ignore OS-specific files
 .DS_Store
 Thumbs.db
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.json
