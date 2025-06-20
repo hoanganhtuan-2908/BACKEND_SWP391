@@ -257,6 +257,22 @@
   },
   {
     "ContainingType": "HIVTreatment.Controllers.LoginController",
+    "Method": "ResetPassword",
+    "RelativePath": "api/Login/Forget Password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "forgetPasswordDTO",
+        "Type": "HIVTreatment.DTOs.ForgetPasswordDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIVTreatment.Controllers.LoginController",
     "Method": "Login",
     "RelativePath": "api/Login/login",
     "HttpMethod": "POST",
