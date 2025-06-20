@@ -10,5 +10,6 @@ namespace HIVTreatment.Repositories
         bool EmailExists(string email);
         User GetByUserId(string UserId);
         void Update(User user);
+        void UpdatePassword(string email, string newPassword);
     }
 }
