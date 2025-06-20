@@ -101,6 +101,16 @@
   },
   {
     "ContainingType": "HIVTreatment.Controllers.AppointmentController",
+    "Method": "GetApprovedAppointments",
+    "RelativePath": "api/Appointment/approved",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HIVTreatment.Controllers.AppointmentController",
     "Method": "GetMyAppointments",
     "RelativePath": "api/Appointment/mine",
     "HttpMethod": "GET",

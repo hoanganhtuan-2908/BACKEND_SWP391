@@ -182,6 +182,18 @@
         }
       }
     },
+    "/api/Appointment/approved": {
+      "get": {
+        "tags": [
+          "Appointment"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Doctor/AllARVProtocol": {
       "get": {
         "tags": [
