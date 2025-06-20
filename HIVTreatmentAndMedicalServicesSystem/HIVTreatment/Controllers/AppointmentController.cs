@@ -162,5 +162,27 @@ namespace HIVTreatment.Controllers
             await _context.SaveChangesAsync();
             return Ok(appointment);
         }
+        // DOCTOR: Xem các lịch hẹn đã được xác nhận dành cho bác sĩ
+        [HttpGet("approved")]
+        [Authorize(Roles = "R003")]
+        public async Task<IActionResult> GetApprovedAppointments()
+        {
+            var userId = User.FindFirst("DoctorID")?.Value
+                ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized("Doctor not logged in");
+
+            var doctor = await _context.Doctors.FirstOrDefaultAsync(d => d.UserId == userId);
+            if (doctor == null)
+                return NotFound("Doctor not found");
+
+            var appointments = await _context.BooksAppointments
+                .Where(a => a.DoctorID == doctor.DoctorId && a.Status == "Đã xác nhận")
+                .ToListAsync();
+
+            return Ok(appointments);
+        }
+
     }
 }
