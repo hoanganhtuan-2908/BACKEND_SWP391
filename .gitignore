@@ -1,0 +1,25 @@
+# Build output
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+*.cache
+*.log
+
+# VS settings
+.vscode/
+*.user
+*.suo
+
+# Others
+*.db
+*.json
+*.nupkg
+*.ide
+*.sln.docstates
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
