@@ -163,7 +163,7 @@ namespace HIVTreatment.Controllers
             await _context.SaveChangesAsync();
             return Ok(appointment);
         }
-        // Bác sĩ xem những lịch đã được xác nhận
+
         [HttpGet("approved")]
         [Authorize(Roles = "R003")]
         public async Task<IActionResult> GetApprovedAppointments()
@@ -184,5 +184,6 @@ namespace HIVTreatment.Controllers
 
             return Ok(appointments);
         }
+
     }
 }
