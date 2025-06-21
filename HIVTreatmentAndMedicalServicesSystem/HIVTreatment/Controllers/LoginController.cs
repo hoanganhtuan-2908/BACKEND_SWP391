@@ -60,22 +60,14 @@ namespace HIVTreatment.Controllers
         }
 
         [HttpPost("Forget Password")]
-        public IActionResult ResetPassword([FromBody] ForgetPasswordDTO forgetPasswordDTO)
+        public IActionResult ResetPassword([FromBody] ForgetPasswordDTO model)
         {
-
-            if (string.IsNullOrEmpty(forgetPasswordDTO.Email) || string.IsNullOrEmpty(forgetPasswordDTO.NewPassword))
+            if (string.IsNullOrEmpty(model.Email) || string.IsNullOrEmpty(model.NewPassword))
             {
                 return BadRequest("Email và mật khẩu mới không được để trống.");
             }
 
-            // Lấy role từ JWT (yêu cầu người dùng phải đăng nhập)
-            var userRole = User.FindFirstValue(ClaimTypes.Role);
-            if (userRole != "R005") // Chỉ bệnh nhân mới được phép đổi
-            {
-                return Forbid("Chỉ bệnh nhân mới được phép thay đổi mật khẩu.");
-            }
-
-            var result = _userService.ResetPassword(forgetPasswordDTO.Email, forgetPasswordDTO.NewPassword);
+            var result = _userService.ResetPassword(model.Email, model.NewPassword);
             if (!result)
             {
                 return NotFound("Không tìm thấy người dùng với email đã nhập.");

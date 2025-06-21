@@ -264,7 +264,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "forgetPasswordDTO",
+        "Name": "model",
         "Type": "HIVTreatment.DTOs.ForgetPasswordDTO",
         "IsRequired": true
       }

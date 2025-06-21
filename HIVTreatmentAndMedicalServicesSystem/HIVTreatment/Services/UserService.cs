@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace HIVTreatment.Services
@@ -100,10 +101,21 @@ namespace HIVTreatment.Services
         public bool ResetPassword(string email, string newPassword)
         {
             var user = _userRepository.GetByEmail(email);
-            if (user == null) return false;
+            if (user == null || user.RoleId != "R005") return false;
 
-            _userRepository.UpdatePassword(email, newPassword);
+            user.Password = HashPassword(newPassword);
+            _userRepository.Update(user);
             return true;
+        }
+
+        private string HashPassword(string password)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                var bytes = Encoding.UTF8.GetBytes(password);
+                var hash = sha256.ComputeHash(bytes);
+                return Convert.ToBase64String(hash);
+            }
         }
     }
 }
