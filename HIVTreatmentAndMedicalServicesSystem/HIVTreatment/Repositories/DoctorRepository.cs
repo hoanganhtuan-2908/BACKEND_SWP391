@@ -100,6 +100,24 @@ namespace HIVTreatment.Repositories
             return context.Doctors.OrderByDescending(d => Convert.ToInt32(d.DoctorId.Substring(3))).FirstOrDefault();
         }
 
+        public List<DoctorScheduleDTO> GetScheduleByDoctorId(string doctorId)
+        {
+            var result = (from s in context.DoctorWorkSchedule
+                          join slot in context.Slot on s.SlotID equals slot.SlotID
+                          where s.DoctorID == doctorId
+                          select new DoctorScheduleDTO
+                          {
+                              ScheduleID = s.ScheduleID,
+                              DayOfWeek = s.DayOfWeek,
+                              Status = s.Status,
+                              SlotNumber = slot.SlotNumber,
+                              StartTime = slot.StartTime,
+                              EndTime = slot.EndTime
+                          }).ToList();
+
+            return result;
+        }
+
         public void Update(Doctor doctor)
         {
             context.Update(doctor);
