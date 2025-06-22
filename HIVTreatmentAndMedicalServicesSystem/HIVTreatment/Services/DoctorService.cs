@@ -32,6 +32,11 @@ namespace HIVTreatment.Services
             return idoctorRepository.GetInfoDoctorById(doctorId);
         }
 
+        public List<DoctorScheduleDTO> GetScheduleByDoctorId(string doctorId)
+        {
+            return idoctorRepository.GetScheduleByDoctorId(doctorId);
+        }
+
         public bool updateARVRegimen(ARVRegimenDTO ARVRegimenDTO)
         {
             var ARV = idoctorRepository.GetARVById(ARVRegimenDTO.ARVRegimenID);
