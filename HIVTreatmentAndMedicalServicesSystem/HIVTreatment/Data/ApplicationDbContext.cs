@@ -16,6 +16,7 @@ namespace HIVTreatment.Data
         public DbSet<Doctor> Doctors { get; set; }
 
         public DbSet<ARVRegimen> ARVRegimen { get; set; }
-
+        public DbSet<Slot> Slot { get; set; }
+        public DbSet<DoctorWorkSchedule> DoctorWorkSchedule { get; set; }
     }
 }
