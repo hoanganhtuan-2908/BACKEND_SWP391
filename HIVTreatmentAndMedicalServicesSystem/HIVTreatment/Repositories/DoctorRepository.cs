@@ -44,6 +44,7 @@ namespace HIVTreatment.Repositories
                           {
 
                               UserID = u.UserId,
+                              DoctorId = d.DoctorId,
                               Fullname = u.Fullname,
                               Email = u.Email,
                               Specialization = d.Specialization,
