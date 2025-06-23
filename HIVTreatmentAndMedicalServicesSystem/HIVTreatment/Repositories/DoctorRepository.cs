@@ -81,10 +81,11 @@ namespace HIVTreatment.Repositories
         {
             var result = (from d in context.Doctors
                           join u in context.Users on d.UserId equals u.UserId
-                          where d.UserId == DoctorID
+                          where d.DoctorId == DoctorID
                           select new InfoDoctorDTO
                           {
                               UserID = u.UserId,
+                              DoctorId = d.DoctorId,
                               Fullname = u.Fullname,
                               Email = u.Email,
                               Specialization = d.Specialization,
