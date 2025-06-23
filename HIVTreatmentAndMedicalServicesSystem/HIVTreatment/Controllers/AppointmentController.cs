@@ -42,7 +42,7 @@ namespace HIVTreatment.Controllers
         }
 
         // PATIENT: Tạo lịch hẹn mới
-        [HttpPost]
+        [HttpPost("Booking")]
         [Authorize(Roles = "R005")]
         public async Task<IActionResult> Create([FromBody] BookAppointmentDTO dto)
         {
@@ -74,7 +74,7 @@ namespace HIVTreatment.Controllers
         }
 
         // PATIENT: Xem lịch hẹn của chính mình
-        [HttpGet("mine")]
+        [HttpGet("MyBooking")]
         [Authorize(Roles = "R005")]
         public async Task<IActionResult> GetMyAppointments()
         {
