@@ -42,9 +42,9 @@ namespace HIVTreatment.Repositories
                           join u in context.Users on d.UserId equals u.UserId
                           select new InfoDoctorDTO
                           {
-
-                              UserID = u.UserId,
                               DoctorId = d.DoctorId,
+                              UserID = u.UserId,
+                              
                               Fullname = u.Fullname,
                               Email = u.Email,
                               Specialization = d.Specialization,
@@ -83,9 +83,8 @@ namespace HIVTreatment.Repositories
                           join u in context.Users on d.UserId equals u.UserId
                           where d.DoctorId == DoctorID
                           select new InfoDoctorDTO
-                          {
+                          {   DoctorId = d.DoctorId,
                               UserID = u.UserId,
-                              DoctorId = d.DoctorId,
                               Fullname = u.Fullname,
                               Email = u.Email,
                               Specialization = d.Specialization,
@@ -106,6 +105,8 @@ namespace HIVTreatment.Repositories
         {
             var result = (from s in context.DoctorWorkSchedule
                           join slot in context.Slot on s.SlotID equals slot.SlotID
+                          join d in context.Doctors on s.DoctorID equals d.DoctorId
+                          join b in context.BooksAppointments on d.DoctorId equals b.DoctorID
                           where s.DoctorID == doctorId
                           select new DoctorScheduleDTO
                           {
@@ -114,7 +115,8 @@ namespace HIVTreatment.Repositories
                               Status = s.Status,
                               SlotNumber = slot.SlotNumber,
                               StartTime = slot.StartTime,
-                              EndTime = slot.EndTime
+                              EndTime = slot.EndTime,
+                              BookDate = b.BookDate
                           }).ToList();
 
             return result;
