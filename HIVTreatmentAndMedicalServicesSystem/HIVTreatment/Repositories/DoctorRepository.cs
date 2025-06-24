@@ -106,17 +106,15 @@ namespace HIVTreatment.Repositories
             var result = (from s in context.DoctorWorkSchedule
                           join slot in context.Slot on s.SlotID equals slot.SlotID
                           join d in context.Doctors on s.DoctorID equals d.DoctorId
-                          join b in context.BooksAppointments on d.DoctorId equals b.DoctorID
                           where s.DoctorID == doctorId
                           select new DoctorScheduleDTO
                           {
                               ScheduleID = s.ScheduleID,
-                              DayOfWeek = s.DayOfWeek,
+                              DateWork = s.DateWork,
                               Status = s.Status,
                               SlotNumber = slot.SlotNumber,
                               StartTime = slot.StartTime,
                               EndTime = slot.EndTime,
-                              BookDate = b.BookDate
                           }).ToList();
 
             return result;
