@@ -104,5 +104,23 @@ namespace HIVTreatment.Controllers
             }
             return Ok("Cập nhật phác đồ ARV thành công.");
         }
+
+        [HttpGet("DoctorWorkSchedule/{doctorId}")]
+        public IActionResult GetScheduleByDoctorId(string doctorId)
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            var allowedRoles = new[] { "R001", "R003", "R005" };
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền xem lịch làm việc của bác sĩ!");
+            }
+            var schedule = _doctorService.GetScheduleByDoctorId(doctorId);
+            if (schedule == null || !schedule.Any())
+            {
+                return NotFound("Không tìm thấy lịch làm việc của bác sĩ.");
+            }
+            return Ok(schedule);
+        }
     }
 }

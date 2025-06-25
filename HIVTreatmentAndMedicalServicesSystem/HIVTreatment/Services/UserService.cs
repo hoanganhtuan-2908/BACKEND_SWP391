@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace HIVTreatment.Services
@@ -77,6 +78,7 @@ namespace HIVTreatment.Services
                 Console.WriteLine($"Error creating token: {ex.Message}");
                 throw;
             }
+
         }
 
         public User Register(User user)
@@ -97,13 +99,21 @@ namespace HIVTreatment.Services
             return user;
         }
 
+
         public bool ResetPassword(string email, string newPassword)
         {
             var user = _userRepository.GetByEmail(email);
-            if (user == null) return false;
+            if (user == null || user.RoleId != "R005") // chỉ Patient mới được reset
+            {
+                return false;
+            }
 
+            user.Password = newPassword; // bạn có thể hash ở đây
             _userRepository.UpdatePassword(email, newPassword);
             return true;
         }
     }
+
+
+
 }

@@ -42,8 +42,9 @@ namespace HIVTreatment.Repositories
                           join u in context.Users on d.UserId equals u.UserId
                           select new InfoDoctorDTO
                           {
-
+                              DoctorId = d.DoctorId,
                               UserID = u.UserId,
+                              
                               Fullname = u.Fullname,
                               Email = u.Email,
                               Specialization = d.Specialization,
@@ -80,9 +81,9 @@ namespace HIVTreatment.Repositories
         {
             var result = (from d in context.Doctors
                           join u in context.Users on d.UserId equals u.UserId
-                          where d.UserId == DoctorID
+                          where d.DoctorId == DoctorID
                           select new InfoDoctorDTO
-                          {
+                          {   DoctorId = d.DoctorId,
                               UserID = u.UserId,
                               Fullname = u.Fullname,
                               Email = u.Email,
@@ -98,6 +99,25 @@ namespace HIVTreatment.Repositories
         public Doctor GetLastDoctorId()
         {
             return context.Doctors.OrderByDescending(d => Convert.ToInt32(d.DoctorId.Substring(3))).FirstOrDefault();
+        }
+
+        public List<DoctorScheduleDTO> GetScheduleByDoctorId(string doctorId)
+        {
+            var result = (from s in context.DoctorWorkSchedule
+                          join slot in context.Slot on s.SlotID equals slot.SlotID
+                          join d in context.Doctors on s.DoctorID equals d.DoctorId
+                          where s.DoctorID == doctorId
+                          select new DoctorScheduleDTO
+                          {
+                              ScheduleID = s.ScheduleID,
+                              DateWork = s.DateWork,
+                              Status = s.Status,
+                              SlotNumber = slot.SlotNumber,
+                              StartTime = slot.StartTime,
+                              EndTime = slot.EndTime,
+                          }).ToList();
+
+            return result;
         }
 
         public void Update(Doctor doctor)

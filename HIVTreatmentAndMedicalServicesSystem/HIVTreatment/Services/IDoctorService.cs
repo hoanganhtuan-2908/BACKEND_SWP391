@@ -10,5 +10,6 @@ namespace HIVTreatment.Services
         InfoDoctorDTO GetInfoDoctorById(string doctorId);
         ARVRegimenDTO GetARVById(string ARVRegimenID);
         bool updateARVRegimen(ARVRegimenDTO ARVRegimenDTO);
+        public List<DoctorScheduleDTO> GetScheduleByDoctorId(string doctorId);
     }
 }
