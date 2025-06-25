@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HIVTreatment")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6f9b5e46d4edb85da608e8963f2af0b27e77e739")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e3c8af40f4791c95b512cd2cfc9cff30965e425f")]
 [assembly: System.Reflection.AssemblyProductAttribute("HIVTreatment")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HIVTreatment")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
