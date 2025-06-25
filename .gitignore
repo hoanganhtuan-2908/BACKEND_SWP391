@@ -1,0 +1,26 @@
+# Ignore build output
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+
+# Ignore Visual Studio files
+.vscode/
+*.user
+*.suo
+
+# Ignore NuGet
+*.nupkg
+packages/
+*.nuspec
+project.lock.json
+project.fragment.lock.json
+
+# Others
+*.db
+*.json
+*.ide
+*.sln.docstates
