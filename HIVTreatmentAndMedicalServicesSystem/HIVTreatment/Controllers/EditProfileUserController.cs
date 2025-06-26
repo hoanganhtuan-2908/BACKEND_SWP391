@@ -127,5 +127,41 @@ namespace HIVTreatment.Controllers
         {
             return Ok("You are a doctor!");
         }
+
+        [HttpGet("patient/{patientId}")]
+        public IActionResult GetPatientById(string patientId)
+        {
+            try
+            {
+                // Basic input validation
+                if (string.IsNullOrEmpty(patientId))
+                {
+                    return BadRequest("Mã bệnh nhân không được để trống");
+                }
+
+                // Authorization check
+                var userRole = User.FindFirstValue(ClaimTypes.Role);
+                var allowedRoles = new[] { "R001", "R003" }; // Admin and Doctor roles
+
+                if (!allowedRoles.Contains(userRole))
+                {
+                    return Forbid("Bạn không có quyền truy cập thông tin bệnh nhân");
+                }
+
+                var result = iProfileService.GetInfoPatientByIdDTO(patientId);
+                if (result == null)
+                {
+                    return NotFound("Không tìm thấy thông tin bệnh nhân");
+                }
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                // Log exception here if you have a logging service
+                return StatusCode(500, "Đã xảy ra lỗi khi truy vấn thông tin bệnh nhân");
+            }
+        }
+
     }
 }
