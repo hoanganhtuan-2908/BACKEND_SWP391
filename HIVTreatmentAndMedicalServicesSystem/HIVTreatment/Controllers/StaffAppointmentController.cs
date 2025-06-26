@@ -48,18 +48,58 @@ namespace HIVTreatment.Controllers
         }
 
         /// <summary>
-        /// Danh sách lịch đã đặt nhưng chưa khám
+        /// Danh sách lịch đã đặt (Thành công)
         /// </summary>
         [Authorize(Roles = "R004")]
-        [HttpGet("upcoming")]
-        public IActionResult GetUpcomingAppointments()
+        [HttpGet("successful")]
+        public IActionResult GetSuccessfulAppointments()
         {
             var user = GetCurrentUser();
             if (user == null || !IsStaff(user))
                 return Forbid();
 
             var appointments = _context.BooksAppointments
-                .Where(a => a.Status == "Đã xác nhận")
+                .Where(a => a.Status == "Thành công")
+                .Include(a => a.Patient)
+                .Include(a => a.Doctor)
+                .ToList();
+
+            return Ok(appointments);
+        }
+
+        /// <summary>
+        /// Danh sách lịch đã hủy
+        /// </summary>
+        [Authorize(Roles = "R004")]
+        [HttpGet("cancelled")]
+        public IActionResult GetCancelledAppointments()
+        {
+            var user = GetCurrentUser();
+            if (user == null || !IsStaff(user))
+                return Forbid();
+
+            var appointments = _context.BooksAppointments
+                .Where(a => a.Status == "Đã hủy")
+                .Include(a => a.Patient)
+                .Include(a => a.Doctor)
+                .ToList();
+
+            return Ok(appointments);
+        }
+
+        /// <summary>
+        /// Tất cả lịch hẹn: Thành công + Đã hủy + Đã khám
+        /// </summary>
+        [Authorize(Roles = "R004")]
+        [HttpGet("all")]
+        public IActionResult GetAllAppointments()
+        {
+            var user = GetCurrentUser();
+            if (user == null || !IsStaff(user))
+                return Forbid();
+
+            var appointments = _context.BooksAppointments
+                .Where(a => a.Status == "Thành công" || a.Status == "Đã hủy" || a.Status == "Đã khám")
                 .Include(a => a.Patient)
                 .Include(a => a.Doctor)
                 .ToList();
