@@ -28,6 +28,11 @@ namespace HIVTreatment.Services
             return iPatientRepository.GetInfoPatientById(patientId);
         }
 
+        public InfoPatientByIdDTO GetInfoPatientByIdDTO(string patientId)
+        {
+            return iPatientRepository.GetInfoPatientByIdDTO(patientId);
+        }
+
         public bool UpdateDoctorProfile(EditprofileDoctorDTO editProfileDoctorDTO)
         {
             var user = iUserRepository.GetByUserId(editProfileDoctorDTO.UserId);

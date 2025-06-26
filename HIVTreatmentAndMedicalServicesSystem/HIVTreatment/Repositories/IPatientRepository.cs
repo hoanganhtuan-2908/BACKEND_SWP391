@@ -12,5 +12,6 @@ namespace HIVTreatment.Repositories
         void Add(Patient patient);
         void Update(Patient patient);
         InfoPatientDTO GetInfoPatientById(string patientId);
+        InfoPatientByIdDTO GetInfoPatientByIdDTO(string patientId);
     }
 }
