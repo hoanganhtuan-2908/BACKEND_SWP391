@@ -48,7 +48,10 @@ namespace HIVTreatment.Controllers
                     RoleId = defaultRole,
                     Fullname = registerDTO.Fullname,
                     Password = registerDTO.Password,
-                    Email = registerDTO.Email
+                    Email = registerDTO.Email,
+                    Address = registerDTO.Address,
+                    Image = registerDTO.Image, // Optional, can be null
+
                     // UserId will be assigned in the service
                 };
 

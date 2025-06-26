@@ -4,12 +4,12 @@ namespace HIVTreatment.Services
 {
     public interface IDoctorService
     {
-        List<ARVRegimenDTO> GetAllARVRegimens();
+        List<ARVProtocolDTO> GetAllARVProtocol();
         public List<InfoDoctorDTO> GetAllDoctors();
 
         InfoDoctorDTO GetInfoDoctorById(string doctorId);
-        ARVRegimenDTO GetARVById(string ARVRegimenID);
-        bool updateARVRegimen(ARVRegimenDTO ARVRegimenDTO);
+        ARVProtocolDTO GetARVById(string ARVID);
+        bool updateARVProtocol(ARVProtocolDTO ARVProtocolDTO);
         public List<DoctorScheduleDTO> GetScheduleByDoctorId(string doctorId);
     }
 }
