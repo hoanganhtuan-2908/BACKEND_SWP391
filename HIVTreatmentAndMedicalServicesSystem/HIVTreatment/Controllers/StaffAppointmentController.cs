@@ -1,8 +1,8 @@
 ﻿using HIVTreatment.Data;
 using HIVTreatment.Models;
-using HIVTreatment.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Security.Claims;
 
@@ -13,12 +13,10 @@ namespace HIVTreatment.Controllers
     public class StaffAppointmentController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-        private readonly INotificationService _notifier;
 
-        public StaffAppointmentController(ApplicationDbContext context, INotificationService notifier)
+        public StaffAppointmentController(ApplicationDbContext context)
         {
             _context = context;
-            _notifier = notifier;
         }
 
         private User GetCurrentUser()
@@ -28,67 +26,45 @@ namespace HIVTreatment.Controllers
         }
 
         private bool IsStaff(User user) => user.RoleId == "R004";
-        [Authorize(Roles = "R004")]
 
-        [HttpGet("pending")]
-        public IActionResult GetPendingAppointments()
+        /// <summary>
+        /// Danh sách lịch đã khám
+        /// </summary>
+        [Authorize(Roles = "R004")]
+        [HttpGet("completed")]
+        public IActionResult GetCompletedAppointments()
         {
             var user = GetCurrentUser();
             if (user == null || !IsStaff(user))
                 return Forbid();
 
-            var pendingAppointments = _context.BooksAppointments
-                .Where(a => a.Status == "Đang chờ")
+            var appointments = _context.BooksAppointments
+                .Where(a => a.Status == "Đã khám")
+                .Include(a => a.Patient)
+                .Include(a => a.Doctor)
                 .ToList();
 
-            return Ok(pendingAppointments);
+            return Ok(appointments);
         }
 
-        [HttpPut("approve/{id}")]
-        public IActionResult ApproveAppointment(string id)
-        {
-            var user = GetCurrentUser();
-            if (user == null || !IsStaff(user))
-                return Forbid();
-            //var User = new User { UserId = "TEST001", RoleId = "R004" };
-
-            var appointment = _context.BooksAppointments.FirstOrDefault(a => a.BookID == id);
-            if (appointment == null)
-                return NotFound();
-
-            appointment.Status = "Đã xác nhận";
-            _context.SaveChanges();
-
-            // Gửi thông báo
-            _notifier.Send(appointment.PatientID, "Lịch hẹn của bạn đã được duyệt.");
-            _notifier.Send(appointment.DoctorID, $"Bạn có lịch hẹn mới vào {appointment.BookDate:dd/MM/yyyy HH:mm}");
-
-            return Ok("Appointment approved");
-        }
-
-        [HttpPut("reject/{id}")]
-        public IActionResult RejectAppointment(string id, [FromBody] RejectDto dto)
+        /// <summary>
+        /// Danh sách lịch đã đặt nhưng chưa khám
+        /// </summary>
+        [Authorize(Roles = "R004")]
+        [HttpGet("upcoming")]
+        public IActionResult GetUpcomingAppointments()
         {
             var user = GetCurrentUser();
             if (user == null || !IsStaff(user))
                 return Forbid();
 
-            var appointment = _context.BooksAppointments.FirstOrDefault(a => a.BookID == id);
-            if (appointment == null)
-                return NotFound();
+            var appointments = _context.BooksAppointments
+                .Where(a => a.Status == "Đã xác nhận")
+                .Include(a => a.Patient)
+                .Include(a => a.Doctor)
+                .ToList();
 
-            appointment.Status = "Rejected";
-            appointment.Note = dto.Reason;
-            _context.SaveChanges();
-
-            _notifier.Send(appointment.PatientID, $"Lịch hẹn của bạn đã bị từ chối. Lý do: {dto.Reason}");
-
-            return Ok("Appointment rejected");
+            return Ok(appointments);
         }
-    }
-
-    public class RejectDto
-    {
-        public string Reason { get; set; }
     }
 }

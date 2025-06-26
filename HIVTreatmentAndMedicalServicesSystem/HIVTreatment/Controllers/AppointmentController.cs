@@ -1,11 +1,9 @@
 ﻿using HIVTreatment.Data;
 using HIVTreatment.Models;
-using HIVTreatment.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace HIVTreatment.Controllers
 {
@@ -13,38 +11,19 @@ namespace HIVTreatment.Controllers
     [Route("api/[controller]")]
     public class AppointmentController : ControllerBase
     {
-        private readonly IAppointmentRepository _repository;
         private readonly ApplicationDbContext _context;
 
-        public AppointmentController(ApplicationDbContext context, IAppointmentRepository repository)
+        public AppointmentController(ApplicationDbContext context)
         {
             _context = context;
-            _repository = repository;
         }
 
-        // STAFF: Xem tất cả lịch hẹn
-        [HttpGet]
-        [Authorize(Roles = "R004")]
-        public async Task<IActionResult> GetAll()
-        {
-            var list = await _repository.GetAllAsync();
-            return Ok(list);
-        }
+        // ===================== PATIENT =========================
 
-        // STAFF: Xem chi tiết lịch hẹn
-        [HttpGet("{id}")]
-        [Authorize(Roles = "R004")]
-        public async Task<IActionResult> GetById(string id)
-        {
-            var item = await _repository.GetByIdAsync(id);
-            if (item == null) return NotFound();
-            return Ok(item);
-        }
-
-        // PATIENT: Tạo lịch hẹn mới
-        [HttpPost("Booking")]
+        // [PATIENT] Đặt lịch hẹn
+        [HttpPost("booking")]
         [Authorize(Roles = "R005")]
-        public async Task<IActionResult> Create([FromBody] BookAppointmentDTO dto)
+        public async Task<IActionResult> BookAppointment([FromBody] BookAppointmentDTO dto)
         {
             var userId = User.FindFirst("PatientID")?.Value
                 ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -56,134 +35,154 @@ namespace HIVTreatment.Controllers
             if (patient == null)
                 return NotFound("Patient not found");
 
-            var book = new BooksAppointment
+            // Bỏ kiểm tra slot vì database không có SlotID
+            var isWorking = await _context.DoctorWorkSchedules.AnyAsync(w =>
+                w.DoctorID == dto.DoctorID &&
+                w.DateWork.Date == dto.BookDate.Date);
+
+            if (!isWorking)
+                return BadRequest("Bác sĩ không làm việc vào thời gian này.");
+
+            var isConflict = await _context.BooksAppointments.AnyAsync(b =>
+                b.DoctorID == dto.DoctorID &&
+                b.BookDate.Date == dto.BookDate.Date &&
+                b.Status == "Đã xác nhận");
+
+            if (isConflict)
+                return Conflict("Bác sĩ đã có lịch hẹn trong ngày này.");
+
+            var appointment = new BooksAppointment
             {
                 BookID = "BK" + Guid.NewGuid().ToString("N").Substring(0, 6).ToUpper(),
                 PatientID = patient.PatientID,
                 DoctorID = dto.DoctorID,
-                ServiceID = dto.ServiceID,
+                BookingType = dto.BookingType,
                 BookDate = dto.BookDate,
-                Status = "Đang chờ",
+                Status = "Thành công",
                 Note = dto.Note
             };
 
-            _context.BooksAppointments.Add(book);
+            _context.BooksAppointments.Add(appointment);
             await _context.SaveChangesAsync();
+            var fullAppointment = await _context.BooksAppointments
+            .Include(b => b.Patient)
+            .Include(b => b.Doctor)
+            .FirstOrDefaultAsync(b => b.BookID == appointment.BookID);
 
-            return Ok(book);
+            return Ok(appointment);
         }
-
-        // PATIENT: Xem lịch hẹn của chính mình
-        [HttpGet("MyBooking")]
+        // [PATIENT] Xem lịch hẹn của mình
+        [HttpGet("mine")]
         [Authorize(Roles = "R005")]
         public async Task<IActionResult> GetMyAppointments()
         {
             var userId = User.FindFirst("PatientID")?.Value
                 ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-            if (string.IsNullOrEmpty(userId))
-                return Unauthorized("Patient not logged in");
-
             var patient = await _context.Patients.FirstOrDefaultAsync(p => p.UserID == userId);
             if (patient == null)
                 return NotFound("Patient not found");
 
-            var appointments = await _context.BooksAppointments
+            var list = await _context.BooksAppointments
                 .Where(a => a.PatientID == patient.PatientID)
                 .ToListAsync();
 
-            return Ok(appointments);
+            return Ok(list);
         }
 
-        // STAFF: Cập nhật trạng thái lịch hẹn
-        [HttpPut("{id}/status")]
-        [Authorize(Roles = "R004")]
-        public async Task<IActionResult> UpdateStatus(string id, [FromBody] string newStatus)
+        // ===================== DOCTOR =========================
+
+        // [DOCTOR] Hủy lịch hẹn
+        [HttpPut("cancel/{id}")]
+        [Authorize(Roles = "R003")]
+        public async Task<IActionResult> CancelAppointment(string id, [FromBody] string reason)
         {
-            var appointment = await _context.BooksAppointments.FindAsync(id);
-            if (appointment == null)
-                return NotFound("Appointment not found");
+            var doctorId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var doctor = await _context.Doctors.FirstOrDefaultAsync(d => d.UserId == doctorId);
+            if (doctor == null)
+                return Unauthorized("Doctor not found");
 
-            appointment.Status = newStatus;
-            await _context.SaveChangesAsync();
-
-            return Ok(appointment);
-        }
-
-        // STAFF: Xoá lịch hẹn nếu đang chờ hoặc từ chối
-        [HttpDelete("{id}")]
-        [Authorize(Roles = "R004")]
-        public async Task<IActionResult> Delete(string id)
-        {
-            var appointment = await _context.BooksAppointments.FindAsync(id);
-            if (appointment == null)
-                return NotFound("Appointment not found");
-
-            if (appointment.Status != "Đang chờ" && appointment.Status != "Từ chối")
-                return BadRequest("Chỉ được xoá lịch hẹn chưa duyệt hoặc đã bị từ chối.");
-
-            _context.BooksAppointments.Remove(appointment);
-            await _context.SaveChangesAsync();
-
-            return Ok($"Đã xoá lịch hẹn {id}");
-        }
-        //Xác nhận hoặc từ chối lịch hẹn
-        [HttpPut("{id}/approval")]
-        [Authorize(Roles = "R004")]
-        public async Task<IActionResult> ApproveAppointment(string id, [FromBody] AppointmentApprovalDTO dto)
-        {
             var appointment = await _context.BooksAppointments
-                .Include(a => a.Patient)
-                .Include(a => a.Doctor)
-                .FirstOrDefaultAsync(a => a.BookID == id);
+                .FirstOrDefaultAsync(a => a.BookID == id && a.DoctorID == doctor.DoctorId);
 
             if (appointment == null)
-                return NotFound("Không tìm thấy lịch hẹn.");
+                return NotFound("Appointment not found");
 
-            if (appointment.Status != "Đang chờ")
-                return BadRequest("Chỉ có thể duyệt lịch hẹn đang chờ.");
+            if (appointment.Status != "Đã xác nhận")
+                return BadRequest("Chỉ có thể huỷ lịch đã xác nhận.");
 
-            if (dto.Status == "Đã xác nhận")
-            {
-                appointment.Status = "Đã xác nhận";
-
-
-                // Gửi thông báo xác nhận
-                Console.WriteLine($"✅ Lịch hẹn {id} đã xác nhận cho bệnh nhân {appointment.PatientID} và bác sĩ {appointment.DoctorID} vào ngày {appointment.BookDate}");
-            }
-            else if (dto.Status == "Từ chối")
-            {
-
-            }
-            else
-            {
-                return BadRequest("Trạng thái không hợp lệ. Chỉ chấp nhận 'Đã xác nhận' hoặc 'Từ chối'.");
-            }
+            appointment.Status = "Bị từ chối";
+            appointment.Note = reason;
 
             await _context.SaveChangesAsync();
-            return Ok(appointment);
+            return Ok("Appointment cancelled.");
         }
 
+        // [DOCTOR] Đánh dấu đã khám
+        [HttpPut("complete/{id}")]
+        [Authorize(Roles = "R003")]
+        public async Task<IActionResult> MarkAsCompleted(string id)
+        {
+            var doctorId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var doctor = await _context.Doctors.FirstOrDefaultAsync(d => d.UserId == doctorId);
+            if (doctor == null)
+                return Unauthorized("Doctor not found");
+
+            var appointment = await _context.BooksAppointments
+                .FirstOrDefaultAsync(a => a.BookID == id && a.DoctorID == doctor.DoctorId);
+
+            if (appointment == null)
+                return NotFound("Appointment not found");
+
+            if (appointment.Status != "Đã xác nhận")
+                return BadRequest("Chỉ có thể đánh dấu đã khám với lịch đã xác nhận.");
+
+            appointment.Status = "Đã khám";
+            await _context.SaveChangesAsync();
+            return Ok("Appointment marked as completed.");
+        }
+
+        // [DOCTOR] Xem danh sách lịch đã xác nhận
         [HttpGet("approved")]
         [Authorize(Roles = "R003")]
-        public async Task<IActionResult> GetApprovedAppointments()
+        public async Task<IActionResult> GetDoctorAppointments()
         {
-            var userId = User.FindFirst("DoctorID")?.Value
-                ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
-            if (string.IsNullOrEmpty(userId))
-                return Unauthorized("Doctor not logged in");
-
-            var doctor = await _context.Doctors.FirstOrDefaultAsync(d => d.UserId == userId);
+            var doctorId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var doctor = await _context.Doctors.FirstOrDefaultAsync(d => d.UserId == doctorId);
             if (doctor == null)
-                return NotFound("Doctor not found");
+                return Unauthorized("Doctor not found");
 
-            var appointments = await _context.BooksAppointments
+            var list = await _context.BooksAppointments
                 .Where(a => a.DoctorID == doctor.DoctorId && a.Status == "Đã xác nhận")
                 .ToListAsync();
 
-            return Ok(appointments);
+            return Ok(list);
         }
 
+        // ===================== STAFF =========================
+
+        // [STAFF] Xem tất cả lịch đã khám
+        [HttpGet("completed")]
+        [Authorize(Roles = "R004")]
+        public async Task<IActionResult> GetCompletedAppointments()
+        {
+            var list = await _context.BooksAppointments
+                .Where(a => a.Status == "Đã khám")
+                .ToListAsync();
+
+            return Ok(list);
+        }
+
+        // [STAFF] Xem lịch sắp tới
+        [HttpGet("upcoming")]
+        [Authorize(Roles = "R004")]
+        public async Task<IActionResult> GetUpcomingAppointments()
+        {
+            var list = await _context.BooksAppointments
+                .Where(a => a.Status == "Đã xác nhận")
+                .ToListAsync();
+
+            return Ok(list);
+        }
     }
 }
