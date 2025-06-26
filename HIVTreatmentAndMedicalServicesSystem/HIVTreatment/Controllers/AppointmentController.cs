@@ -193,24 +193,12 @@ namespace HIVTreatment.Controllers
         // ===================== STAFF =========================
 
         // [STAFF] Xem tất cả lịch đã khám
-        [HttpGet("completed")]
+        [HttpGet("all")]
         [Authorize(Roles = "R004")]
-        public async Task<IActionResult> GetCompletedAppointments()
+        public async Task<IActionResult> GetAllAppointmentsForStaff()
         {
             var list = await _context.BooksAppointments
-                .Where(a => a.Status == "Đã khám")
-                .ToListAsync();
-
-            return Ok(list);
-        }
-
-        // [STAFF] Xem lịch sắp tới
-        [HttpGet("upcoming")]
-        [Authorize(Roles = "R004")]
-        public async Task<IActionResult> GetUpcomingAppointments()
-        {
-            var list = await _context.BooksAppointments
-                .Where(a => a.Status == "Đã xác nhận")
+                .Where(a => a.Status == "Thành công" || a.Status == "Đã hủy")
                 .ToListAsync();
 
             return Ok(list);
