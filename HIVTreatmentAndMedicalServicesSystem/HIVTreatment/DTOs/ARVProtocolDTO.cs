@@ -1,11 +1,9 @@
 ﻿namespace HIVTreatment.DTOs
 {
-    public class ARVRegimenDTO
+    public class ARVProtocolDTO
     {
-        public string ARVRegimenID { get; set; }
-        public string DoctorID { get; set; }
-        public string MedicalRecordID { get; set; }
-        public string RegimenCode { get; set; }
+        public string ARVID { get; set; }
+        public string ARVCode { get; set; }
         public string ARVName { get; set; }
         public string Description { get; set; }
         public string AgeRange { get; set; }

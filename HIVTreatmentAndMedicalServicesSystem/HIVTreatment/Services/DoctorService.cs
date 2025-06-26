@@ -12,9 +12,9 @@ namespace HIVTreatment.Services
             this.idoctorRepository = doctorRepository;
         }
 
-        public List<ARVRegimenDTO> GetAllARVRegimens()
+        public List<ARVProtocolDTO> GetAllARVProtocol()
         {
-            return idoctorRepository.GetAllARVRegimens();
+            return idoctorRepository.GetAllARVProtocol();
         }
 
         public List<InfoDoctorDTO> GetAllDoctors()
@@ -22,9 +22,9 @@ namespace HIVTreatment.Services
             return idoctorRepository.GetAllDoctors();
         }
 
-        public ARVRegimenDTO GetARVById(string ARVRegimenID)
+        public ARVProtocolDTO GetARVById(string ARVID)
         {
-            return idoctorRepository.GetARVById(ARVRegimenID);
+            return idoctorRepository.GetARVById(ARVID);
         }
 
         public InfoDoctorDTO GetInfoDoctorById(string doctorId)
@@ -37,28 +37,26 @@ namespace HIVTreatment.Services
             return idoctorRepository.GetScheduleByDoctorId(doctorId);
         }
 
-        public bool updateARVRegimen(ARVRegimenDTO ARVRegimenDTO)
+        public bool updateARVProtocol(ARVProtocolDTO ARVProtocolDTO)
         {
-            var ARV = idoctorRepository.GetARVById(ARVRegimenDTO.ARVRegimenID);
+            var ARV = idoctorRepository.GetARVById(ARVProtocolDTO.ARVID);
             if (ARV == null)
             {
                 return false; // ARV regimen not found
             }
 
             // Map ARVRegimenDTO to ARVRegimen model
-            var ARVModel = new ARVRegimen
+            var ARVModel = new ARVProtocol
             {
-                ARVRegimenID = ARVRegimenDTO.ARVRegimenID,
-                DoctorID = ARVRegimenDTO.DoctorID,
-                MedicalRecordID = ARVRegimenDTO.MedicalRecordID,
-                RegimenCode = ARVRegimenDTO.RegimenCode,
-                ARVName = ARVRegimenDTO.ARVName,
-                Description = ARVRegimenDTO.Description,
-                AgeRange = ARVRegimenDTO.AgeRange,
-                ForGroup = ARVRegimenDTO.ForGroup
+                ARVID = ARVProtocolDTO.ARVID,
+                ARVCode = ARVProtocolDTO.ARVCode,
+                ARVName = ARVProtocolDTO.ARVName,
+                Description = ARVProtocolDTO.Description,
+                AgeRange = ARVProtocolDTO.AgeRange,
+                ForGroup = ARVProtocolDTO.ForGroup
             };
 
-            idoctorRepository.updateARVRegimen(ARVModel);
+            idoctorRepository.updateARVProtocol(ARVModel);
             return true; // Update successful
         }
     }

@@ -80,8 +80,10 @@ namespace HIVTreatment.Services
             {
                 return false; // User not found
             }
-
+            
             user.Fullname = editProfileUserDTO.Fullname;
+            user.Address = editProfileUserDTO.Address;
+            user.Image = editProfileUserDTO.Image; // Optional, can be null
             iUserRepository.Update(user);
 
             var patient = iPatientRepository.GetByPatientId(editProfileUserDTO.UserId);

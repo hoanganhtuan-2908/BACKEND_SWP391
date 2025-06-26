@@ -94,7 +94,7 @@ namespace HIVTreatment.Services
                     nextId = parsed + 1;
             }
 
-            user.UserId = "UID" + nextId.ToString("D6");
+            user.UserId = "UI" + nextId.ToString("D6");
             _userRepository.Add(user);
             return user;
         }
