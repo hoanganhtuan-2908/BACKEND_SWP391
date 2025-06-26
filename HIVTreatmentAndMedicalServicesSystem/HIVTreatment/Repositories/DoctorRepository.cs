@@ -18,15 +18,13 @@ namespace HIVTreatment.Repositories
             context.SaveChanges();
         }
 
-        public List<ARVRegimenDTO> GetAllARVRegimens()
+        public List<ARVProtocolDTO> GetAllARVProtocol()
         {
-            var result = (from a in context.ARVRegimen
-                          select new ARVRegimenDTO
+            var result = (from a in context.ARVProtocol
+                          select new ARVProtocolDTO
                           {
-                              ARVRegimenID = a.ARVRegimenID,
-                              DoctorID = a.DoctorID,
-                              MedicalRecordID = a.MedicalRecordID,
-                              RegimenCode = a.RegimenCode,
+                              ARVID = a.ARVID,
+                              ARVCode = a.ARVCode,
                               ARVName = a.ARVName,
                               Description = a.Description,
                               AgeRange = a.AgeRange,
@@ -54,16 +52,14 @@ namespace HIVTreatment.Repositories
             return result;
         }
 
-        public ARVRegimenDTO GetARVById(string ARVRegimenID)
+        public ARVProtocolDTO GetARVById(string ARVID)
         {
-            var result = (from a in context.ARVRegimen
-                          where a.ARVRegimenID == ARVRegimenID
-                          select new ARVRegimenDTO
+            var result = (from a in context.ARVProtocol
+                          where a.ARVID == ARVID
+                          select new ARVProtocolDTO
                           {
-                              ARVRegimenID = a.ARVRegimenID,
-                              DoctorID = a.DoctorID,
-                              MedicalRecordID = a.MedicalRecordID,
-                              RegimenCode = a.RegimenCode,
+                              ARVID = a.ARVID,
+                              ARVCode = a.ARVCode,
                               ARVName = a.ARVName,
                               Description = a.Description,
                               AgeRange = a.AgeRange,
@@ -111,7 +107,6 @@ namespace HIVTreatment.Repositories
                           {
                               ScheduleID = s.ScheduleID,
                               DateWork = s.DateWork,
-                              Status = s.Status,
                               SlotNumber = slot.SlotNumber,
                               StartTime = slot.StartTime,
                               EndTime = slot.EndTime,
@@ -126,9 +121,9 @@ namespace HIVTreatment.Repositories
             context.SaveChanges();
         }
 
-        public void updateARVRegimen(ARVRegimen ARVRegimen)
+        public void updateARVProtocol(ARVProtocol ARVProtocol)
         {
-            context.Update(ARVRegimen);
+            context.Update(ARVProtocol);
             context.SaveChanges();
         }
 

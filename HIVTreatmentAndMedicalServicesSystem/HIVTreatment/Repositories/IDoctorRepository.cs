@@ -12,13 +12,13 @@ namespace HIVTreatment.Repositories
         void Add(Doctor doctor);
 
         void Update(Doctor doctor);
-        List<ARVRegimenDTO> GetAllARVRegimens();
+        List<ARVProtocolDTO> GetAllARVProtocol();
         List<InfoDoctorDTO> GetAllDoctors();
         InfoDoctorDTO GetInfoDoctorById(string patientId);
 
-        ARVRegimenDTO GetARVById(string ARVRegimenID);
+        ARVProtocolDTO GetARVById(string ARVID);
 
-        void updateARVRegimen(ARVRegimen ARVRegimen);
+        void updateARVProtocol(ARVProtocol ARVProtocol);
         public List<DoctorScheduleDTO> GetScheduleByDoctorId(string doctorId);
     }
 }

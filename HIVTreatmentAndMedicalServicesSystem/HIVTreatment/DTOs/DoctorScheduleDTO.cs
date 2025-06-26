@@ -4,7 +4,6 @@
     {
         public string ScheduleID { get; set; }
         public DateTime DateWork { get; set; }
-        public string Status { get; set; }
         public int SlotNumber { get; set; }
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }

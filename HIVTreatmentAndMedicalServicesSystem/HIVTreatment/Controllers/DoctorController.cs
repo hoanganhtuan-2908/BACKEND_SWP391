@@ -23,10 +23,10 @@ namespace HIVTreatment.Controllers
             var allowedRoles = new[] { "R001", "R003" };
             if (!allowedRoles.Contains(userRole))
             {
-                return
-                Forbid("Bạn không có quyền xem ARV Protocol!");
+                return Forbid("Bạn không có quyền xem ARV Protocol!");
             }
-            var arvProtocols = _doctorService.GetAllARVRegimens();
+            // Fix: Invoke the delegate to get the actual list before calling Any()
+            var arvProtocols = _doctorService.GetAllARVProtocol();
             if (arvProtocols == null || !arvProtocols.Any())
             {
                 return NotFound("Không có phác đồ ARV nào.");
@@ -69,8 +69,8 @@ namespace HIVTreatment.Controllers
             }
             return Ok(doctorInfo);
         }
-        [HttpGet("ARVProtocol/{ARVRegimenID}")]
-        public IActionResult GetARVById(string ARVRegimenID)
+        [HttpGet("ARVProtocol/{ARVProtocolID}")]
+        public IActionResult GetARVById(string ARVProtocolID)
         {
             var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var userRole = User.FindFirstValue(ClaimTypes.Role);
@@ -79,7 +79,7 @@ namespace HIVTreatment.Controllers
             {
                 return Forbid("Bạn không có quyền xem phác đồ ARV!");
             }
-            var arvProtocol = _doctorService.GetARVById(ARVRegimenID);
+            var arvProtocol = _doctorService.GetARVById(ARVProtocolID);
             if (arvProtocol == null)
             {
                 return NotFound("Không tìm thấy phác đồ ARV.");
@@ -88,7 +88,7 @@ namespace HIVTreatment.Controllers
         }
 
         [HttpPut("UpdateARVProtocol")]
-        public IActionResult updateARVRegimen(ARVRegimenDTO ARVRegimenDTO)
+        public IActionResult updateARVRegimen(ARVProtocolDTO ARVProtocolDTO)
         {
             var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var userRole = User.FindFirstValue(ClaimTypes.Role);
@@ -97,7 +97,7 @@ namespace HIVTreatment.Controllers
             {
                 return Forbid("Bạn không có quyền sửa phác đồ ARV!");
             }
-            var arvUpdated = _doctorService.updateARVRegimen(ARVRegimenDTO);
+            var arvUpdated = _doctorService.updateARVProtocol(ARVProtocolDTO);
             if (!arvUpdated)
             {
                 return NotFound("Phác đồ ARV không tồn tại hoặc cập nhật không thành công.");
