@@ -109,7 +109,7 @@ builder.Services.AddScoped<IProfileService, ProfileService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
 builder.Services.AddScoped<IDoctorService, DoctorService>();
-// In Program.cs
+builder.Services.AddScoped<ITreatmentPlanRepository, TreatmentPlanRepository>();
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {

@@ -1,7 +1,0 @@
-# Ignore build folders
-bin/
-obj/
-*.cache
-*.props
-*.editorconfig
-**/obj/
