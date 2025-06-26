@@ -82,5 +82,21 @@ namespace HIVTreatment.Repositories
                           }).FirstOrDefault();
             return result;
         }
+
+        public InfoPatientByIdDTO GetInfoPatientByIdDTO(string patientId)
+        {
+            var result = context.Patients
+                .Where(p => p.PatientID == patientId)
+                .Select(p => new InfoPatientByIdDTO
+                {
+                    PatientID = p.PatientID,
+                    DateOfBirth = p.DateOfBirth,
+                    Phone = p.Phone,
+                    Gender = p.Gender,
+                    BloodType = p.BloodType,
+                    Allergy = p.Allergy
+                }).FirstOrDefault();
+            return result;
+        }
     }
 }
