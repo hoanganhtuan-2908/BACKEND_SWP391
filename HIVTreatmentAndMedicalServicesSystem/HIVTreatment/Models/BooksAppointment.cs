@@ -1,7 +1,7 @@
 ﻿using HIVTreatment.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-[Table("Books")]
+[Table("Booking")]
 public class BooksAppointment
 {
     [Key]
@@ -9,7 +9,7 @@ public class BooksAppointment
     public string BookID { get; set; }
     public string PatientID { get; set; }
     public string DoctorID { get; set; }
-    public string ServiceID { get; set; }
+    public string BookingType { get; set; }
     public DateTime BookDate { get; set; }
     public string Status { get; set; }
     public string? Note { get; set; }

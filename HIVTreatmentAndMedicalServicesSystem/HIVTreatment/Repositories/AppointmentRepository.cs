@@ -25,7 +25,7 @@ public class AppointmentRepository : IAppointmentRepository
             BookID = bookId,
             // Removed PatientID assignment since BookAppointmentDTO does not contain PatientID
             DoctorID = dto.DoctorID,
-            ServiceID = dto.ServiceID,
+            BookingType = dto.BookingType,
             BookDate = dto.BookDate,
             Status = "Pending",
             Note = dto.Note

@@ -103,7 +103,7 @@ namespace HIVTreatment.Repositories
 
         public List<DoctorScheduleDTO> GetScheduleByDoctorId(string doctorId)
         {
-            var result = (from s in context.DoctorWorkSchedule
+            var result = (from s in context.DoctorWorkSchedules
                           join slot in context.Slot on s.SlotID equals slot.SlotID
                           join d in context.Doctors on s.DoctorID equals d.DoctorId
                           where s.DoctorID == doctorId
