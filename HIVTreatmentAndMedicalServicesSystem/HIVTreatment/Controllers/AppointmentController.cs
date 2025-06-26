@@ -71,6 +71,37 @@ namespace HIVTreatment.Controllers
 
             return Ok(appointment);
         }
+        // [PATIENT] Hủy lịch hẹn của chính mình
+        [HttpPut("rejected/{id}")]
+        [Authorize(Roles = "R005")]
+        public async Task<IActionResult> CancelAppointmentByPatient(string id, [FromBody] string reason)
+        {
+            var userId = User.FindFirst("PatientID")?.Value
+                ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized("Patient not logged in");
+
+            var patient = await _context.Patients.FirstOrDefaultAsync(p => p.UserID == userId);
+            if (patient == null)
+                return NotFound("Patient not found");
+
+            var appointment = await _context.BooksAppointments
+                .FirstOrDefaultAsync(a => a.BookID == id && a.PatientID == patient.PatientID);
+
+            if (appointment == null)
+                return NotFound("Appointment not found");
+
+            if (appointment.Status != "Đã xác nhận" && appointment.Status != "Thành công")
+                return BadRequest("Chỉ có thể huỷ lịch đã xác nhận hoặc thành công.");
+
+            appointment.Status = "Đã hủy";
+            appointment.Note = reason;
+
+            await _context.SaveChangesAsync();
+            return Ok("Appointment cancelled by patient.");
+        }
+
         // [PATIENT] Xem lịch hẹn của mình
         [HttpGet("mine")]
         [Authorize(Roles = "R005")]
