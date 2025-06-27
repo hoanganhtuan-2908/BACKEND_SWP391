@@ -42,6 +42,32 @@ namespace HIVTreatment.Controllers
                 return BadRequest("Kê đơn thuốc không thành công");
             }
         }
+        [HttpPut("update-prescription")]
+        public IActionResult UpdatePrescription([FromBody] UpdatePrescriptionDTO prescriptionDto)
+        {
+            if (prescriptionDto == null)
+            {
+                return BadRequest("Dữ liệu không hợp lệ");
+            }
+            // Lấy thông tin người dùng từ JWT
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            // Kiểm tra quyền
+            var allowedRoles = new[] { "R001", "R003" };
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền cập nhật đơn thuốc!");
+            }
+            var result = prescriptionService.UpdatePrescription(prescriptionDto);
+            if (result)
+            {
+                return Ok("Cập nhật đơn thuốc thành công");
+            }
+            else
+            {
+                return BadRequest("Cập nhật đơn thuốc không thành công");
+            }
+        }
     }
 }
 

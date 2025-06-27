@@ -7,5 +7,6 @@ namespace HIVTreatment.Repositories
     {
         public void AddPrescription(Prescription prescription);
         public Prescription GetLastPrescriptionById();
+        public void UpdatePrescription(Prescription prescription);
     }
 }
