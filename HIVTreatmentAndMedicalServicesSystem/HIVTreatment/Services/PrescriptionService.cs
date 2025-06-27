@@ -39,5 +39,23 @@ namespace HIVTreatment.Services
             _prescriptionRepository.AddPrescription(newPrescription); 
             return true;
         }
+
+        public bool UpdatePrescription(UpdatePrescriptionDTO updatePrescriptionDTO)
+        {
+            var prescription = new Prescription
+            {
+                PrescriptionID = updatePrescriptionDTO.PrescriptionID,
+                MedicalRecordID = updatePrescriptionDTO.MedicalRecordID,
+                MedicationID = updatePrescriptionDTO.MedicationID,
+                DoctorID = updatePrescriptionDTO.DoctorID,
+                StartDate = updatePrescriptionDTO.StartDate,
+                EndDate = updatePrescriptionDTO.EndDate,
+                Dosage = updatePrescriptionDTO.Dosage,
+                LineOfTreatment = updatePrescriptionDTO.LineOfTreatment
+            };
+            _prescriptionRepository.UpdatePrescription(prescription);
+            return true;
+
+        }
     }
 }
