@@ -2,7 +2,6 @@
 
 namespace HIVTreatment.Models
 {
-    [Table("TreatmentPlan")]
     public class TreatmentPlan
     {
         public string TreatmentPlanID { get; set; }
@@ -13,13 +12,9 @@ namespace HIVTreatment.Models
         public string Diagnosis { get; set; }
         public string TreatmentResult { get; set; }
 
-        public DateTime CreatedDate { get; set; }
         public virtual Patient Patient { get; set; }
         public virtual Doctor Doctor { get; set; }
-    
 
-
-    
     }
 
 }

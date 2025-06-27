@@ -9,5 +9,8 @@ namespace HIVTreatment.Repositories
         List<TreatmentPlan> GetByDoctorUserId(string userId);
         List<TreatmentPlan> GetByPatientAndDoctor(string patientId, string doctorUserId);
 
+        void AddTreatmentPlan(TreatmentPlan treatmentPlan);
+        TreatmentPlan GetLastTreatmentPlantId();
+        void UpdateTreatmentPlan(TreatmentPlan treatmentPlan);
     }
 }
