@@ -25,5 +25,12 @@ namespace HIVTreatment.Repositories
             return context.Prescription.OrderByDescending(p => Convert.ToInt32(p.PrescriptionID.Substring(3)))
                                        .FirstOrDefault();
         }
+
+
+        public void UpdatePrescription(Prescription prescriptionDto)
+        {
+            context.Update(prescriptionDto);
+            context.SaveChanges();
+        }
     }
 }
