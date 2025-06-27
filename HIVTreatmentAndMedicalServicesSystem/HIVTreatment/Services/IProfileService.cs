@@ -1,4 +1,5 @@
 ﻿using HIVTreatment.DTOs;
+using HIVTreatment.Models;
 
 namespace HIVTreatment.Services
 {

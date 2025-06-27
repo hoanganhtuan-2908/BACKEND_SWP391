@@ -1,6 +1,7 @@
 ﻿using HIVTreatment.Data;
 using HIVTreatment.DTOs;
 using HIVTreatment.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace HIVTreatment.Repositories
 {
@@ -18,7 +19,21 @@ namespace HIVTreatment.Repositories
             context.SaveChanges();
         }
 
-        
+        public List<Prescription> GetAllPrescription()
+        {
+            var result = (from p in context.Prescription select new Prescription
+            {
+                PrescriptionID = p.PrescriptionID,
+                MedicalRecordID = p.MedicalRecordID,
+                MedicationID = p.MedicationID,
+                DoctorID = p.DoctorID,
+                StartDate = p.StartDate,
+                EndDate = p.EndDate,
+                Dosage = p.Dosage,
+                LineOfTreatment = p.LineOfTreatment
+            }).ToList();
+            return result;
+        }
 
         public Prescription GetLastPrescriptionById()
         {
@@ -26,6 +41,30 @@ namespace HIVTreatment.Repositories
                                        .FirstOrDefault();
         }
 
+        public Prescription GetPrescriptionById(string prescriptionId)
+        {
+            var result = (from p in context.Prescription where p.PrescriptionID == prescriptionId select new Prescription
+            {
+                PrescriptionID = p.PrescriptionID,
+                MedicalRecordID = p.MedicalRecordID,
+                MedicationID = p.MedicationID,
+                DoctorID = p.DoctorID,
+                StartDate = p.StartDate,
+                EndDate = p.EndDate,
+                Dosage = p.Dosage,
+                LineOfTreatment = p.LineOfTreatment
+            }).FirstOrDefault();
+            return result;
+        }
+
+        public List<Prescription> GetPrescriptionByPatientAndDoctor(string medicalRecordId, string doctorId)
+        {
+            return context.Prescription.
+                Where(p => p.MedicalRecordID == medicalRecordId && p.DoctorID == doctorId)
+                .Include(p => p.DoctorID).
+                Include(p => p.MedicalRecordID)
+                .ToList();
+        }
 
         public void UpdatePrescription(Prescription prescriptionDto)
         {
