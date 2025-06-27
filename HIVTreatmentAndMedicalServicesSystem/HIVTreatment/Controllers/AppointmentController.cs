@@ -35,7 +35,6 @@ namespace HIVTreatment.Controllers
             if (patient == null)
                 return NotFound("Patient not found");
 
-            // Bỏ kiểm tra slot vì database không có SlotID
             var isWorking = await _context.DoctorWorkSchedules.AnyAsync(w =>
                 w.DoctorID == dto.DoctorID &&
                 w.DateWork.Date == dto.BookDate.Date);
@@ -184,15 +183,38 @@ namespace HIVTreatment.Controllers
                 return Unauthorized("Doctor not found");
 
             var list = await _context.BooksAppointments
-                .Where(a => a.DoctorID == doctor.DoctorId && a.Status == "Đã xác nhận")
+                .Where(a => a.DoctorID == doctor.DoctorId && a.Status == "Thành công")
                 .ToListAsync();
 
             return Ok(list);
         }
+        // [DOCTOR] Xem tất cả lịch hẹn của bệnh nhân do mình điều trị
+        [HttpGet("mine-patients")]
+        [Authorize(Roles = "R003")]
+        public async Task<IActionResult> GetAppointmentsOfMyPatients()
+        {
+            var doctorUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(doctorUserId))
+                return Unauthorized("Doctor not logged in");
+
+            var doctor = await _context.Doctors.FirstOrDefaultAsync(d => d.UserId == doctorUserId);
+            if (doctor == null)
+                return NotFound("Doctor not found");
+
+            var appointments = await _context.BooksAppointments
+                .Where(a => a.DoctorID == doctor.DoctorId)
+                .Include(a => a.Patient)
+                .OrderByDescending(a => a.BookDate)
+                .ToListAsync();
+
+            return Ok(appointments);
+        }
+
 
         // ===================== STAFF =========================
 
-        // [STAFF] Xem tất cả lịch đã khám
+        // [STAFF] Xem tất cả lịch đã khám bao gồm cả đã khám và đã xác nhận
         [HttpGet("all")]
         [Authorize(Roles = "R004")]
         public async Task<IActionResult> GetAllAppointmentsForStaff()
