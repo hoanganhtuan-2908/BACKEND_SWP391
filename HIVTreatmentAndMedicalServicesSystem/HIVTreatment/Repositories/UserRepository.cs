@@ -57,7 +57,11 @@ namespace HIVTreatment.Repositories
                 _context.SaveChanges();
             }
         }
-        
+        public Doctor GetDoctorByUserId(string userId)
+        {
+            return _context.Doctors.FirstOrDefault(d => d.UserId == userId);
+        }
+
 
     }
 

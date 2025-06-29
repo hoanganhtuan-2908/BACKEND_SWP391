@@ -50,10 +50,16 @@ namespace HIVTreatment.Services
             return _prescriptionRepository.GetPrescriptionById(prescriptionId);
         }
 
-        public List<Prescription> GetPrescriptionByPatientAndDoctor(string medicalRecordId, string doctorId)
+        public List<Prescription> GetPrescriptionsByPatientForAdmin(string patientId)
         {
-            return _prescriptionRepository.GetPrescriptionByPatientAndDoctor(medicalRecordId, doctorId);
+            return _prescriptionRepository.GetPrescriptionsByPatientForAdmin(patientId);
         }
+
+        public List<Prescription> GetPrescriptionsByPatientForDoctor(string patientId, string doctorId)
+        {
+            return _prescriptionRepository.GetPrescriptionsByPatientForDoctor(patientId, doctorId);
+        }
+
 
         public bool UpdatePrescription(UpdatePrescriptionDTO updatePrescriptionDTO)
         {
