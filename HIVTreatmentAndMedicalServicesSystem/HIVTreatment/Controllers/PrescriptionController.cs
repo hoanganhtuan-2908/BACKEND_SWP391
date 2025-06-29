@@ -68,6 +68,58 @@ namespace HIVTreatment.Controllers
                 return BadRequest("Cập nhật đơn thuốc không thành công");
             }
         }
+
+        [HttpGet("get-all-prescriptions")]
+        public IActionResult GetAllPrescriptions()
+        {
+            // Lấy thông tin người dùng từ JWT
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            // Kiểm tra quyền
+            var allowedRoles = new[] { "R001", "R003" };
+            if (!allowedRoles.Contains(userRole))
+            {
+                return BadRequest("Bạn không có quyền xem đơn thuốc!");
+            }
+            var prescriptions = prescriptionService.GetAllPrescription();
+            return Ok(prescriptions);
+
+        }
+
+        [HttpGet("get-prescription-by-id/{prescriptionId}")]
+        public IActionResult GetPrescriptionById(string prescriptionId)
+        {
+            // Lấy thông tin người dùng từ JWT
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            // Kiểm tra quyền
+            var allowedRoles = new[] { "R001", "R003", "R005" };
+            if (!allowedRoles.Contains(userRole))
+            {
+                return BadRequest("Bạn không có quyền xem đơn thuốc!");
+            }
+            var prescription = prescriptionService.GetPrescriptionById(prescriptionId);
+            if (prescription == null)
+            {
+                return NotFound("Không tìm thấy đơn thuốc với ID đã cho.");
+            }
+            return Ok(prescription);
+        }
+        [HttpGet("get-prescription-by-patient-and-doctor/{medicalRecordId}")]
+        public IActionResult GetPrescriptionByPatientAndDoctor(string medicalRecordId, string doctorId)
+        {
+            // Lấy thông tin người dùng từ JWT
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            // Kiểm tra quyền
+            var allowedRoles = new[] { "R001", "R003" };
+            if (!allowedRoles.Contains(userRole))
+            {
+                return BadRequest("Bạn không có quyền xem đơn thuốc!");
+            }
+            var prescriptions = prescriptionService.GetPrescriptionByPatientAndDoctor(medicalRecordId, doctorId);
+            return Ok(prescriptions);
+        }
     }
 }
 

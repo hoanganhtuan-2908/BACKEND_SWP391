@@ -8,5 +8,8 @@ namespace HIVTreatment.Repositories
         public void AddPrescription(Prescription prescription);
         public Prescription GetLastPrescriptionById();
         public void UpdatePrescription(Prescription prescription);
+        public List<Prescription> GetAllPrescription();
+        public Prescription GetPrescriptionById(string prescriptionId);
+        public List<Prescription> GetPrescriptionByPatientAndDoctor(string medicalRecordId, string doctorId);
     }
 }
