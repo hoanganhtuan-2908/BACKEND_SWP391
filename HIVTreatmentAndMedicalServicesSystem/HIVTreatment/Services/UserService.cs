@@ -34,24 +34,37 @@ namespace HIVTreatment.Services
                 var user = _userRepository.GetByEmail(email);
                 if (user == null || user.Password != password)
                     return null;
+
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]);
-                
+
                 if (key.Length < 16)
                 {
                     throw new Exception("JWT Key must be at least 16 characters long");
                 }
-                var claims = new[]
+
+                var claims = new List<Claim>
+        {
+            new Claim(ClaimTypes.NameIdentifier, user.UserId),
+            new Claim(ClaimTypes.Email, user.Email),
+            new Claim(ClaimTypes.Role, user.RoleId)
+        };
+
+                // Nếu là bác sĩ thì thêm claim DoctorID
+                if (user.RoleId == "R003")
                 {
-                    new Claim(ClaimTypes.NameIdentifier, user.UserId),
-                    new Claim(ClaimTypes.Email, user.Email),
-                    new Claim(ClaimTypes.Role, user.RoleId)
-                };
+                    var doctor = _userRepository.GetDoctorByUserId(user.UserId);
+                    if (doctor != null)
+                    {
+                        claims.Add(new Claim("DoctorID", doctor.DoctorId)); // Lưu ý: doctor.DoctorId chứ không phải DoctorID
+                    }
+                }
 
                 if (!double.TryParse(_configuration["Jwt:ExpiryInHours"], out double expiryHours))
                 {
-                    expiryHours = 3; //timeout
+                    expiryHours = 3;
                 }
+
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(claims),
@@ -64,22 +77,20 @@ namespace HIVTreatment.Services
                 var token = tokenHandler.CreateToken(tokenDescriptor);
                 return new UserLoginResponse
                 {
-                    UserId =  user.UserId, 
-                    RoleId  = user.RoleId, 
-                    Fullname =  user.Fullname,
-                    Email =  user.Email,
+                    UserId = user.UserId,
+                    RoleId = user.RoleId,
+                    Fullname = user.Fullname,
+                    Email = user.Email,
                     Token = tokenHandler.WriteToken(token)
                 };
-
-
             }
             catch (Exception ex)
-            { 
+            {
                 Console.WriteLine($"Error creating token: {ex.Message}");
                 throw;
             }
-
         }
+
 
         public User Register(User user)
         {
