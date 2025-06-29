@@ -10,6 +10,8 @@ namespace HIVTreatment.Repositories
         public void UpdatePrescription(Prescription prescription);
         public List<Prescription> GetAllPrescription();
         public Prescription GetPrescriptionById(string prescriptionId);
-        public List<Prescription> GetPrescriptionByPatientAndDoctor(string medicalRecordId, string doctorId);
+        List<Prescription> GetPrescriptionsByPatientForDoctor(string patientId, string doctorId);
+        List<Prescription> GetPrescriptionsByPatientForAdmin(string patientId);
+
     }
 }

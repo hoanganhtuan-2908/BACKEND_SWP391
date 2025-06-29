@@ -21,50 +21,46 @@ namespace HIVTreatment.Repositories
 
         public List<Prescription> GetAllPrescription()
         {
-            var result = (from p in context.Prescription select new Prescription
-            {
-                PrescriptionID = p.PrescriptionID,
-                MedicalRecordID = p.MedicalRecordID,
-                MedicationID = p.MedicationID,
-                DoctorID = p.DoctorID,
-                StartDate = p.StartDate,
-                EndDate = p.EndDate,
-                Dosage = p.Dosage,
-                LineOfTreatment = p.LineOfTreatment
-            }).ToList();
-            return result;
+            return context.Prescription.ToList();
         }
 
         public Prescription GetLastPrescriptionById()
         {
-            return context.Prescription.OrderByDescending(p => Convert.ToInt32(p.PrescriptionID.Substring(3)))
-                                       .FirstOrDefault();
+            return context.Prescription
+                .OrderByDescending(p => Convert.ToInt32(p.PrescriptionID.Substring(3)))
+                .FirstOrDefault();
         }
 
         public Prescription GetPrescriptionById(string prescriptionId)
         {
-            var result = (from p in context.Prescription where p.PrescriptionID == prescriptionId select new Prescription
-            {
-                PrescriptionID = p.PrescriptionID,
-                MedicalRecordID = p.MedicalRecordID,
-                MedicationID = p.MedicationID,
-                DoctorID = p.DoctorID,
-                StartDate = p.StartDate,
-                EndDate = p.EndDate,
-                Dosage = p.Dosage,
-                LineOfTreatment = p.LineOfTreatment
-            }).FirstOrDefault();
-            return result;
+            return context.Prescription
+                .FirstOrDefault(p => p.PrescriptionID == prescriptionId);
         }
 
-        public List<Prescription> GetPrescriptionByPatientAndDoctor(string medicalRecordId, string doctorId)
+        public List<Prescription> GetPrescriptionsByPatientForAdmin(string patientId)
         {
-            return context.Prescription.
-                Where(p => p.MedicalRecordID == medicalRecordId && p.DoctorID == doctorId)
-                .Include(p => p.DoctorID).
-                Include(p => p.MedicalRecordID)
+            return context.Prescription
+                .Join(context.TreatmentPlan,
+                      p => p.MedicalRecordID,        
+                      t => t.TreatmentPlanID,
+                      (p, t) => new { Prescription = p, TreatmentPlan = t })
+                .Where(pt => pt.TreatmentPlan.PatientID == patientId)
+                .Select(pt => pt.Prescription)
                 .ToList();
         }
+
+        public List<Prescription> GetPrescriptionsByPatientForDoctor(string patientId, string doctorId)
+        {
+            return context.Prescription
+                .Join(context.TreatmentPlan,
+                      p => p.MedicalRecordID,
+                      t => t.TreatmentPlanID,
+                      (p, t) => new { Prescription = p, TreatmentPlan = t })
+                .Where(pt => pt.TreatmentPlan.PatientID == patientId && pt.Prescription.DoctorID == doctorId)
+                .Select(pt => pt.Prescription)
+                .ToList();
+        }
+
 
         public void UpdatePrescription(Prescription prescriptionDto)
         {

@@ -11,5 +11,7 @@ namespace HIVTreatment.Repositories
         User GetByUserId(string UserId);
         void Update(User user);
         void UpdatePassword(string email, string newPassword);
+        Doctor GetDoctorByUserId(string userId);
+
     }
 }

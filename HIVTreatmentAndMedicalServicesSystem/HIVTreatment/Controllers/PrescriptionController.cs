@@ -1,5 +1,6 @@
 ﻿using HIVTreatment.DTOs;
 using HIVTreatment.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -105,21 +106,31 @@ namespace HIVTreatment.Controllers
             }
             return Ok(prescription);
         }
-        [HttpGet("get-prescription-by-patient-and-doctor/{medicalRecordId}")]
-        public IActionResult GetPrescriptionByPatientAndDoctor(string medicalRecordId, string doctorId)
+        [Authorize(Roles = "R001,R003")]
+        [HttpGet("by-patient/{patientId}")]
+        public IActionResult GetByPatientId(string patientId)
         {
-            // Lấy thông tin người dùng từ JWT
-            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var userRole = User.FindFirstValue(ClaimTypes.Role);
-            // Kiểm tra quyền
-            var allowedRoles = new[] { "R001", "R003" };
-            if (!allowedRoles.Contains(userRole))
+            var role = User.FindFirst(ClaimTypes.Role)?.Value;
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (role == "R001") // Admin
             {
-                return BadRequest("Bạn không có quyền xem đơn thuốc!");
+                var prescriptions = prescriptionService.GetPrescriptionsByPatientForAdmin(patientId);
+
+                return Ok(prescriptions);
             }
-            var prescriptions = prescriptionService.GetPrescriptionByPatientAndDoctor(medicalRecordId, doctorId);
-            return Ok(prescriptions);
+            else if (role == "R003") // Doctor
+            {
+                var doctorId = User.FindFirst("DoctorId")?.Value;
+                var prescriptions = prescriptionService.GetPrescriptionsByPatientForDoctor(patientId, doctorId);
+                return Ok(prescriptions);
+            }
+
+
+            return Forbid();
         }
+
+
     }
 }
 
