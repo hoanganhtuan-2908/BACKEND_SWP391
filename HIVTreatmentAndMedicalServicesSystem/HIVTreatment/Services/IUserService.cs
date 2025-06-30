@@ -10,5 +10,7 @@ namespace HIVTreatment.Services
         User GetByUserId(string userId);
         bool ResetPassword(string email, string newPassword);
 
+
+
     }
 }

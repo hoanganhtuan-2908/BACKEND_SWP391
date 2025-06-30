@@ -36,15 +36,20 @@ namespace HIVTreatment.Services
                 Diagnosis = treatmentPlanDTO.Diagnosis,
                 TreatmentResult = treatmentPlanDTO.TreatmentResult
             };
-            
+
             treatmentPlanRepo.AddTreatmentPlan(treatmentPlan);
 
             return true;
         }
 
+        public UpdateTreatmentPlanDTO GetTreatmentPlanById(string treatmentPlanId)
+        {
+            return treatmentPlanRepo.GetTreatmentPlanById(treatmentPlanId);
+        }
+
         public bool UpdateTreatmentPlan(UpdateTreatmentPlanDTO updateTreatmentPlanDTO)
         {
-            var updatedTreatmentPlan = new HIVTreatment.Models.TreatmentPlan 
+            var updatedTreatmentPlan = new HIVTreatment.Models.TreatmentPlan
             {
                 TreatmentPlanID = updateTreatmentPlanDTO.TreatmentPlanID,
                 PatientID = updateTreatmentPlanDTO.PatientID,
