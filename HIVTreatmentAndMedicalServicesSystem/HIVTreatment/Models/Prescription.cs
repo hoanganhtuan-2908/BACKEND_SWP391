@@ -5,7 +5,7 @@ public class Prescription
 {
     public string PrescriptionID { get; set; }
 
-    [ForeignKey("TreatmentPlan")]
+    //[ForeignKey("TreatmentPlan")]
     public string MedicalRecordID { get; set; }
 
     public string MedicationID { get; set; }
@@ -16,6 +16,6 @@ public class Prescription
     public string LineOfTreatment { get; set; }
 
     // Navigation
-    public virtual TreatmentPlan TreatmentPlan { get; set; }
-    public virtual Doctor Doctor { get; set; }
+    //public virtual TreatmentPlan TreatmentPlan { get; set; }
+    //public virtual Doctor Doctor { get; set; }
 }

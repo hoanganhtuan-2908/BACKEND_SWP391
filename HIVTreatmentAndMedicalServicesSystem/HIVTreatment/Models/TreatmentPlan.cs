@@ -2,7 +2,7 @@
 
 namespace HIVTreatment.Models
 {
-    [Table("TreatmentPlan")] // <- Bắt buộc để EF nhận đúng tên bảng
+   
     public class TreatmentPlan
     {
         public string TreatmentPlanID { get; set; }
@@ -13,8 +13,8 @@ namespace HIVTreatment.Models
         public string Diagnosis { get; set; }
         public string TreatmentResult { get; set; }
 
-        public virtual Patient Patient { get; set; }
-        public virtual Doctor Doctor { get; set; }
-        public virtual ICollection<Prescription> Prescriptions { get; set; }
+        //public virtual Patient Patient { get; set; }
+        //public virtual Doctor Doctor { get; set; }
+        //public virtual ICollection<Prescription> Prescriptions { get; set; }
     }
 }
