@@ -1,4 +1,5 @@
-﻿using HIVTreatment.Models;
+﻿using HIVTreatment.DTOs;
+using HIVTreatment.Models;
 
 namespace HIVTreatment.Repositories
 {
@@ -8,6 +9,7 @@ namespace HIVTreatment.Repositories
         List<TreatmentPlan> GetByPatient(string patientId);
         List<TreatmentPlan> GetByDoctorUserId(string userId);
         List<TreatmentPlan> GetByPatientAndDoctor(string patientId, string doctorUserId);
+        UpdateTreatmentPlanDTO GetTreatmentPlanById(string treatmentPlanId);
 
         void AddTreatmentPlan(TreatmentPlan treatmentPlan);
         TreatmentPlan GetLastTreatmentPlantId();
