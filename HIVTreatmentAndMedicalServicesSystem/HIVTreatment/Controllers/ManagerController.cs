@@ -155,5 +155,23 @@ namespace HIVTreatment.Controllers
             }
             return Ok(schedule);
         }
+
+        [HttpGet("AllARVProtocol")]
+        public IActionResult GetAllARVRegiemns()
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            var allowedRoles = new[] { "R001", "R002", "R003" };
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không thể xem ARV Protocol!");
+            }
+            var arvProtocols = _doctorService.GetAllARVProtocol();
+            if (arvProtocols == null || !arvProtocols.Any())
+            {
+                return NotFound("Không tồn tại phác đồ ARV nào.");
+            }
+            return Ok(arvProtocols);
+        }
     }
 }
