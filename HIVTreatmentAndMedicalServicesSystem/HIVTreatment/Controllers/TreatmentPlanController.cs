@@ -116,6 +116,25 @@ namespace HIVTreatment.Controllers
                 return BadRequest("Cập nhật kế hoạch điều trị thất bại");
             }
         }
+        [HttpGet("GetTreatmentPlanById/{treatmentPlanId}")]
+        public IActionResult GetTreatmentPlanById(string treatmentPlanId)
+        {
+            
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            // Kiểm tra quyền
+            var allowedRoles = new[] { "R001", "R003" };
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền xem kế hoạch điều trị");
+            }
+            var treatmentPlanData = treatmentPlan.GetTreatmentPlanById(treatmentPlanId);
+            if (treatmentPlanData == null)
+            {
+                return NotFound("Không tìm thấy kế hoạch điều trị với ID đã cho");
+            }
+            return Ok(treatmentPlanData);
 
+        }
     }
 }

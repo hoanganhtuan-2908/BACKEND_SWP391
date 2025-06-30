@@ -1,4 +1,5 @@
 ﻿using HIVTreatment.Data;
+using HIVTreatment.DTOs;
 using HIVTreatment.Models;
 using HIVTreatment.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -79,5 +80,22 @@ public class TreatmentPlanRepository : ITreatmentPlanRepository
         _context.TreatmentPlan
             .Update(treatmentPlan);
         _context.SaveChanges();
+    }
+
+    public UpdateTreatmentPlanDTO GetTreatmentPlanById(string treatmentPlanId)
+    {
+        var result = (from t in _context.TreatmentPlan
+                      where t.TreatmentPlanID ==treatmentPlanId
+                      select new UpdateTreatmentPlanDTO
+                      {
+                          TreatmentPlanID = t.TreatmentPlanID,
+                          PatientID = t.PatientID,
+                          DoctorID = t.DoctorID,
+                          ARVProtocol = t.ARVProtocol,
+                          TreatmentLine = t.TreatmentLine,
+                          Diagnosis = t.Diagnosis,
+                          TreatmentResult = t.TreatmentResult
+                      }).FirstOrDefault();
+        return result;
     }
 }

@@ -8,5 +8,6 @@ namespace HIVTreatment.Services
     {
         public bool AddTreatmentPlan(TreatmentPlanDTO treatmentPlanDTO);
         public bool UpdateTreatmentPlan(UpdateTreatmentPlanDTO updateTreatmentPlanDTO);
+        public UpdateTreatmentPlanDTO GetTreatmentPlanById(string treatmentPlanId);
     }
 }
