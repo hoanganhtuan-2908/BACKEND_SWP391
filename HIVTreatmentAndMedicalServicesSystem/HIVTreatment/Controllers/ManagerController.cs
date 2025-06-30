@@ -6,6 +6,8 @@ using HIVTreatment.Data;
 using HIVTreatment.DTOs;
 using HIVTreatment.Repositories;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using HIVTreatment.Services;
 
 namespace HIVTreatment.Controllers
 {
@@ -18,12 +20,15 @@ namespace HIVTreatment.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IUserRepository _userRepository;
+        private readonly IDoctorService _doctorService;
 
-        public ManagerController(ApplicationDbContext context, IUserRepository userRepository)
+        public ManagerController(ApplicationDbContext context, IUserRepository userRepository, IDoctorService doctorService)
         {
             _context = context;
             _userRepository = userRepository;
+            _doctorService = doctorService;
         }
+
 
         [HttpPost("AddDoctor")]
         public async Task<IActionResult> AddDoctor([FromBody] CreateDoctorDTO dto)
@@ -89,6 +94,24 @@ namespace HIVTreatment.Controllers
             }
 
             return Ok(new { message = "Doctor added successfully.", doctorId = newDoctorId, userId = newUserId });
+        }
+
+        [HttpGet("AllDoctors")]
+        public IActionResult GetAllDoctors()
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            var allowedRoles = new[] { "R001", "R002", "R003", "R005" };
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền xem danh sách bác sĩ!");
+            }
+            var doctors = _doctorService.GetAllDoctors();
+            if (doctors == null || !doctors.Any())
+            {
+                return NotFound("Không có bác sĩ nào.");
+            }
+            return Ok(doctors);
         }
     }
 }
