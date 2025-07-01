@@ -238,87 +238,87 @@ insert into Roles values ('R004', 'Staff');
 insert into Roles values ('R005', 'Patient');
 
 -- Admin
-INSERT INTO Users VALUES ('UI000001', 'R001', N'Lê Quốc Việt', '123', 'lequocviet@gmail.com', N'Hà Nội', '/image/admin1.png');
-INSERT INTO Users VALUES ('UI000002', 'R001', N'Nguyễn Văn Nguyên', '123', 'nguyenvannguyen@gmail.com', N'Hồ Chí Minh', '/image/admin2.png');
+INSERT INTO Users VALUES ('UI000001', 'R001', N'Lê Quốc Việt', '123', 'lequocviet@gmail.com', N'Hà Nội', 'admin1.png');
+INSERT INTO Users VALUES ('UI000002', 'R001', N'Nguyễn Văn Nguyên', '123', 'nguyenvannguyen@gmail.com', N'Hồ Chí Minh', 'admin2.png');
 INSERT INTO Users VALUES ('UI000003', 'R001', N'Hoàng Anh Tuấn', '123', 'hoanganhtuan@gmail.com', N'Lâm Đồng', 'admin3.jpg');
-INSERT INTO Users VALUES ('UI000004', 'R001', N'Võ Việt Dũng', '123', 'vovietdung@gmail.com', N'Hồ Chí Minh', '/image/admin4.jpg');
-INSERT INTO Users VALUES ('UI000005', 'R001', N'Nguyễn Ngọc Tín', '123', 'nguyenngoctin@gmail.com', N'Hồ Chí Minh', '/image/admin5.jpg');
-INSERT INTO Users VALUES ('UI000006', 'R001', N'Đỗ Thị Nhung', '123', 'dothinhung@gmail.com', N'Hà Nội', '/image/admin6.jpg');
-INSERT INTO Users VALUES ('UI000007', 'R001', N'Vũ Văn Thái', '123', 'vuvanthai7@gmail.com', N'Hà Nội', '/image/admin7.jpg');
-INSERT INTO Users VALUES ('UI000008', 'R001', N'Đặng Thị Xuân', '123', 'dothixuan@gmail.com', N'Hồ Chí Minh', '/image/admin8.jpg');
-INSERT INTO Users VALUES ('UI000009', 'R001', N'Mai Văn Tuyền', '123', 'maivantuyen@gmail.com', N'Hồ Chí Minh', '/image/admin9.jpg');
-INSERT INTO Users VALUES ('UI000010', 'R001', N'Trịnh Thị Yến', '123', 'trinhthiyen@gmail.com', N'Hà Nội', '/image/admin10.jpg');
+INSERT INTO Users VALUES ('UI000004', 'R001', N'Võ Việt Dũng', '123', 'vovietdung@gmail.com', N'Hồ Chí Minh', 'admin4.jpg');
+INSERT INTO Users VALUES ('UI000005', 'R001', N'Nguyễn Ngọc Tín', '123', 'nguyenngoctin@gmail.com', N'Hồ Chí Minh', 'admin5.jpg');
+INSERT INTO Users VALUES ('UI000006', 'R001', N'Đỗ Thị Nhung', '123', 'dothinhung@gmail.com', N'Hà Nội', 'admin6.jpg');
+INSERT INTO Users VALUES ('UI000007', 'R001', N'Vũ Văn Thái', '123', 'vuvanthai7@gmail.com', N'Hà Nội', 'admin7.jpg');
+INSERT INTO Users VALUES ('UI000008', 'R001', N'Đặng Thị Xuân', '123', 'dothixuan@gmail.com', N'Hồ Chí Minh', 'admin8.jpg');
+INSERT INTO Users VALUES ('UI000009', 'R001', N'Mai Văn Tuyền', '123', 'maivantuyen@gmail.com', N'Hồ Chí Minh', 'admin9.jpg');
+INSERT INTO Users VALUES ('UI000010', 'R001', N'Trịnh Thị Yến', '123', 'trinhthiyen@gmail.com', N'Hà Nội', 'admin10.jpg');
 
 -- Manager
-INSERT INTO Users VALUES ('UI000011', 'R002', N'Nguyễn Văn Nguyên', '123', 'nguyenmanager@gmail.com', N'Hà Nội', '/image/manager1.jpg');
-INSERT INTO Users VALUES ('UI000012', 'R002', N'Trần Thị Hạnh', '123', 'tranthihanh@gmail.com', N'Hồ Chí Minh', '/image/manager2.jpg');
-INSERT INTO Users VALUES ('UI000013', 'R002', N'Lê Quốc Hùng', '123', 'lequochung@gmail.com', N'Đà Nẵng', '/image/manager3.jpg');
-INSERT INTO Users VALUES ('UI000014', 'R002', N'Phạm Thị Duyên', '123', 'phamthiduyen@gmail.com', N'Cần Thơ', '/image/manager4.jpg');
-INSERT INTO Users VALUES ('UI000015', 'R002', N'Hoàng Văn Thái', '123', 'hoangvanthai@gmail.com', N'Hải Phòng', '/image/manager5.jpg');
-INSERT INTO Users VALUES ('UI000016', 'R002', N'Đỗ Thị Hạnh', '123', 'dithihanh@gmail.com', N'Nha Trang', '/image/manager6.jpg');
-INSERT INTO Users VALUES ('UI000017', 'R002', N'Vũ Văn Tuyền', '123', 'levantuyen@gmail.com', N'Đà Lạt', '/image/manager7.jpg');
-INSERT INTO Users VALUES ('UI000018', 'R002', N'Đặng Thị Thu', '123', 'dangthithu@gmail.com', N'Huế', '/image/manager8.jpg');
-INSERT INTO Users VALUES ('UI000019', 'R002', N'Mai Quốc Khánh', '123', 'maiquockhanh9@gmail.com', N'Quảng Ninh', '/image/manager9.jpg');
-INSERT INTO Users VALUES ('UI000020', 'R002', N'Trịnh Thị Hồng', '123', 'trinhthihong@gmail.com', N'Bắc Ninh', '/image/manager10.jpg');
+INSERT INTO Users VALUES ('UI000011', 'R002', N'Nguyễn Văn Nguyên', '123', 'nguyenmanager@gmail.com', N'Hà Nội', 'manager1.jpg');
+INSERT INTO Users VALUES ('UI000012', 'R002', N'Trần Thị Hạnh', '123', 'tranthihanh@gmail.com', N'Hồ Chí Minh', 'manager2.jpg');
+INSERT INTO Users VALUES ('UI000013', 'R002', N'Lê Quốc Hùng', '123', 'lequochung@gmail.com', N'Đà Nẵng', 'manager3.jpg');
+INSERT INTO Users VALUES ('UI000014', 'R002', N'Phạm Thị Duyên', '123', 'phamthiduyen@gmail.com', N'Cần Thơ', 'manager4.jpg');
+INSERT INTO Users VALUES ('UI000015', 'R002', N'Hoàng Văn Thái', '123', 'hoangvanthai@gmail.com', N'Hải Phòng', 'manager5.jpg');
+INSERT INTO Users VALUES ('UI000016', 'R002', N'Đỗ Thị Hạnh', '123', 'dithihanh@gmail.com', N'Nha Trang', 'manager6.jpg');
+INSERT INTO Users VALUES ('UI000017', 'R002', N'Vũ Văn Tuyền', '123', 'levantuyen@gmail.com', N'Đà Lạt', 'manager7.jpg');
+INSERT INTO Users VALUES ('UI000018', 'R002', N'Đặng Thị Thu', '123', 'dangthithu@gmail.com', N'Huế', 'manager8.jpg');
+INSERT INTO Users VALUES ('UI000019', 'R002', N'Mai Quốc Khánh', '123', 'maiquockhanh9@gmail.com', N'Quảng Ninh', 'manager9.jpg');
+INSERT INTO Users VALUES ('UI000020', 'R002', N'Trịnh Thị Hồng', '123', 'trinhthihong@gmail.com', N'Bắc Ninh', 'manager10.jpg');
 
 -- Doctor
-INSERT INTO Users VALUES ('UI000021', 'R003', N'Nguyễn Văn An', '123', 'nguyenvanan@gmail.com', N'Hà Nội', '/image/doctor21.png');
-INSERT INTO Users VALUES ('UI000022', 'R003', N'Trần Bình An', '123', 'tranbinhan@gmail.com', N'Hồ Chí Minh', '/image/doctor22.png');
-INSERT INTO Users VALUES ('UI000023', 'R003', N'Lê Văn Cường', '123', 'levancuong@gmail.com', N'Đà Nẵng', '/image/doctor23.png');
-INSERT INTO Users VALUES ('UI000024', 'R003', N'Phạm Thị Dung', '123', 'phamthidung@gmail.com', N'Cần Thơ', '/image/doctor24.png');
-INSERT INTO Users VALUES ('UI000025', 'R003', N'Hoàng Văn Anh', '123', 'hoangvananh@gmail.com', N'Hải Phòng', '/image/doctor25.png');
-INSERT INTO Users VALUES ('UI000026', 'R003', N'Đỗ Thị Phương', '123', 'dothiphuong@gmail.com', N'Nha Trang', '/image/doctor26.png');
-INSERT INTO Users VALUES ('UI000027', 'R003', N'Vũ Văn Giang', '123', 'vuvangiang@gmail.com', N'Đà Lạt', '/image/doctor27.png');
-INSERT INTO Users VALUES ('UI000028', 'R003', N'Đặng Thị Hương', '123', 'dangthihuong@gmail.com', N'Huế', '/image/doctor28.png');
-INSERT INTO Users VALUES ('UI000029', 'R003', N'Mai Văn Khoa', '123', 'maivankhoa@gmail.com', N'Quảng Ninh', '/image/doctor29.png');
-INSERT INTO Users VALUES ('UI000030', 'R003', N'Trịnh Thị Linh', '123', 'trinhthilinh@gmail.com', N'Bắc Ninh', '/image/doctor30.png');
+INSERT INTO Users VALUES ('UI000021', 'R003', N'Nguyễn Văn An', '123', 'nguyenvanan@gmail.com', N'Hà Nội', 'doctor21.png');
+INSERT INTO Users VALUES ('UI000022', 'R003', N'Trần Bình An', '123', 'tranbinhan@gmail.com', N'Hồ Chí Minh', 'doctor22.png');
+INSERT INTO Users VALUES ('UI000023', 'R003', N'Lê Văn Cường', '123', 'levancuong@gmail.com', N'Đà Nẵng', 'doctor23.png');
+INSERT INTO Users VALUES ('UI000024', 'R003', N'Phạm Thị Dung', '123', 'phamthidung@gmail.com', N'Cần Thơ', 'doctor24.png');
+INSERT INTO Users VALUES ('UI000025', 'R003', N'Hoàng Văn Anh', '123', 'hoangvananh@gmail.com', N'Hải Phòng', 'doctor25.png');
+INSERT INTO Users VALUES ('UI000026', 'R003', N'Đỗ Thị Phương', '123', 'dothiphuong@gmail.com', N'Nha Trang', 'doctor26.png');
+INSERT INTO Users VALUES ('UI000027', 'R003', N'Vũ Văn Giang', '123', 'vuvangiang@gmail.com', N'Đà Lạt', 'doctor27.png');
+INSERT INTO Users VALUES ('UI000028', 'R003', N'Đặng Thị Hương', '123', 'dangthihuong@gmail.com', N'Huế', 'doctor28.png');
+INSERT INTO Users VALUES ('UI000029', 'R003', N'Mai Văn Khoa', '123', 'maivankhoa@gmail.com', N'Quảng Ninh', 'doctor29.png');
+INSERT INTO Users VALUES ('UI000030', 'R003', N'Trịnh Thị Linh', '123', 'trinhthilinh@gmail.com', N'Bắc Ninh', 'doctor30.png');
 
-INSERT INTO Users VALUES ('UI000031', 'R003', N'Lê Minh Tuấn', '123', 'leminhtuan@gmail.com', N'Hà Nội', '/image/doctor31.png');
-INSERT INTO Users VALUES ('UI000032', 'R003', N'Phạm Thu Hằng', '123', 'phamthuhang@gmail.com', N'Hồ Chí Minh', '/image/doctor32.png');
-INSERT INTO Users VALUES ('UI000033', 'R003', N'Ngô Văn Huy', '123', 'ngovanhuy@gmail.com', N'Đà Nẵng', '/image/doctor33.png');
-INSERT INTO Users VALUES ('UI000034', 'R003', N'Trần Hải Yến', '123', 'tranhaiyen@gmail.com', N'Hải Phòng', '/image/doctor34.png');
-INSERT INTO Users VALUES ('UI000035', 'R003', N'Hoàng Đức Anh', '123', 'hoangducanh@gmail.com', N'Cần Thơ', '/image/doctor35.png');
-INSERT INTO Users VALUES ('UI000036', 'R003', N'Đỗ Thị Mai', '123', 'dothimai@gmail.com', N'Nghệ An', '/image/doctor36.png');
-INSERT INTO Users VALUES ('UI000037', 'R003', N'Vũ Ngọc Long', '123', 'vungoclong@gmail.com', N'Thái Bình', '/image/doctor37.png');
-INSERT INTO Users VALUES ('UI000038', 'R003', N'Bùi Thanh Hương', '123', 'buithanhhuong@gmail.com', N'Hưng Yên', '/image/doctor38.png');
-INSERT INTO Users VALUES ('UI000039', 'R003', N'Tạ Quang Dũng', '123', 'taquangdung@gmail.com', N'Lâm Đồng', '/image/doctor39.png');
-INSERT INTO Users VALUES ('UI000040', 'R003', N'Nguyễn Thị Kim', '123', 'nguyenthikim@gmail.com', N'Bình Dương', '/image/doctor40.png');
+INSERT INTO Users VALUES ('UI000031', 'R003', N'Lê Minh Tuấn', '123', 'leminhtuan@gmail.com', N'Hà Nội', 'doctor31.png');
+INSERT INTO Users VALUES ('UI000032', 'R003', N'Phạm Thu Hằng', '123', 'phamthuhang@gmail.com', N'Hồ Chí Minh', 'doctor32.png');
+INSERT INTO Users VALUES ('UI000033', 'R003', N'Ngô Văn Huy', '123', 'ngovanhuy@gmail.com', N'Đà Nẵng', 'doctor33.png');
+INSERT INTO Users VALUES ('UI000034', 'R003', N'Trần Hải Yến', '123', 'tranhaiyen@gmail.com', N'Hải Phòng', 'doctor34.png');
+INSERT INTO Users VALUES ('UI000035', 'R003', N'Hoàng Đức Anh', '123', 'hoangducanh@gmail.com', N'Cần Thơ', 'doctor35.png');
+INSERT INTO Users VALUES ('UI000036', 'R003', N'Đỗ Thị Mai', '123', 'dothimai@gmail.com', N'Nghệ An', 'doctor36.png');
+INSERT INTO Users VALUES ('UI000037', 'R003', N'Vũ Ngọc Long', '123', 'vungoclong@gmail.com', N'Thái Bình', 'doctor37.png');
+INSERT INTO Users VALUES ('UI000038', 'R003', N'Bùi Thanh Hương', '123', 'buithanhhuong@gmail.com', N'Hưng Yên', 'doctor38.png');
+INSERT INTO Users VALUES ('UI000039', 'R003', N'Tạ Quang Dũng', '123', 'taquangdung@gmail.com', N'Lâm Đồng', 'doctor39.png');
+INSERT INTO Users VALUES ('UI000040', 'R003', N'Nguyễn Thị Kim', '123', 'nguyenthikim@gmail.com', N'Bình Dương', 'doctor40.png');
 
 
 -- Staff
-INSERT INTO Users VALUES ('UI000041', 'R004', N'Nguyễn Văn Nam', '123', 'nguyenvannam@gmail.com', N'Hà Nội', '/image/staff.png');
-INSERT INTO Users VALUES ('UI000042', 'R004', N'Trần Thị Oanh', '123', 'tranthioanh@gmail.com', N'Hồ Chí Minh', '/image/staff.png');
-INSERT INTO Users VALUES ('UI000043', 'R004', N'Lê Văn Phong', '123', 'levanphong@gmail.com', N'Đà Nẵng', '/image/staff.png');
-INSERT INTO Users VALUES ('UI000044', 'R004', N'Phạm Thị Quỳnh', '123', 'phamthiquynh@gmail.com', N'Cần Thơ', '/image/staff.png');
-INSERT INTO Users VALUES ('UI000045', 'R004', N'Hoàng Văn Phong', '123', 'hoangvanphong@gmail.com', N'Hải Phòng', '/image/staff.png');
-INSERT INTO Users VALUES ('UI000046', 'R004', N'Đỗ Thị Sương', '123', 'dothisuong@gmail.com', N'Nha Trang', '/image/staff.png');
-INSERT INTO Users VALUES ('UI000047', 'R004', N'Vũ Văn Toàn', '123', 'vuvantoan@gmail.com', N'Đà Lạt', '/image/staff.png');
-INSERT INTO Users VALUES ('UI000048', 'R004', N'Đặng Thị Uyên', '123', 'dangthiuyen@gmail.com', N'Huế', '/image/staff.png');
-INSERT INTO Users VALUES ('UI000049', 'R004', N'Mai Văn Vinh', '123', 'maivanvinh@gmail.com', N'Quảng Ninh', '/image/staff.png');
-INSERT INTO Users VALUES ('UI000050', 'R004', N'Trịnh Trần Xuân', '123', 'trinhtranxuan@gmail.com', N'Bắc Ninh', '/image/staff.png');
+INSERT INTO Users VALUES ('UI000041', 'R004', N'Nguyễn Văn Nam', '123', 'nguyenvannam@gmail.com', N'Hà Nội', 'staff.png');
+INSERT INTO Users VALUES ('UI000042', 'R004', N'Trần Thị Oanh', '123', 'tranthioanh@gmail.com', N'Hồ Chí Minh', 'staff.png');
+INSERT INTO Users VALUES ('UI000043', 'R004', N'Lê Văn Phong', '123', 'levanphong@gmail.com', N'Đà Nẵng', 'staff.png');
+INSERT INTO Users VALUES ('UI000044', 'R004', N'Phạm Thị Quỳnh', '123', 'phamthiquynh@gmail.com', N'Cần Thơ', 'staff.png');
+INSERT INTO Users VALUES ('UI000045', 'R004', N'Hoàng Văn Phong', '123', 'hoangvanphong@gmail.com', N'Hải Phòng', 'staff.png');
+INSERT INTO Users VALUES ('UI000046', 'R004', N'Đỗ Thị Sương', '123', 'dothisuong@gmail.com', N'Nha Trang', 'staff.png');
+INSERT INTO Users VALUES ('UI000047', 'R004', N'Vũ Văn Toàn', '123', 'vuvantoan@gmail.com', N'Đà Lạt', 'staff.png');
+INSERT INTO Users VALUES ('UI000048', 'R004', N'Đặng Thị Uyên', '123', 'dangthiuyen@gmail.com', N'Huế', 'staff.png');
+INSERT INTO Users VALUES ('UI000049', 'R004', N'Mai Văn Vinh', '123', 'maivanvinh@gmail.com', N'Quảng Ninh', 'staff.png');
+INSERT INTO Users VALUES ('UI000050', 'R004', N'Trịnh Trần Xuân', '123', 'trinhtranxuan@gmail.com', N'Bắc Ninh', 'staff.png');
 
 -- Patient
-INSERT INTO Users VALUES ('UI000051', 'R005', N'Trịnh Bá khá', '123', 'trinhbakha@gmail.com', N'Hà Nội', '/image/patient.png');
-INSERT INTO Users VALUES ('UI000052', 'R005', N'Trần Thị Thắm', '123', 'tranthitham@gmail.com', N'Hồ Chí Minh', '/image/patient.png');
-INSERT INTO Users VALUES ('UI000053', 'R005', N'Lê Văn Anh', '123', 'levananh@gmail.com', N'Đà Nẵng', '/image/patient.png');
-INSERT INTO Users VALUES ('UI000054', 'R005', N'Phạm Thị Bích', '123', 'phamthibich@gmail.com', N'Cần Thơ', '/image/patient.png');
-INSERT INTO Users VALUES ('UI000055', 'R005', N'Hoàng Văn Cảnh', '123', 'hoangvancanh@gmail.com', N'Hải Phòng', '/image/patient.png');
-INSERT INTO Users VALUES ('UI000056', 'R005', N'Đỗ Thị Diệp', '123', 'dothihiep@gmail.com', N'Nha Trang', '/image/patient.png');
-INSERT INTO Users VALUES ('UI000057', 'R005', N'Vũ Văn Em', '123', 'vuvanem@gmail.com', N'Đà Lạt', '/image/patient.png');
-INSERT INTO Users VALUES ('UI000058', 'R005', N'Đặng Thị Phúc', '123', 'phamthiphuc@gmail.com', N'Huế', '/image/patient.png');
-INSERT INTO Users VALUES ('UI000059', 'R005', N'Mai Văn Giáp', '123', 'maivangiap@gmail.com', N'Quảng Ninh', '/image/patient.png');
-INSERT INTO Users VALUES ('UI000060', 'R005', N'Trịnh Thị Hòa', '123', 'trinhthihoa@gmail.com', N'Bắc Ninh', '/image/patient.png');
+INSERT INTO Users VALUES ('UI000051', 'R005', N'Trịnh Bá khá', '123', 'trinhbakha@gmail.com', N'Hà Nội', 'patient.png');
+INSERT INTO Users VALUES ('UI000052', 'R005', N'Trần Thị Thắm', '123', 'tranthitham@gmail.com', N'Hồ Chí Minh', 'patient.png');
+INSERT INTO Users VALUES ('UI000053', 'R005', N'Lê Văn Anh', '123', 'levananh@gmail.com', N'Đà Nẵng', 'patient.png');
+INSERT INTO Users VALUES ('UI000054', 'R005', N'Phạm Thị Bích', '123', 'phamthibich@gmail.com', N'Cần Thơ', 'patient.png');
+INSERT INTO Users VALUES ('UI000055', 'R005', N'Hoàng Văn Cảnh', '123', 'hoangvancanh@gmail.com', N'Hải Phòng', 'patient.png');
+INSERT INTO Users VALUES ('UI000056', 'R005', N'Đỗ Thị Diệp', '123', 'dothihiep@gmail.com', N'Nha Trang', 'patient.png');
+INSERT INTO Users VALUES ('UI000057', 'R005', N'Vũ Văn Em', '123', 'vuvanem@gmail.com', N'Đà Lạt', 'patient.png');
+INSERT INTO Users VALUES ('UI000058', 'R005', N'Đặng Thị Phúc', '123', 'phamthiphuc@gmail.com', N'Huế', 'patient.png');
+INSERT INTO Users VALUES ('UI000059', 'R005', N'Mai Văn Giáp', '123', 'maivangiap@gmail.com', N'Quảng Ninh', 'patient.png');
+INSERT INTO Users VALUES ('UI000060', 'R005', N'Trịnh Thị Hòa', '123', 'trinhthihoa@gmail.com', N'Bắc Ninh', 'patient.png');
 
-INSERT INTO Users VALUES ('UI000061', 'R005', N'Nguyễn Thị Hồng', '123', 'nguyenthihong@gmail.com', N'Hồ Chí Minh', '/image/patient.png');
-INSERT INTO Users VALUES ('UI000062', 'R005', N'Phạm Văn Cường', '123', 'phamvancuong@gmail.com', N'Đà Nẵng', '/image/patient.png');
-INSERT INTO Users VALUES ('UI000063', 'R005', N'Lê Thị Mai', '123', 'lethimai@gmail.com', N'Hải Phòng', '/image/patient.png');
-INSERT INTO Users VALUES ('UI000064', 'R005', N'Đỗ Mạnh Hùng', '123', 'domanhhung@gmail.com', N'Cần Thơ', '/image/patient.png');
-INSERT INTO Users VALUES ('UI000065', 'R005', N'Trần Văn Bình', '123', 'tranvanbinh@gmail.com', N'Khánh Hòa', '/image/patient.png');
-INSERT INTO Users VALUES ('UI000066', 'R005', N'Huỳnh Thị Ngọc', '123', 'huynhthingoc@gmail.com', N'Nghệ An', '/image/patient.png');
-INSERT INTO Users VALUES ('UI000067', 'R005', N'Bùi Văn Long', '123', 'buivanlong@gmail.com', N'Lâm Đồng', '/image/patient.png');
-INSERT INTO Users VALUES ('UI000068', 'R005', N'Võ Thị Lan', '123', 'vothilan@gmail.com', N'Quảng Ninh', '/image/patient.png');
-INSERT INTO Users VALUES ('UI000069', 'R005', N'Tạ Minh Đức', '123', 'taminhduc@gmail.com', N'An Giang', '/image/patient.png');
-INSERT INTO Users VALUES ('UI000070', 'R005', N'Ngô Quỳnh Anh', '123', 'ngoquynhanh@gmail.com', N'Thừa Thiên Huế', '/image/patient.png');
+INSERT INTO Users VALUES ('UI000061', 'R005', N'Nguyễn Thị Hồng', '123', 'nguyenthihong@gmail.com', N'Hồ Chí Minh', 'patient.png');
+INSERT INTO Users VALUES ('UI000062', 'R005', N'Phạm Văn Cường', '123', 'phamvancuong@gmail.com', N'Đà Nẵng', 'patient.png');
+INSERT INTO Users VALUES ('UI000063', 'R005', N'Lê Thị Mai', '123', 'lethimai@gmail.com', N'Hải Phòng', 'patient.png');
+INSERT INTO Users VALUES ('UI000064', 'R005', N'Đỗ Mạnh Hùng', '123', 'domanhhung@gmail.com', N'Cần Thơ', 'patient.png');
+INSERT INTO Users VALUES ('UI000065', 'R005', N'Trần Văn Bình', '123', 'tranvanbinh@gmail.com', N'Khánh Hòa', 'patient.png');
+INSERT INTO Users VALUES ('UI000066', 'R005', N'Huỳnh Thị Ngọc', '123', 'huynhthingoc@gmail.com', N'Nghệ An', 'patient.png');
+INSERT INTO Users VALUES ('UI000067', 'R005', N'Bùi Văn Long', '123', 'buivanlong@gmail.com', N'Lâm Đồng', 'patient.png');
+INSERT INTO Users VALUES ('UI000068', 'R005', N'Võ Thị Lan', '123', 'vothilan@gmail.com', N'Quảng Ninh', 'patient.png');
+INSERT INTO Users VALUES ('UI000069', 'R005', N'Tạ Minh Đức', '123', 'taminhduc@gmail.com', N'An Giang', 'patient.png');
+INSERT INTO Users VALUES ('UI000070', 'R005', N'Ngô Quỳnh Anh', '123', 'ngoquynhanh@gmail.com', N'Thừa Thiên Huế', 'patient.png');
 
 
 
