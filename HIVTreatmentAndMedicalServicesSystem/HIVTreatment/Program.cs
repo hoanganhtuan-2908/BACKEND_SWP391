@@ -4,6 +4,7 @@ using HIVTreatment.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -41,6 +42,8 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 });
+
+
 
 // Add session services (optional if mixing JWT and session)
 builder.Services.AddDistributedMemoryCache();
