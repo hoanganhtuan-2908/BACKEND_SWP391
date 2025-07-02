@@ -24,5 +24,17 @@ namespace HIVTreatment.Data
         public DbSet<Medication> Medication { get; set; }
 
 
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Thiết lập quan hệ Patient → User
+            modelBuilder.Entity<Patient>()
+                .HasOne(p => p.User)
+                .WithMany()
+                .HasForeignKey(p => p.UserID);
+        }
+
     }
 }

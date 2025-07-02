@@ -109,16 +109,35 @@ namespace HIVTreatment.Controllers
             var userId = User.FindFirst("PatientID")?.Value
                 ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-            var patient = await _context.Patients.FirstOrDefaultAsync(p => p.UserID == userId);
+            var patient = await _context.Patients
+                .Include(p => p.User)
+                .FirstOrDefaultAsync(p => p.UserID == userId);
+
             if (patient == null)
                 return NotFound("Patient not found");
 
             var list = await _context.BooksAppointments
                 .Where(a => a.PatientID == patient.PatientID)
+                .Include(a => a.Patient)
+                    .ThenInclude(p => p.User)
+                .OrderByDescending(a => a.BookDate)
                 .ToListAsync();
 
-            return Ok(list);
+            var result = list.Select(a => new
+            {
+                a.BookID,
+                PatientFullname = a.Patient.User.Fullname,
+                a.BookDate,
+                a.Status,
+                a.Note,
+             
+                a.Patient
+              
+            });
+
+            return Ok(result);
         }
+
 
         // ===================== DOCTOR =========================
 
@@ -184,9 +203,21 @@ namespace HIVTreatment.Controllers
 
             var list = await _context.BooksAppointments
                 .Where(a => a.DoctorID == doctor.DoctorId && a.Status == "Thành công")
+                .Include(a => a.Patient)
+                    .ThenInclude(p => p.User)
+                .OrderByDescending(a => a.BookDate)
                 .ToListAsync();
 
-            return Ok(list);
+            var result = list.Select(a => new
+            {   
+                a.Doctor,
+                a.BookID,
+                PatientFullname = a.Patient.User.Fullname,
+                a.BookDate,
+                a.Status
+            });
+
+            return Ok(result);
         }
         // [DOCTOR] Xem tất cả lịch hẹn của bệnh nhân do mình điều trị
         [HttpGet("mine-patients")]
@@ -201,14 +232,23 @@ namespace HIVTreatment.Controllers
             var doctor = await _context.Doctors.FirstOrDefaultAsync(d => d.UserId == doctorUserId);
             if (doctor == null)
                 return NotFound("Doctor not found");
-
             var appointments = await _context.BooksAppointments
-                .Where(a => a.DoctorID == doctor.DoctorId)
-                .Include(a => a.Patient)
-                .OrderByDescending(a => a.BookDate)
-                .ToListAsync();
+                    .Where(a => a.DoctorID == doctor.DoctorId)
+                    .Include(a => a.Patient)
+                        .ThenInclude(p => p.User) // Lấy Fullname từ bảng Users
+                    .OrderByDescending(a => a.BookDate)
+                    .ToListAsync();
 
-            return Ok(appointments);
+            var result = appointments.Select(a => new
+            {
+                a.BookID,
+                PatientFullname = a.Patient.User.Fullname,
+                a.BookDate,
+                a.Status,
+                a.Note
+            });
+
+            return Ok(result);
         }
 
 
@@ -221,9 +261,21 @@ namespace HIVTreatment.Controllers
         {
             var list = await _context.BooksAppointments
                 .Where(a => a.Status == "Thành công" || a.Status == "Đã hủy")
+                .Include(a => a.Patient)
+                    .ThenInclude(p => p.User)
+                .OrderByDescending(a => a.BookDate)
                 .ToListAsync();
 
-            return Ok(list);
+            var result = list.Select(a => new
+            {
+                a.BookID,
+                PatientFullname = a.Patient.User.Fullname,
+                a.BookDate,
+                a.Status
+            });
+
+            return Ok(result);
         }
+
     }
 }

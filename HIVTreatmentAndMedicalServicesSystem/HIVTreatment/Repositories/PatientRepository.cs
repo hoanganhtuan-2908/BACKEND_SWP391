@@ -18,7 +18,12 @@ namespace HIVTreatment.Repositories
         {
             return context.Patients.FirstOrDefault(p => p.UserID == patientId);
         }
-
+        public List<Patient> GetAllPatientsWithFullname()
+        {
+            return context.Patients
+                          .Include(p => p.User) 
+                          .ToList();
+        }
 
 
         public void Add(Patient patient)
