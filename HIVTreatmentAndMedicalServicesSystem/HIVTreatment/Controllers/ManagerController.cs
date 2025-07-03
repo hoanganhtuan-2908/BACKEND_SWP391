@@ -202,5 +202,185 @@ namespace HIVTreatment.Controllers
 
             return Ok(new { message = "Cập nhật thông tin bác sĩ thành công." });
         }
+
+        [HttpGet("AllDoctorWorkSchedules")]
+        public IActionResult GetAllDoctorWorkSchedules()
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            var allowedRoles = new[] { "R001", "R002" }; // Admin, Manager
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền xem lịch làm việc của bác sĩ!");
+            }
+
+            var schedules = (from dws in _context.DoctorWorkSchedules
+                             join d in _context.Doctors on dws.DoctorID equals d.DoctorId
+                             join u in _context.Users on d.UserId equals u.UserId
+                             join s in _context.Slot on dws.SlotID equals s.SlotID
+                             select new
+                             {
+                                 ScheduleID = dws.ScheduleID,
+                                 DoctorID = d.DoctorId,
+                                 DoctorName = u.Fullname,
+                                 SlotID = s.SlotID,
+                                 SlotNumber = s.SlotNumber,
+                                 StartTime = s.StartTime,
+                                 EndTime = s.EndTime,
+                                 DateWork = dws.DateWork
+                             }).ToList();
+
+            if (schedules == null || !schedules.Any())
+            {
+                return NotFound("Không có lịch làm việc nào.");
+            }
+            return Ok(schedules);
+        }
+
+        [HttpGet("DoctorWorkScheduleDetail/{scheduleId}")]
+        public IActionResult GetDoctorWorkScheduleDetail(string scheduleId)
+        {
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            var allowedRoles = new[] { "R001", "R002" }; // Admin, Manager
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền xem chi tiết lịch làm việc!");
+            }
+
+            var schedule = (from dws in _context.DoctorWorkSchedules
+                            join d in _context.Doctors on dws.DoctorID equals d.DoctorId
+                            join u in _context.Users on d.UserId equals u.UserId
+                            join s in _context.Slot on dws.SlotID equals s.SlotID
+                            where dws.ScheduleID == scheduleId
+                            select new
+                            {
+                                ScheduleID = dws.ScheduleID,
+                                DoctorID = d.DoctorId,
+                                DoctorName = u.Fullname,
+                                SlotID = s.SlotID,
+                                SlotNumber = s.SlotNumber,
+                                StartTime = s.StartTime,
+                                EndTime = s.EndTime,
+                                DateWork = dws.DateWork
+                            }).FirstOrDefault();
+
+            if (schedule == null)
+            {
+                return NotFound("Không tìm thấy lịch làm việc này.");
+            }
+            return Ok(schedule);
+        }
+
+        [HttpPut("EditDoctorWorkSchedule/{scheduleId}")]
+        public async Task<IActionResult> EditDoctorWorkSchedule(string scheduleId, [FromBody] EditDoctorWorkScheduleDTO dto)
+        {
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            var allowedRoles = new[] { "R001", "R002" }; // Admin, Manager
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền chỉnh sửa lịch làm việc!");
+            }
+
+            var schedule = await _context.DoctorWorkSchedules.FirstOrDefaultAsync(dws => dws.ScheduleID == scheduleId);
+            if (schedule == null)
+            {
+                return NotFound("Không tìm thấy lịch làm việc này.");
+            }
+
+            // Kiểm tra DoctorID hợp lệ
+            var doctor = await _context.Doctors.FirstOrDefaultAsync(d => d.DoctorId == dto.DoctorID);
+            if (doctor == null)
+            {
+                return BadRequest("DoctorID không hợp lệ.");
+            }
+
+            // Kiểm tra SlotID hợp lệ
+            var slot = await _context.Slot.FirstOrDefaultAsync(s => s.SlotID == dto.SlotID);
+            if (slot == null)
+            {
+                return BadRequest("SlotID không hợp lệ.");
+            }
+
+            // Kiểm tra trùng lịch
+            bool isDuplicate = await _context.DoctorWorkSchedules.AnyAsync(dws =>
+                dws.DoctorID == dto.DoctorID &&
+                dws.SlotID == dto.SlotID &&
+                dws.DateWork.Date == dto.DateWork.Date &&
+                dws.ScheduleID != scheduleId
+            );
+            if (isDuplicate)
+            {
+                return BadRequest("Bác sĩ đã có lịch làm việc trùng ca và ngày này.");
+            }
+
+            // Cập nhật thông tin
+            schedule.DoctorID = dto.DoctorID;
+            schedule.SlotID = dto.SlotID;
+            schedule.DateWork = dto.DateWork;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Cập nhật lịch làm việc thành công." });
+        }
+
+        [HttpPost("AddDoctorWorkSchedule")]
+        public async Task<IActionResult> AddDoctorWorkSchedule([FromBody] EditDoctorWorkScheduleDTO dto)
+        {
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            var allowedRoles = new[] { "R001", "R002" }; // Admin, Manager
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền thêm lịch làm việc!");
+            }
+
+            // Kiểm tra DoctorID hợp lệ
+            var doctor = await _context.Doctors.FirstOrDefaultAsync(d => d.DoctorId == dto.DoctorID);
+            if (doctor == null)
+            {
+                return BadRequest("DoctorID không hợp lệ.");
+            }
+
+            // Kiểm tra SlotID hợp lệ
+            var slot = await _context.Slot.FirstOrDefaultAsync(s => s.SlotID == dto.SlotID);
+            if (slot == null)
+            {
+                return BadRequest("SlotID không hợp lệ.");
+            }
+
+            // Kiểm tra trùng lịch
+            bool isDuplicate = await _context.DoctorWorkSchedules.AnyAsync(dws =>
+                dws.DoctorID == dto.DoctorID &&
+                dws.SlotID == dto.SlotID &&
+                dws.DateWork.Date == dto.DateWork.Date
+            );
+            if (isDuplicate)
+            {
+                return BadRequest("Bác sĩ đã có lịch làm việc trùng ca và ngày này.");
+            }
+
+            // Tạo ScheduleID mới (DW + 6 số)
+            var lastSchedule = _context.DoctorWorkSchedules.OrderByDescending(dws => dws.ScheduleID).FirstOrDefault();
+            int nextScheduleId = 1;
+            if (lastSchedule != null && int.TryParse(lastSchedule.ScheduleID.Substring(2), out int lastId))
+            {
+                nextScheduleId = lastId + 1;
+            }
+            string newScheduleId = $"DW{nextScheduleId:D6}";
+
+            // Tạo mới lịch làm việc
+            var newSchedule = new DoctorWorkSchedule
+            {
+                ScheduleID = newScheduleId,
+                DoctorID = dto.DoctorID,
+                SlotID = dto.SlotID,
+                DateWork = dto.DateWork
+            };
+
+            _context.DoctorWorkSchedules.Add(newSchedule);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Thêm lịch làm việc thành công.", scheduleId = newScheduleId });
+        }
+
     }
 }
