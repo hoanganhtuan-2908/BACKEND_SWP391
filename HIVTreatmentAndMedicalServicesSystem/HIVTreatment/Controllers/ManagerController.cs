@@ -202,5 +202,39 @@ namespace HIVTreatment.Controllers
 
             return Ok(new { message = "Cập nhật thông tin bác sĩ thành công." });
         }
+
+        [HttpGet("AllDoctorWorkSchedules")]
+        public IActionResult GetAllDoctorWorkSchedules()
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            var allowedRoles = new[] { "R001", "R002" }; // Admin, Manager
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền xem lịch làm việc của bác sĩ!");
+            }
+
+            var schedules = (from dws in _context.DoctorWorkSchedules
+                             join d in _context.Doctors on dws.DoctorID equals d.DoctorId
+                             join u in _context.Users on d.UserId equals u.UserId
+                             join s in _context.Slot on dws.SlotID equals s.SlotID
+                             select new
+                             {
+                                 ScheduleID = dws.ScheduleID,
+                                 DoctorID = d.DoctorId,
+                                 DoctorName = u.Fullname,
+                                 SlotID = s.SlotID,
+                                 SlotNumber = s.SlotNumber,
+                                 StartTime = s.StartTime,
+                                 EndTime = s.EndTime,
+                                 DateWork = dws.DateWork
+                             }).ToList();
+
+            if (schedules == null || !schedules.Any())
+            {
+                return NotFound("Không có lịch làm việc nào.");
+            }
+            return Ok(schedules);
+        }
     }
 }
