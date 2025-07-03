@@ -44,41 +44,22 @@ public class TreatmentPlanRepository : ITreatmentPlanRepository
         if (doctor == null) return new List<TreatmentPlan>();
 
         return _context.TreatmentPlan
-<<<<<<< HEAD
-     .Where(tp => tp.DoctorID == doctor.DoctorId)
-     .Include(tp => tp.Patient)
-         .ThenInclude(p => p.User)
-     .Include(tp => tp.Doctor)
-         .ThenInclude(d => d.User)
-     .ToList();
-        ;
-=======
+
             .Where(tp => tp.DoctorID == doctor.DoctorId)
             .Include(tp => tp.Patient)
                 .ThenInclude(p => p.User)
             .ToList();
-
->>>>>>> ed5c390 (update TP show full info Patient)
     }
     public List<TreatmentPlan> GetByPatientAndDoctor(string patientId, string doctorUserId)
     {
         var doctor = _context.Doctors.FirstOrDefault(d => d.UserId == doctorUserId);
         if (doctor == null) return new List<TreatmentPlan>();
         return _context.TreatmentPlan
-<<<<<<< HEAD
-        .Where(tp => tp.PatientID == patientId && tp.DoctorID == doctor.DoctorId)
-        .Include(tp => tp.Patient)
-            .ThenInclude(p => p.User)
-        .Include(tp => tp.Doctor)
-            .ThenInclude(d => d.User)
-        .ToList();
-=======
+
     .Where(tp => tp.PatientID == patientId && tp.DoctorID == doctor.DoctorId)
     .Include(tp => tp.Patient)
         .ThenInclude(p => p.User)
     .ToList();
->>>>>>> ed5c390 (update TP show full info Patient)
-
     }
 
 
