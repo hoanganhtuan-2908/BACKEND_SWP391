@@ -50,7 +50,7 @@ namespace HIVTreatment.Controllers
                     Password = registerDTO.Password,
                     Email = registerDTO.Email,
                     Address = registerDTO.Address,
-                    Image = registerDTO.Image, // Optional, can be null
+                    Image = "patient.png"
 
                     // UserId will be assigned in the service
                 };
