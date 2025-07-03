@@ -13,11 +13,13 @@ namespace HIVTreatment.Controllers
     {
         private readonly ITreatmentPlanRepository _repository;
         private readonly ITreatmentPlan treatmentPlan;
+        private readonly IUserService userService;
 
-        public TreatmentPlanController(ITreatmentPlanRepository repository, ITreatmentPlanRepository TreatmentRepo)
+        public TreatmentPlanController(ITreatmentPlanRepository repository, ITreatmentPlanRepository TreatmentRepo, IUserService userService)
         {
             _repository = repository;
             treatmentPlan = new TreatmentPlan(TreatmentRepo);
+            this.userService = userService;
         }
 
         // Admin xem toàn bộ
@@ -119,7 +121,7 @@ namespace HIVTreatment.Controllers
         [HttpGet("GetTreatmentPlanById/{treatmentPlanId}")]
         public IActionResult GetTreatmentPlanById(string treatmentPlanId)
         {
-            
+
             var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var userRole = User.FindFirstValue(ClaimTypes.Role);
             // Kiểm tra quyền
@@ -135,6 +137,43 @@ namespace HIVTreatment.Controllers
             }
             return Ok(treatmentPlanData);
 
+        }
+
+        [HttpGet("GetARVByPatient/{patientId}")]
+        public IActionResult GetARVByPatient(string patientId)
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            // Kiểm tra quyền
+            var allowedRoles = new[] { "R001", "R005" , "R003"};
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền xem thông tin ARV của bệnh nhân");
+            }
+            var ARVByPatient = userService.GetARVByPatientId(patientId);
+            if (ARVByPatient == null)
+            {
+                return NotFound("Không tìm thấy thông tin ARV cho bệnh nhân với ID đã cho");
+            }
+            return Ok(ARVByPatient);
+        }
+        [HttpGet("GetPrescriptionByPatient/{patientId}")]
+        public IActionResult GetPrescriptionByPatient(string patientId)
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            // Kiểm tra quyền
+            var allowedRoles = new[] { "R001", "R005", "R003" };
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền xem thông tin đơn thuốc của bệnh nhân");
+            }
+            var prescriptionByPatient = userService.GetPrescriptionByPatientId(patientId);
+            if (prescriptionByPatient == null)
+            {
+                return NotFound("Không tìm thấy thông tin đơn thuốc cho bệnh nhân với ID đã cho");
+            }
+            return Ok(prescriptionByPatient);
         }
     }
 }
