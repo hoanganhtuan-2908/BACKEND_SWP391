@@ -12,5 +12,7 @@ namespace HIVTreatment.Models
         public int TreatmentLine { get; set; }
         public string Diagnosis { get; set; }
         public string TreatmentResult { get; set; }
+
+        public Patient Patient { get; set; }
     }
 }
