@@ -45,7 +45,7 @@ namespace HIVTreatment.Controllers
             var isConflict = await _context.BooksAppointments.AnyAsync(b =>
                 b.DoctorID == dto.DoctorID &&
                 b.BookDate.Date == dto.BookDate.Date &&
-                b.Status == "Đã xác nhận");
+                b.Status == "Thành công");
 
             if (isConflict)
                 return Conflict("Bác sĩ đã có lịch hẹn trong ngày này.");
@@ -140,6 +140,32 @@ namespace HIVTreatment.Controllers
 
 
         // ===================== DOCTOR =========================
+        // [DOCTOR] Xác nhận đã tiếp nhận bệnh nhân (Check-in)
+        [HttpPut("confirm-checkin/{id}")]
+        [Authorize(Roles = "R003")]
+        public async Task<IActionResult> ConfirmCheckIn(string id)
+        {
+            var doctorUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var doctor = await _context.Doctors.FirstOrDefaultAsync(d => d.UserId == doctorUserId);
+
+            if (doctor == null)
+                return Unauthorized("Doctor not found");
+
+            var appointment = await _context.BooksAppointments
+                .FirstOrDefaultAsync(a => a.BookID == id && a.DoctorID == doctor.DoctorId);
+
+            if (appointment == null)
+                return NotFound("Appointment not found");
+
+            if (appointment.Status != "Thành công")
+                return BadRequest("Chỉ có thể xác nhận các lịch ở trạng thái 'Thành công'.");
+
+            appointment.Status = "Đã xác nhận"; // hoặc "Check-in"
+            await _context.SaveChangesAsync();
+
+            return Ok("Appointment check-in confirmed.");
+        }
+
 
         // [DOCTOR] Hủy lịch hẹn
         [HttpPut("cancel/{id}")]
@@ -157,10 +183,10 @@ namespace HIVTreatment.Controllers
             if (appointment == null)
                 return NotFound("Appointment not found");
 
-            if (appointment.Status != "Đã xác nhận")
+            if (appointment.Status != "Thành công")
                 return BadRequest("Chỉ có thể huỷ lịch đã xác nhận.");
 
-            appointment.Status = "Bị từ chối";
+            appointment.Status = "Đã hủy";
             appointment.Note = reason;
 
             await _context.SaveChangesAsync();
