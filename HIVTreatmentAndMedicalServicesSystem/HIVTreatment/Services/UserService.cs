@@ -1,6 +1,8 @@
-﻿using HIVTreatment.DTOs;
+﻿using HIVTreatment.Data;
+using HIVTreatment.DTOs;
 using HIVTreatment.Models;
 using HIVTreatment.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -14,11 +16,13 @@ namespace HIVTreatment.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly IConfiguration _configuration;
+        private readonly ApplicationDbContext _context;
 
-        public UserService(IUserRepository userRepository, IConfiguration configuration)
+        public UserService(IUserRepository userRepository, IConfiguration configuration, ApplicationDbContext context)
         {
             _userRepository = userRepository;
             _configuration = configuration;
+            _context = context;
         }
 
         public List<ARVByPatientDTO> GetARVByPatientId(string patientId)
@@ -132,6 +136,14 @@ namespace HIVTreatment.Services
             _userRepository.UpdatePassword(email, newPassword);
             return true;
         }
+        public Patient GetPatientByUserId(string userId)
+        {
+            return _context.Patients
+                .Include(p => p.User)
+                .FirstOrDefault(p => p.UserID == userId);
+        }
+
+
     }
 
 

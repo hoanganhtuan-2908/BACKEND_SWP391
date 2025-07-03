@@ -145,7 +145,7 @@ namespace HIVTreatment.Controllers
             var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var userRole = User.FindFirstValue(ClaimTypes.Role);
             // Kiểm tra quyền
-            var allowedRoles = new[] { "R001", "R005" , "R003"};
+            var allowedRoles = new[] { "R001", "R005", "R003" };
             if (!allowedRoles.Contains(userRole))
             {
                 return Forbid("Bạn không có quyền xem thông tin ARV của bệnh nhân");
@@ -175,5 +175,23 @@ namespace HIVTreatment.Controllers
             }
             return Ok(prescriptionByPatient);
         }
+
+        // Patient xem được các kế hoạch điều trị của chính họ
+        [Authorize(Roles = "R005")] // R005 là role của Patient
+        [HttpGet("patient")]
+        public IActionResult GetByPatientUser()
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized("Patient not logged in");
+
+            var patient = userService.GetPatientByUserId(userId);
+            if (patient == null)
+                return NotFound("Không tìm thấy thông tin bệnh nhân");
+
+            var plans = _repository.GetByPatient(patient.PatientID);
+            return Ok(plans);
+        }
+
     }
 }
