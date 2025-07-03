@@ -84,7 +84,7 @@ CREATE TABLE [Booking] (
   [BookingType] nvarchar(50),
   [LabRequest] nvarchar(50),
   [BookDate] datetime NOT NULL,
-  [Status] nvarchar(20) DEFAULT N'Thành công' CHECK (Status IN (N'Thành công', N'Đã hủy')),
+  [Status] nvarchar(20) DEFAULT N'Thành công' CHECK (Status IN (N'Thành công', N'Đã hủy', N'Đã xác nhận', N'Đã khám')),
   [LinkMeet] nvarchar(255),
   [Note] nvarchar(255)
 )
