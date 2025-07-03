@@ -14,6 +14,9 @@ namespace HIVTreatment.Models
         public string TreatmentResult { get; set; }
 
         public Patient Patient { get; set; }
+<<<<<<< HEAD
         public Doctor Doctor { get; set; }
+=======
+>>>>>>> ed5c390 (update TP show full info Patient)
     }
 }
