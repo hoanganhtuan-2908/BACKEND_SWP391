@@ -53,16 +53,21 @@ public class TreatmentPlanRepository : ITreatmentPlanRepository
 
         return _context.TreatmentPlan
             .Where(tp => tp.DoctorID == doctor.DoctorId)
+            .Include(tp => tp.Patient)
+                .ThenInclude(p => p.User)
             .ToList();
+
     }
     public List<TreatmentPlan> GetByPatientAndDoctor(string patientId, string doctorUserId)
     {
         var doctor = _context.Doctors.FirstOrDefault(d => d.UserId == doctorUserId);
         if (doctor == null) return new List<TreatmentPlan>();
-
         return _context.TreatmentPlan
-            .Where(tp => tp.PatientID == patientId && tp.DoctorID == doctor.DoctorId)
-            .ToList();
+    .Where(tp => tp.PatientID == patientId && tp.DoctorID == doctor.DoctorId)
+    .Include(tp => tp.Patient)
+        .ThenInclude(p => p.User)
+    .ToList();
+
     }
 
     public void AddTreatmentPlan(TreatmentPlan treatmentPlan)
