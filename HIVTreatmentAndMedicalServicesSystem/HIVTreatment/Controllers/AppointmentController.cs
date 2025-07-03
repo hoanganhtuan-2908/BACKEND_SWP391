@@ -18,7 +18,7 @@ namespace HIVTreatment.Controllers
             _context = context;
         }
 
-        // ===================== PATIENT =========================
+        // ===================== PATIENT =====================OOO====
 
         // [PATIENT] Đặt lịch hẹn
         [HttpPost("booking")]
