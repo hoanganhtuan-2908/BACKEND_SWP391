@@ -1,4 +1,5 @@
-﻿using HIVTreatment.Models;
+﻿using HIVTreatment.DTOs;
+using HIVTreatment.Models;
 
 namespace HIVTreatment.Repositories
 {
@@ -12,6 +13,8 @@ namespace HIVTreatment.Repositories
         void Update(User user);
         void UpdatePassword(string email, string newPassword);
         Doctor GetDoctorByUserId(string userId);
+        public List<ARVByPatientDTO> GetARVByPatientId(string patientId);
+        List<PrescriptionByPatient> GetPrescriptionByPatientId(string patientId);
 
     }
 }

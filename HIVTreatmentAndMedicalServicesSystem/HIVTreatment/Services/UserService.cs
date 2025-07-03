@@ -21,9 +21,18 @@ namespace HIVTreatment.Services
             _configuration = configuration;
         }
 
+        public List<ARVByPatientDTO> GetARVByPatientId(string patientId)
+        {
+            return _userRepository.GetARVByPatientId(patientId);
+        }
+
         public User GetByUserId(string userId)
         {
             return _userRepository.GetByUserId(userId);
+        }
+
+        public List<PrescriptionByPatient> GetPrescriptionByPatientId(string patientId)
+        {return _userRepository.GetPrescriptionByPatientId(patientId);
         }
 
         //login jwt token

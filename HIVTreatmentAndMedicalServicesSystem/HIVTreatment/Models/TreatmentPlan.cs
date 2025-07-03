@@ -12,9 +12,5 @@ namespace HIVTreatment.Models
         public int TreatmentLine { get; set; }
         public string Diagnosis { get; set; }
         public string TreatmentResult { get; set; }
-
-        //public virtual Patient Patient { get; set; }
-        //public virtual Doctor Doctor { get; set; }
-        //public virtual ICollection<Prescription> Prescriptions { get; set; }
     }
 }

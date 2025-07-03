@@ -5,7 +5,6 @@ public class Prescription
 {
     public string PrescriptionID { get; set; }
 
-    //[ForeignKey("TreatmentPlan")]
     public string MedicalRecordID { get; set; }
 
     public string MedicationID { get; set; }
