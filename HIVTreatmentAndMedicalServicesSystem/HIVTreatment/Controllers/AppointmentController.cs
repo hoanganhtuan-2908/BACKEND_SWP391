@@ -72,6 +72,7 @@ namespace HIVTreatment.Controllers
             return Ok(new
             {
                 fullAppointment.BookID,
+                fullAppointment.BookingType,
                 fullAppointment.BookDate,
                 fullAppointment.Status,
                 fullAppointment.Note,
@@ -136,6 +137,7 @@ namespace HIVTreatment.Controllers
             {
                 a.BookID,
                 PatientFullname = a.Patient.User.Fullname,
+                a.BookingType,
                 a.BookDate,
                 a.Status,
                 a.Note,
@@ -248,6 +250,7 @@ namespace HIVTreatment.Controllers
                 a.Doctor,
                 a.BookID,
                 PatientFullname = a.Patient.User.Fullname,
+                a.BookingType,
                 a.BookDate,
                 a.Status
             });
@@ -278,6 +281,7 @@ namespace HIVTreatment.Controllers
             {
                 a.BookID,
                 PatientFullname = a.Patient.User.Fullname,
+                a.BookingType,
                 a.BookDate,
                 a.Status,
                 a.Note
@@ -305,6 +309,7 @@ namespace HIVTreatment.Controllers
             {
                 a.BookID,
                 PatientFullname = a.Patient.User.Fullname,
+                a.BookingType,
                 a.BookDate,
                 a.Status
             });
