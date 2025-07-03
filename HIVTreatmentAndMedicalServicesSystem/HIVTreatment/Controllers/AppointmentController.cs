@@ -65,10 +65,19 @@ namespace HIVTreatment.Controllers
             await _context.SaveChangesAsync();
             var fullAppointment = await _context.BooksAppointments
             .Include(b => b.Patient)
+            .ThenInclude(p => p.User)
             .Include(b => b.Doctor)
             .FirstOrDefaultAsync(b => b.BookID == appointment.BookID);
 
-            return Ok(appointment);
+            return Ok(new
+            {
+                fullAppointment.BookID,
+                fullAppointment.BookDate,
+                fullAppointment.Status,
+                fullAppointment.Note,
+                PatientFullname = fullAppointment.Patient.User.Fullname,
+                
+            });
         }
         // [PATIENT] Hủy lịch hẹn của chính mình
         [HttpPut("rejected/{id}")]
