@@ -17,33 +17,23 @@ public class TreatmentPlanRepository : ITreatmentPlanRepository
     public List<TreatmentPlan> GetAll()
     {
         return _context.TreatmentPlan
-        .Select(tp => new TreatmentPlan
-        {
-            TreatmentPlanID = tp.TreatmentPlanID,
-            PatientID = tp.PatientID,
-            DoctorID = tp.DoctorID,
-            ARVProtocol = tp.ARVProtocol,
-            TreatmentLine = tp.TreatmentLine,
-            Diagnosis = tp.Diagnosis,
-            TreatmentResult = tp.TreatmentResult
-        })
-        .ToList();
+            .Include(tp => tp.Patient)
+                .ThenInclude(p => p.User)
+          
+            .ToList();
     }
+
+
+
 
     public List<TreatmentPlan> GetByPatient(string patientId)
     {
-        return _context.TreatmentPlan.Where(tp => tp.PatientID == patientId)
-            .Select(tp => new TreatmentPlan
-            {
-                TreatmentPlanID = tp.TreatmentPlanID,
-                PatientID = tp.PatientID,
-                DoctorID = tp.DoctorID,
-                ARVProtocol = tp.ARVProtocol,
-                TreatmentLine = tp.TreatmentLine,
-                Diagnosis = tp.Diagnosis,
-                TreatmentResult = tp.TreatmentResult
-            })
+        return _context.TreatmentPlan
+            .Include(tp => tp.Patient)
+                .ThenInclude(p => p.User)
+           
             .ToList();
+
     }
 
     public List<TreatmentPlan> GetByDoctorUserId(string userId)
@@ -52,10 +42,17 @@ public class TreatmentPlanRepository : ITreatmentPlanRepository
         if (doctor == null) return new List<TreatmentPlan>();
 
         return _context.TreatmentPlan
-            .Where(tp => tp.DoctorID == doctor.DoctorId)
-            .Include(tp => tp.Patient)
-                .ThenInclude(p => p.User)
-            .ToList();
+
+
+
+
+
+     .Where(tp => tp.DoctorID == doctor.DoctorId)
+     .Include(tp => tp.Patient)
+         .ThenInclude(p => p.User)
+     
+     .ToList();
+        ;
 
     }
     public List<TreatmentPlan> GetByPatientAndDoctor(string patientId, string doctorUserId)
@@ -63,12 +60,15 @@ public class TreatmentPlanRepository : ITreatmentPlanRepository
         var doctor = _context.Doctors.FirstOrDefault(d => d.UserId == doctorUserId);
         if (doctor == null) return new List<TreatmentPlan>();
         return _context.TreatmentPlan
+
     .Where(tp => tp.PatientID == patientId && tp.DoctorID == doctor.DoctorId)
     .Include(tp => tp.Patient)
         .ThenInclude(p => p.User)
     .ToList();
 
+
     }
+
 
     public void AddTreatmentPlan(TreatmentPlan treatmentPlan)
     {
