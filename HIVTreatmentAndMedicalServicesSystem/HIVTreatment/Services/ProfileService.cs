@@ -88,7 +88,7 @@ namespace HIVTreatment.Services
             
             user.Fullname = editProfileUserDTO.Fullname;
             user.Address = editProfileUserDTO.Address;
-            user.Image = editProfileUserDTO.Image; // Optional, can be null
+            user.Image = "patient.png"; // Optional, can be null
             iUserRepository.Update(user);
 
             var patient = iPatientRepository.GetByPatientId(editProfileUserDTO.UserId);
