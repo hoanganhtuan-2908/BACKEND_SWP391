@@ -158,7 +158,7 @@ namespace HIVTreatment.Controllers
             return Ok(schedule);
         }
 
-        [HttpPut("EditDoctor/{doctorId}")]
+        [HttpPut("UpdateDoctor/{doctorId}")]
         public async Task<IActionResult> EditDoctor(string doctorId, [FromBody] EditDoctorDTO dto)
         {
             // 1. Tìm doctor theo doctorId
@@ -236,5 +236,210 @@ namespace HIVTreatment.Controllers
             }
             return Ok(schedules);
         }
+
+
+        [HttpGet("DoctorWorkScheduleDetail/{scheduleId}")]
+        public IActionResult GetDoctorWorkScheduleDetail(string scheduleId)
+        {
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            var allowedRoles = new[] { "R001", "R002" }; // Admin, Manager
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền xem chi tiết lịch làm việc!");
+            }
+
+            var schedule = (from dws in _context.DoctorWorkSchedules
+                            join d in _context.Doctors on dws.DoctorID equals d.DoctorId
+                            join u in _context.Users on d.UserId equals u.UserId
+                            join s in _context.Slot on dws.SlotID equals s.SlotID
+                            where dws.ScheduleID == scheduleId
+                            select new
+                            {
+                                ScheduleID = dws.ScheduleID,
+                                DoctorID = d.DoctorId,
+                                DoctorName = u.Fullname,
+                                SlotID = s.SlotID,
+                                SlotNumber = s.SlotNumber,
+                                StartTime = s.StartTime,
+                                EndTime = s.EndTime,
+                                DateWork = dws.DateWork
+                            }).FirstOrDefault();
+
+            if (schedule == null)
+            {
+                return NotFound("Không tìm thấy lịch làm việc này.");
+            }
+            return Ok(schedule);
+        }
+
+        [HttpPut("UpdateDoctorWorkSchedule/{scheduleId}")]
+        public async Task<IActionResult> EditDoctorWorkSchedule(string scheduleId, [FromBody] EditDoctorWorkScheduleDTO dto)
+        {
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            var allowedRoles = new[] { "R001", "R002" }; // Admin, Manager
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền chỉnh sửa lịch làm việc!");
+            }
+
+            var schedule = await _context.DoctorWorkSchedules.FirstOrDefaultAsync(dws => dws.ScheduleID == scheduleId);
+            if (schedule == null)
+            {
+                return NotFound("Không tìm thấy lịch làm việc này.");
+            }
+
+            // Kiểm tra DoctorID hợp lệ
+            var doctor = await _context.Doctors.FirstOrDefaultAsync(d => d.DoctorId == dto.DoctorID);
+            if (doctor == null)
+            {
+                return BadRequest("DoctorID không hợp lệ.");
+            }
+
+            // Kiểm tra SlotID hợp lệ
+            var slot = await _context.Slot.FirstOrDefaultAsync(s => s.SlotID == dto.SlotID);
+            if (slot == null)
+            {
+                return BadRequest("SlotID không hợp lệ.");
+            }
+
+            // Kiểm tra trùng lịch
+            bool isDuplicate = await _context.DoctorWorkSchedules.AnyAsync(dws =>
+                dws.DoctorID == dto.DoctorID &&
+                dws.SlotID == dto.SlotID &&
+                dws.DateWork.Date == dto.DateWork.Date &&
+                dws.ScheduleID != scheduleId
+            );
+            if (isDuplicate)
+            {
+                return BadRequest("Bác sĩ đã có lịch làm việc trùng ca và ngày này.");
+            }
+
+            // Cập nhật thông tin
+            schedule.DoctorID = dto.DoctorID;
+            schedule.SlotID = dto.SlotID;
+            schedule.DateWork = dto.DateWork;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Cập nhật lịch làm việc thành công." });
+        }
+
+        [HttpPost("AddDoctorWorkSchedule")]
+        public async Task<IActionResult> AddDoctorWorkSchedule([FromBody] EditDoctorWorkScheduleDTO dto)
+        {
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            var allowedRoles = new[] { "R001", "R002" }; // Admin, Manager
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền thêm lịch làm việc!");
+            }
+
+            // Kiểm tra DoctorID hợp lệ
+            var doctor = await _context.Doctors.FirstOrDefaultAsync(d => d.DoctorId == dto.DoctorID);
+            if (doctor == null)
+            {
+                return BadRequest("DoctorID không hợp lệ.");
+            }
+
+            // Kiểm tra SlotID hợp lệ
+            var slot = await _context.Slot.FirstOrDefaultAsync(s => s.SlotID == dto.SlotID);
+            if (slot == null)
+            {
+                return BadRequest("SlotID không hợp lệ.");
+            }
+
+            // Kiểm tra trùng lịch
+            bool isDuplicate = await _context.DoctorWorkSchedules.AnyAsync(dws =>
+                dws.DoctorID == dto.DoctorID &&
+                dws.SlotID == dto.SlotID &&
+                dws.DateWork.Date == dto.DateWork.Date
+            );
+            if (isDuplicate)
+            {
+                return BadRequest("Bác sĩ đã có lịch làm việc trùng ca và ngày này.");
+            }
+
+            // Tạo ScheduleID mới (DW + 6 số)
+            var lastSchedule = _context.DoctorWorkSchedules.OrderByDescending(dws => dws.ScheduleID).FirstOrDefault();
+            int nextScheduleId = 1;
+            if (lastSchedule != null && int.TryParse(lastSchedule.ScheduleID.Substring(2), out int lastId))
+            {
+                nextScheduleId = lastId + 1;
+            }
+            string newScheduleId = $"DW{nextScheduleId:D6}";
+
+            // Tạo mới lịch làm việc
+            var newSchedule = new DoctorWorkSchedule
+            {
+                ScheduleID = newScheduleId,
+                DoctorID = dto.DoctorID,
+                SlotID = dto.SlotID,
+                DateWork = dto.DateWork
+            };
+
+            _context.DoctorWorkSchedules.Add(newSchedule);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Thêm lịch làm việc thành công.", scheduleId = newScheduleId });
+        }
+
+        [HttpGet("AllARVProtocol")]
+        public IActionResult GetAllARVRegiemns()
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            var allowedRoles = new[] { "R001", "R002" };
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền xem ARV Protocol!");
+            }
+            // Fix: Invoke the delegate to get the actual list before calling Any()
+            var arvProtocols = _doctorService.GetAllARVProtocol();
+            if (arvProtocols == null || !arvProtocols.Any())
+            {
+                return NotFound("Không có phác đồ ARV nào.");
+            }
+            return Ok(arvProtocols);
+        }
+
+        [HttpGet("ARVProtocol/{ARVProtocolID}")]
+        public IActionResult GetARVById(string ARVProtocolID)
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            var allowedRoles = new[] { "R001", "R002","R003", "R005" };
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền xem phác đồ ARV!");
+            }
+            var arvProtocol = _doctorService.GetARVById(ARVProtocolID);
+            if (arvProtocol == null)
+            {
+                return NotFound("Không tìm thấy phác đồ ARV.");
+            }
+            return Ok(arvProtocol);
+        }
+
+        [HttpPut("UpdateARVProtocol")]
+        public IActionResult updateARVRegimen(ARVProtocolDTO ARVProtocolDTO)
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            var allowedRoles = new[] { "R001","R002", "R003" };
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền sửa phác đồ ARV!");
+            }
+            var arvUpdated = _doctorService.updateARVProtocol(ARVProtocolDTO);
+            if (!arvUpdated)
+            {
+                return NotFound("Phác đồ ARV không tồn tại hoặc cập nhật không thành công.");
+            }
+            return Ok("Cập nhật phác đồ ARV thành công.");
+        }
+
+
     }
+
+
 }
