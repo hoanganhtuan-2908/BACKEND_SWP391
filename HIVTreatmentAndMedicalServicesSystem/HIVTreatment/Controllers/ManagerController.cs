@@ -158,7 +158,7 @@ namespace HIVTreatment.Controllers
             return Ok(schedule);
         }
 
-        [HttpPut("EditDoctor/{doctorId}")]
+        [HttpPut("UpdateDoctor/{doctorId}")]
         public async Task<IActionResult> EditDoctor(string doctorId, [FromBody] EditDoctorDTO dto)
         {
             // 1. Tìm doctor theo doctorId
@@ -271,7 +271,7 @@ namespace HIVTreatment.Controllers
             return Ok(schedule);
         }
 
-        [HttpPut("EditDoctorWorkSchedule/{scheduleId}")]
+        [HttpPut("UpdateDoctorWorkSchedule/{scheduleId}")]
         public async Task<IActionResult> EditDoctorWorkSchedule(string scheduleId, [FromBody] EditDoctorWorkScheduleDTO dto)
         {
             var userRole = User.FindFirstValue(ClaimTypes.Role);
@@ -382,5 +382,62 @@ namespace HIVTreatment.Controllers
             return Ok(new { message = "Thêm lịch làm việc thành công.", scheduleId = newScheduleId });
         }
 
+        [HttpGet("AllARVProtocol")]
+        public IActionResult GetAllARVRegiemns()
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            var allowedRoles = new[] { "R001", "R002" };
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền xem ARV Protocol!");
+            }
+            // Fix: Invoke the delegate to get the actual list before calling Any()
+            var arvProtocols = _doctorService.GetAllARVProtocol();
+            if (arvProtocols == null || !arvProtocols.Any())
+            {
+                return NotFound("Không có phác đồ ARV nào.");
+            }
+            return Ok(arvProtocols);
+        }
+
+        [HttpGet("ARVProtocol/{ARVProtocolID}")]
+        public IActionResult GetARVById(string ARVProtocolID)
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            var allowedRoles = new[] { "R001", "R002","R003", "R005" };
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền xem phác đồ ARV!");
+            }
+            var arvProtocol = _doctorService.GetARVById(ARVProtocolID);
+            if (arvProtocol == null)
+            {
+                return NotFound("Không tìm thấy phác đồ ARV.");
+            }
+            return Ok(arvProtocol);
+        }
+
+        [HttpPut("UpdateARVProtocol")]
+        public IActionResult updateARVRegimen(ARVProtocolDTO ARVProtocolDTO)
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            var allowedRoles = new[] { "R001","R002", "R003" };
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền sửa phác đồ ARV!");
+            }
+            var arvUpdated = _doctorService.updateARVProtocol(ARVProtocolDTO);
+            if (!arvUpdated)
+            {
+                return NotFound("Phác đồ ARV không tồn tại hoặc cập nhật không thành công.");
+            }
+            return Ok("Cập nhật phác đồ ARV thành công.");
+        }
+
     }
+
+
 }
