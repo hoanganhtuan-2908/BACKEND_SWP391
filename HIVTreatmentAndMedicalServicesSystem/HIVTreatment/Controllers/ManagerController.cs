@@ -237,6 +237,7 @@ namespace HIVTreatment.Controllers
             return Ok(schedules);
         }
 
+
         [HttpGet("DoctorWorkScheduleDetail/{scheduleId}")]
         public IActionResult GetDoctorWorkScheduleDetail(string scheduleId)
         {
@@ -436,6 +437,7 @@ namespace HIVTreatment.Controllers
             }
             return Ok("Cập nhật phác đồ ARV thành công.");
         }
+
 
     }
 

@@ -18,7 +18,7 @@ namespace HIVTreatment.Controllers
             _context = context;
         }
 
-        // ===================== PATIENT =========================
+        // ===================== PATIENT =====================OOO====
 
         // [PATIENT] Đặt lịch hẹn
         [HttpPost("booking")]
@@ -252,6 +252,7 @@ namespace HIVTreatment.Controllers
                 PatientFullname = a.Patient.User.Fullname,
                 a.BookingType,
                 a.BookDate,
+                a.Patient,
                 a.Status
             });
 
@@ -283,6 +284,7 @@ namespace HIVTreatment.Controllers
                 PatientFullname = a.Patient.User.Fullname,
                 a.BookingType,
                 a.BookDate,
+                a.Patient,
                 a.Status,
                 a.Note
             });
@@ -311,6 +313,7 @@ namespace HIVTreatment.Controllers
                 PatientFullname = a.Patient.User.Fullname,
                 a.BookingType,
                 a.BookDate,
+                a.Patient,
                 a.Status
             });
 
