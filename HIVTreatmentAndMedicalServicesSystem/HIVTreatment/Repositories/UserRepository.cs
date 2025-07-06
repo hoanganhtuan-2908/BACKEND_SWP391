@@ -129,6 +129,44 @@ namespace HIVTreatment.Repositories
 
             return result;
         }
+        public List<PrescriptionByPatient> GetPrescriptionsOfPatient(string userId)
+        {
+            var patient = _context.Patients
+                .Include(p => p.User)
+                .FirstOrDefault(p => p.UserID == userId);
+
+            if (patient == null) return new List<PrescriptionByPatient>();
+
+            var prescriptions = (
+                from p in _context.Prescription
+                join d in _context.Doctors on p.DoctorID equals d.DoctorId
+                join uDoc in _context.Users on d.UserId equals uDoc.UserId
+                join tp in _context.TreatmentPlan on p.PatientID equals tp.PatientID
+                join uPat in _context.Users on patient.UserID equals uPat.UserId
+                where p.PatientID == patient.PatientID
+                select new PrescriptionByPatient
+                {
+                    PrescriptionID = p.PrescriptionID,
+                    MedicalRecordID = p.MedicalRecordID,
+                    MedicalName = p.MedicationName,
+                    MedicationID = p.MedicationID,
+                    DoctorID = p.DoctorID,
+                    StartDate = p.StartDate,
+                    EndDate = p.EndDate,
+                    Dosage = p.Dosage,
+                    LineOfTreatment = p.LineOfTreatment,
+                    TreatmentPlanID = tp.TreatmentPlanID,
+                    PatientID = p.PatientID,
+                    ARVProtocol = tp.ARVProtocol,
+                    TreatmentLine = tp.TreatmentLine,
+                    Diagnosis = tp.Diagnosis,
+                    TreatmentResult = tp.TreatmentResult,
+                    FullnameDoctor = uDoc.Fullname,
+                    FullnamePatient = uPat.Fullname
+                }).ToList();
+
+            return prescriptions;
+        }
 
     }
 

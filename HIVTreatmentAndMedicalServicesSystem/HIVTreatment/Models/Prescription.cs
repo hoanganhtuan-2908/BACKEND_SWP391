@@ -13,6 +13,8 @@ public class Prescription
     public DateTime EndDate { get; set; }
     public string Dosage { get; set; }
     public string LineOfTreatment { get; set; }
+    public string PatientID { get; set; }
+    public string MedicationName { get; set; }
 
     // Navigation
     //public virtual TreatmentPlan TreatmentPlan { get; set; }
