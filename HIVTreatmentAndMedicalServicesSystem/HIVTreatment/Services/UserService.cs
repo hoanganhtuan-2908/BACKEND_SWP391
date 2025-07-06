@@ -148,6 +148,10 @@ namespace HIVTreatment.Services
             return _userRepository.GetPrescriptionsOfPatient(userId);
         }
 
+        public List<User> GetAllUsers()
+        {
+            return _userRepository.GetAllUsers();
+        }
     }
 
 

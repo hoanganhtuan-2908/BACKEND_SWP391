@@ -16,6 +16,7 @@ namespace HIVTreatment.Repositories
         public List<ARVByPatientDTO> GetARVByPatientId(string patientId);
         List<PrescriptionByPatient> GetPrescriptionByPatientId(string patientId);
         List<PrescriptionByPatient> GetPrescriptionsOfPatient(string userId);
+        List<User> GetAllUsers();
 
     }
 }
