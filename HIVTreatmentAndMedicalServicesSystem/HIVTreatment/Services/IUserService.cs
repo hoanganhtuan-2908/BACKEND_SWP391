@@ -14,6 +14,7 @@ namespace HIVTreatment.Services
         public List<PrescriptionByPatient> GetPrescriptionByPatientId(string patientId);
         Patient GetPatientByUserId(string userId);
 
+        List<PrescriptionByPatient> GetPrescriptionsOfPatient(string userId);
 
     }
 }

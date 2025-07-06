@@ -143,6 +143,10 @@ namespace HIVTreatment.Services
                 .FirstOrDefault(p => p.UserID == userId);
         }
 
+        public List<PrescriptionByPatient> GetPrescriptionsOfPatient(string userId)
+        {
+            return _userRepository.GetPrescriptionsOfPatient(userId);
+        }
 
     }
 
