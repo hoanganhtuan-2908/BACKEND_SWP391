@@ -169,6 +169,10 @@ namespace HIVTreatment.Repositories
             return null;
         }
 
+        public List<User> GetAllUsers()
+        {
+            return _context.Users.ToList();
+        }
     }
 
 }

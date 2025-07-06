@@ -22,14 +22,39 @@ namespace HIVTreatment.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IUserRepository _userRepository;
         private readonly IDoctorService _doctorService;
+        private readonly IUserService _userService;
 
-        public ManagerController(ApplicationDbContext context, IUserRepository userRepository, IDoctorService doctorService)
+        public ManagerController(ApplicationDbContext context, IUserRepository userRepository, IDoctorService doctorService,IUserService userService)
         {
             _context = context;
             _userRepository = userRepository;
             _doctorService = doctorService;
+            _userService = userService;
         }
 
+        [HttpGet("AllUsers")]
+        [Authorize(Roles = "R001,R002")] // Admin, Manager
+        public IActionResult GetAllUsers()
+        {
+            var users = _userService.GetAllUsers();
+            if (users == null || !users.Any())
+            {
+                return NotFound("Không có người dùng nào.");
+            }
+            return Ok(users);
+        }
+
+        [HttpGet("User/{userId}")]
+        [Authorize(Roles = "R001,R002")] // Admin, Manager
+        public IActionResult GetUserById(string userId)
+        {
+            var user = _userService.GetByUserId(userId);
+            if (user == null)
+            {
+                return NotFound("Không tìm thấy người dùng.");
+            }
+            return Ok(user);
+        }
 
         [HttpPost("AddDoctor")]
         public async Task<IActionResult> AddDoctor([FromBody] CreateDoctorDTO dto)
@@ -418,6 +443,16 @@ namespace HIVTreatment.Controllers
                 return NotFound("Không tìm thấy phác đồ ARV.");
             }
             return Ok(arvProtocol);
+        }
+
+        [HttpPost("AddARVProtocol")]
+        [Authorize(Roles = "R001,R002")]
+        public IActionResult AddARVProtocol([FromBody] CreateARVProtocolDTO dto)
+        {
+            var result = _doctorService.AddARVProtocol(dto);
+            if (!result)
+                return BadRequest("Phác đồ ARV đã tồn tại hoặc dữ liệu không hợp lệ.");
+            return Ok("Thêm phác đồ ARV thành công.");
         }
 
         [HttpPut("UpdateARVProtocol")]
