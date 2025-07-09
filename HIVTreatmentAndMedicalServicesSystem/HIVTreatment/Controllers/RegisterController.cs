@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Security.Claims;
 
 namespace HIVTreatment.Controllers
 {
@@ -69,5 +70,58 @@ namespace HIVTreatment.Controllers
                 return StatusCode(500, "An error occurred during registration");
             }
         }
+        [HttpPost("CreateUser")]
+        public IActionResult RegisterByAdmin([FromBody] UserDTO UserDTO)
+        {
+
+            if (UserDTO == null)
+            {
+                return BadRequest("Dữ liệu không hợp lệ");
+            }
+
+            // Lấy thông tin người dùng từ JWT
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+
+            // Kiểm tra quyền
+            var allowedRoles = new[] { "R001", "R002" }; // Admin và Manager
+
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền tạo hồ sơ người khác");
+            }
+            var result = _userService.AddUser(UserDTO);
+            if (result == null)
+            {
+                return BadRequest("Email đã tồn tại hoặc thông tin không hợp lệ");
+            }
+            return Ok(result);
+
+        }
+
+        [HttpPut("UpdateUser")]
+        public IActionResult UpdateUser([FromBody] UpdateUserDTO user)
+        {
+            if (user == null)
+            {
+                return BadRequest("Dữ liệu không hợp lệ");
+            }
+            // Lấy thông tin người dùng từ JWT
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            // Kiểm tra quyền
+            var allowedRoles = new[] { "R001", "R002" }; // Admin và Doctor
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền chỉnh sửa hồ sơ người khác");
+            }
+            var result = _userService.UpdateUser(user);
+            if (result == null)
+            {
+                return BadRequest("Email đã tồn tại hoặc thông tin không hợp lệ");
+            }
+            return Ok(result);
+        }
+
     }
 }
