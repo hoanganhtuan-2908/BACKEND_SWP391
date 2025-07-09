@@ -195,6 +195,33 @@ namespace HIVTreatment.Services
             _userRepository.Update(existingUser);
             return true;
         }
+
+        public List<StaffDTO> GetAllStaff()
+        {
+            var staffUsers = _userRepository.GetUsersByRole("R004");
+            return staffUsers.Select(u => new StaffDTO
+            {
+                UserId = u.UserId,
+                Fullname = u.Fullname,
+                Email = u.Email,
+                Address = u.Address,
+                Image = u.Image
+            }).ToList();
+        }
+
+        public StaffDTO GetStaffById(string userId)
+        {
+            var user = _userRepository.GetStaffById(userId);
+            if (user == null) return null;
+            return new StaffDTO
+            {
+                UserId = user.UserId,
+                Fullname = user.Fullname,
+                Email = user.Email,
+                Address = user.Address,
+                Image = user.Image
+            };
+        }
     }
 
 

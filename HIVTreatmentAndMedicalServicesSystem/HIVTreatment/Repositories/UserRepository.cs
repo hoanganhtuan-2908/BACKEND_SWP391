@@ -185,6 +185,19 @@ namespace HIVTreatment.Repositories
             _context.Users.Update(user);
             _context.SaveChanges();
         }
+
+        public List<User> GetUsersByRole(string roleId)
+        {
+            return _context.Users
+                .Where(u => u.RoleId == roleId)
+                .ToList();
+        }
+
+        public User GetStaffById(string userId)
+        {
+            return _context.Users
+                .FirstOrDefault(u => u.UserId == userId && u.RoleId == "R004");
+        }
     }
 
 }
