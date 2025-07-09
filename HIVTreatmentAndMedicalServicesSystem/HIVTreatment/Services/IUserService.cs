@@ -20,6 +20,8 @@ namespace HIVTreatment.Services
         bool UpdateUser(UpdateUserDTO userDTO);
         List<StaffDTO> GetAllStaff();
         StaffDTO GetStaffById(string userId);
+        User AddStaff(CreateStaffDTO staffDTO);
+        bool UpdateStaff(string userId,UpdateStaffDTO staffDTO);
 
     }
 }
