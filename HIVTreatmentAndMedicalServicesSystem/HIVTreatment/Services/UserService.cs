@@ -148,6 +148,53 @@ namespace HIVTreatment.Services
             return _userRepository.GetPrescriptionsOfPatient(userId);
         }
 
+        public List<User> GetAllUsers()
+        {
+            return _userRepository.GetAllUsers();
+        }
+
+        public User AddUser(UserDTO userDTO)
+        {
+            if (_userRepository.EmailExists(userDTO.Email)) return null;
+
+            var lastUser = _userRepository.GetLastUser();
+            int nextId = 1;
+            if (lastUser != null)
+            {
+                string numberPart = lastUser.UserId.Substring(3);
+                if (int.TryParse(numberPart, out int parsed))
+                    nextId = parsed + 1;
+            }
+
+            string newUserId = "UI" + nextId.ToString("D6");
+
+            var user = new User
+            {
+                UserId = newUserId,
+                Fullname = userDTO.Fullname,
+                Email = userDTO.Email,
+                Password = userDTO.Password, 
+                RoleId = userDTO.RoleId,
+                Address = userDTO.Address,
+                Image = "patient.png"
+            };
+            _userRepository.Add(user);
+            return user;
+        }
+
+        public bool UpdateUser(UpdateUserDTO userDTO)
+        {
+            var existingUser = _userRepository.GetByUserId(userDTO.UserId);
+            if (existingUser == null) return false;
+            existingUser.RoleId = userDTO.RoleId;
+            existingUser.Fullname = userDTO.Fullname; 
+            existingUser.Email = userDTO.Email; 
+            existingUser.Password = userDTO.Password;
+            existingUser.Address = userDTO.Address;
+            existingUser.Image = "patient.png"; 
+            _userRepository.Update(existingUser);
+            return true;
+        }
     }
 
 

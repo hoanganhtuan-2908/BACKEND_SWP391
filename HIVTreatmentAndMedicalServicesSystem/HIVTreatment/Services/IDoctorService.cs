@@ -11,5 +11,6 @@ namespace HIVTreatment.Services
         ARVProtocolDTO GetARVById(string ARVID);
         bool updateARVProtocol(ARVProtocolDTO ARVProtocolDTO);
         public List<DoctorScheduleDTO> GetScheduleByDoctorId(string doctorId);
+        bool AddARVProtocol(CreateARVProtocolDTO dto);
     }
 }
