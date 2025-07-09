@@ -473,6 +473,27 @@ namespace HIVTreatment.Controllers
             return Ok("Cập nhật phác đồ ARV thành công.");
         }
 
+        [HttpGet("AllStaff")]
+        [Authorize(Roles = "R001,R002")] // Admin, Manager
+        public IActionResult GetAllStaff()
+        {
+            var staffList = _userService.GetAllStaff();
+            if (staffList == null || !staffList.Any())
+            {
+                return NotFound("Không có staff nào.");
+            }
+            return Ok(staffList);
+        }
+
+        [HttpGet("Staff/{staffId}")]
+        [Authorize(Roles = "R001,R002")]
+        public IActionResult GetStaffById(string staffId)
+        {
+            var staff = _userService.GetStaffById(staffId);
+            if (staff == null)
+                return NotFound("Không tìm thấy staff.");
+            return Ok(staff);
+        }
 
     }
 
