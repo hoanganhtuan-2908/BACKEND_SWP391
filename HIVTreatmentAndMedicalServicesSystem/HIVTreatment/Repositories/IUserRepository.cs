@@ -19,6 +19,8 @@ namespace HIVTreatment.Repositories
         List<User> GetAllUsers();
         void AddUser(User user);
         void UpdateUser(User user);
+        List<User> GetUsersByRole(string roleId);
+        User GetStaffById(string userId);
 
     }
 }

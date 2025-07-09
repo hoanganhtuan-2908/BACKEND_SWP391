@@ -18,6 +18,8 @@ namespace HIVTreatment.Services
         List<User> GetAllUsers();
         User AddUser(UserDTO userDTO);
         bool UpdateUser(UpdateUserDTO userDTO);
+        List<StaffDTO> GetAllStaff();
+        StaffDTO GetStaffById(string userId);
 
     }
 }
