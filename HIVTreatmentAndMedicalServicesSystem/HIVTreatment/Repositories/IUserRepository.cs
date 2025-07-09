@@ -17,6 +17,8 @@ namespace HIVTreatment.Repositories
         List<PrescriptionByPatient> GetPrescriptionByPatientId(string patientId);
         List<PrescriptionByPatient> GetPrescriptionsOfPatient(string userId);
         List<User> GetAllUsers();
+        void AddUser(User user);
+        void UpdateUser(User user);
 
     }
 }

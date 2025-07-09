@@ -15,6 +15,7 @@ namespace HIVTreatment.Data
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<TreatmentPlan> TreatmentPlan { get; set; }
+        public DbSet<Roles> Roles { get; set; }
 
 
         public DbSet<ARVProtocol> ARVProtocol { get; set; }
