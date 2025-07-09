@@ -222,6 +222,54 @@ namespace HIVTreatment.Services
                 Image = user.Image
             };
         }
+
+        public User AddStaff(CreateStaffDTO staffDTO)
+        {
+            if (_userRepository.EmailExists(staffDTO.Email)) return null;
+
+            var lastUser = _userRepository.GetLastUser();
+            int nextId = 1;
+            if (lastUser != null)
+            {
+                string numberPart = lastUser.UserId.Substring(3);
+                if (int.TryParse(numberPart, out int parsed))
+                    nextId = parsed + 1;
+            }
+
+            string newUserId = "UI" + nextId.ToString("D6");
+
+            var user = new User
+            {
+                UserId = newUserId,
+                Fullname = staffDTO.Fullname,
+                Email = staffDTO.Email,
+                Password = staffDTO.Password,
+                RoleId = "R004", // Staff
+                Address = staffDTO.Address,
+                Image = string.IsNullOrEmpty(staffDTO.Image) ? "staff.png" : staffDTO.Image
+            };
+            _userRepository.Add(user);
+            return user;
+        }
+
+        public bool UpdateStaff(String userId, UpdateStaffDTO staffDTO)
+        {
+            var user = _userRepository.GetByUserId(userId);
+            if (user == null || user.RoleId != "R004")
+                return false; // Chỉ cho phép sửa staff
+
+            // Kiểm tra trùng email
+            if (user.Email != staffDTO.Email && _userRepository.EmailExists(staffDTO.Email))
+                return false;
+
+            user.Fullname = staffDTO.Fullname;
+            user.Email = staffDTO.Email;
+            user.Address = staffDTO.Address;
+            user.Image = string.IsNullOrEmpty(staffDTO.Image) ? "staff.png" : staffDTO.Image;
+
+            _userRepository.Update(user);
+            return true;
+        }
     }
 
 

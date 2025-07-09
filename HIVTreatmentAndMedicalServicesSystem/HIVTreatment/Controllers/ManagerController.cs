@@ -484,15 +484,33 @@ namespace HIVTreatment.Controllers
             }
             return Ok(staffList);
         }
-
-        [HttpGet("Staff/{staffId}")]
-        [Authorize(Roles = "R001,R002")]
-        public IActionResult GetStaffById(string staffId)
+        [HttpGet("Staff/{userId}")]
+        [Authorize(Roles = "R001,R002")] // Admin, Manager
+        public IActionResult GetStaffById(string userId)
         {
-            var staff = _userService.GetStaffById(staffId);
+            var staff = _userService.GetStaffById(userId);
             if (staff == null)
                 return NotFound("Không tìm thấy staff.");
             return Ok(staff);
+        }
+
+        [HttpPost("AddStaff")]
+        [Authorize(Roles = "R001,R002")]
+        public IActionResult AddStaff([FromBody] CreateStaffDTO staffDTO)
+        {
+            var user = _userService.AddStaff(staffDTO);
+            if (user == null)
+                return BadRequest("Email đã tồn tại hoặc dữ liệu không hợp lệ.");
+            return Ok(new { message = "Thêm staff thành công.", userId = user.UserId });
+        }
+
+        [HttpPut("UpdateStaff/{userId}")]
+        public IActionResult UpdateStaff(string userId, [FromBody] UpdateStaffDTO staffDTO)
+        {
+            var result = _userService.UpdateStaff(userId, staffDTO);
+            if (!result)
+                return BadRequest("Cập nhật staff thất bại (không tìm thấy staff hoặc email đã tồn tại).");
+            return Ok("Cập nhật staff thành công.");
         }
 
     }
