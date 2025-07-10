@@ -11,10 +11,26 @@ namespace HIVTreatment.Repositories
         {
             _context = context;
         }
-
         public List<LabTest> GetAllLabTests()
         {
             return _context.LabTests.ToList();
         }
+
+        public LabTest GetLabTestById(string labTestId)
+        {
+            return _context.LabTests.FirstOrDefault(l => l.LabTestID == labTestId);
+        }
+        public void AddLabTest(LabTest labTest)
+        {
+            _context.LabTests.Add(labTest);
+            _context.SaveChanges();
+        }
+
+        public void UpdateLabTest(LabTest labTest)
+        {
+            _context.LabTests.Update(labTest);
+            _context.SaveChanges();
+        }
+
     }
 }
