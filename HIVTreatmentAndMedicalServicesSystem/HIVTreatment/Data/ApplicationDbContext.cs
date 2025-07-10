@@ -23,6 +23,7 @@ namespace HIVTreatment.Data
         public DbSet<DoctorWorkSchedule> DoctorWorkSchedules { get; set; }
         public DbSet<Prescription> Prescription { get; set; }
         public DbSet<Medication> Medication { get; set; }
+        public DbSet<LabTest> LabTests { get; set; }
 
 
 
