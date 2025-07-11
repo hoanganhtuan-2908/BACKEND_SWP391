@@ -9,5 +9,6 @@ namespace HIVTreatment.Repositories
         LabTest GetLabTestById(string labTestId);
         void AddLabTest(LabTest labTest);
         void UpdateLabTest(LabTest labTest);
+        void DeleteLabTest(string labTestId);
     }
 }

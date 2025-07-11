@@ -89,6 +89,16 @@ namespace HIVTreatment.Controllers
             }
         }
 
+        [HttpDelete("DeleteLabTest/{labTestId}")]
+        [Authorize(Roles = "R001,R002,R003,R004")]
+        public IActionResult DeleteLabTest(string labTestId)
+        {
+            var deleted = _labTestService.DeleteLabTest(labTestId);
+            if (!deleted)
+                return NotFound("LabTest này không tồn tại hoặc đã bị xóa.");
+            return Ok("Xóa LabTest thành công!");
+        }
+
 
     }
 }
