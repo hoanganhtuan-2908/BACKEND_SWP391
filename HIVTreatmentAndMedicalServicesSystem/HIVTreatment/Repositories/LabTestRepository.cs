@@ -32,5 +32,14 @@ namespace HIVTreatment.Repositories
             _context.SaveChanges();
         }
 
+        public void DeleteLabTest(string labTestId)
+        {
+            var labTest = _context.LabTests.FirstOrDefault(l => l.LabTestID == labTestId);
+            if (labTest != null)
+            {
+                _context.LabTests.Remove(labTest);
+                _context.SaveChanges();
+            }
+        }
     }
 }
