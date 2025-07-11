@@ -151,30 +151,29 @@ namespace HIVTreatment.Controllers
 
 
         // ===================== DOCTOR =========================
-        // [DOCTOR] Xác nhận đã tiếp nhận bệnh nhân (Check-in)
-        [HttpPut("confirm-checkin/{id}")]
-        [Authorize(Roles = "R003")]
-        public async Task<IActionResult> ConfirmCheckIn(string id)
+        // [PATIENT]  (Check-in)
+        [HttpPut("PatientCheckin/{id}")]
+        [Authorize(Roles = "R005")]
+        public async Task<IActionResult> PatientCheckIn(string id)
         {
-            var doctorUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var doctor = await _context.Doctors.FirstOrDefaultAsync(d => d.UserId == doctorUserId);
-
-            if (doctor == null)
-                return Unauthorized("Doctor not found");
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var patient = await _context.Patients.FirstOrDefaultAsync(p => p.UserID == userId);
+            if (patient == null)
+                return NotFound("Không tìm thấy bệnh nhân");
 
             var appointment = await _context.BooksAppointments
-                .FirstOrDefaultAsync(a => a.BookID == id && a.DoctorID == doctor.DoctorId);
+                .FirstOrDefaultAsync(a => a.BookID == id && a.PatientID == patient.PatientID);
 
             if (appointment == null)
-                return NotFound("Appointment not found");
+                return NotFound("Không tìm thấy lịch hẹn");
 
             if (appointment.Status != "Thành công")
-                return BadRequest("Chỉ có thể xác nhận các lịch ở trạng thái 'Thành công'.");
+                return BadRequest("Chỉ có thể xác nhận với lịch hẹn ở trạng thái 'Thành công'.");
 
-            appointment.Status = "Đã xác nhận"; // hoặc "Check-in"
+            appointment.Status = "Đã xác nhận";
             await _context.SaveChangesAsync();
 
-            return Ok("Appointment check-in confirmed.");
+            return Ok("Bệnh nhân đã xác nhận đến khám.");
         }
 
 
@@ -204,29 +203,31 @@ namespace HIVTreatment.Controllers
             return Ok("Appointment cancelled.");
         }
 
-        // [DOCTOR] Đánh dấu đã khám
-        [HttpPut("complete/{id}")]
+        // [DOCTOR] CHECKOUT
+        [HttpPut("DoctorCheckout/{id}")]
         [Authorize(Roles = "R003")]
         public async Task<IActionResult> MarkAsCompleted(string id)
         {
             var doctorId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var doctor = await _context.Doctors.FirstOrDefaultAsync(d => d.UserId == doctorId);
             if (doctor == null)
-                return Unauthorized("Doctor not found");
+                return Unauthorized("Không tìm thấy bác sĩ");
 
             var appointment = await _context.BooksAppointments
                 .FirstOrDefaultAsync(a => a.BookID == id && a.DoctorID == doctor.DoctorId);
 
             if (appointment == null)
-                return NotFound("Appointment not found");
+                return NotFound("Không tìm thấy lịch hẹn");
 
             if (appointment.Status != "Đã xác nhận")
-                return BadRequest("Chỉ có thể đánh dấu đã khám với lịch đã xác nhận.");
+                return BadRequest("Bệnh nhân chưa check-in. Không thể tiến hành điều trị.");
 
             appointment.Status = "Đã khám";
             await _context.SaveChangesAsync();
-            return Ok("Appointment marked as completed.");
+
+            return Ok("Bác sĩ đã hoàn tất điều trị.");
         }
+
 
         // [DOCTOR] Xem danh sách lịch đã xác nhận
         [HttpGet("approved")]
