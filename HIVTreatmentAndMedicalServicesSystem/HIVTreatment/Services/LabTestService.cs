@@ -129,6 +129,13 @@ namespace HIVTreatment.Services
             return true; // Thành công
         }
 
-
+        public bool DeleteLabTest(string labTestId)
+        {
+            var labTest = _labTestRepository.GetLabTestById(labTestId);
+            if (labTest == null)
+                return false;
+            _labTestRepository.DeleteLabTest(labTestId);
+            return true;
+        }
     }
 }
