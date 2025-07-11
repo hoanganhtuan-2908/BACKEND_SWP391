@@ -2,6 +2,7 @@
 {
     public class LabTestDTO
     {
+        public string PatientID { get; set; }
         public string LabTestID { get; set; }
         public string RequestID { get; set; }
         public string TreatmentPlantID { get; set; }
