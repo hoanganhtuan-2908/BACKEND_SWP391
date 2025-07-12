@@ -122,5 +122,23 @@ namespace HIVTreatment.Controllers
             }
             return Ok(schedule);
         }
+
+        [HttpGet("GetDoctorByUserID")]
+        public IActionResult GetInfoDoctorByUserId(string userID)
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            var allowedRoles = new[] { "R001", "R003", "R005" };
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền xem thông tin bác sĩ!");
+            }
+            var doctorInfo = _doctorService.GetInfoDoctorByUserId(userID);
+            if (doctorInfo == null)
+            {
+                return NotFound("Không tìm thấy thông tin bác sĩ.");
+            }
+            return Ok(doctorInfo);
+        }
     }
 }

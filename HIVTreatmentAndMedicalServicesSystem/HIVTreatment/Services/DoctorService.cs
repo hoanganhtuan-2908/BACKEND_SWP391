@@ -86,5 +86,10 @@ namespace HIVTreatment.Services
             idoctorRepository.updateARVProtocol(ARVModel);
             return true; // Update successful
         }
+
+        public InfoDoctorDTO GetInfoDoctorByUserId(string UserID)
+        {
+            return idoctorRepository.GetInfoDoctorByUserId(UserID);
+        }
     }
 }

@@ -8,6 +8,7 @@ namespace HIVTreatment.Services
         public List<InfoDoctorDTO> GetAllDoctors();
 
         InfoDoctorDTO GetInfoDoctorById(string doctorId);
+        public InfoDoctorDTO GetInfoDoctorByUserId(string UserID);
         ARVProtocolDTO GetARVById(string ARVID);
         bool updateARVProtocol(ARVProtocolDTO ARVProtocolDTO);
         public List<DoctorScheduleDTO> GetScheduleByDoctorId(string doctorId);
