@@ -75,6 +75,7 @@ namespace HIVTreatment.Repositories
                           select new InfoPatientDTO
                           {
                               UserID = u.UserId,
+                                PatientId = p.PatientID,
                               Fullname = u.Fullname,
                               Email = u.Email,
                               Address = u.Address,
