@@ -121,6 +121,8 @@ builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IRoleService, RoleService>();
 builder.Services.AddScoped<ILabTestRepository, LabTestRepository>();
 builder.Services.AddScoped<ILabTestService, LabTestService>();
+builder.Services.AddScoped<IBookingService, BookingService>();
+
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
