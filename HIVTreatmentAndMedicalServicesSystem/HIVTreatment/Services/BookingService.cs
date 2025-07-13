@@ -51,6 +51,7 @@ namespace HIVTreatment.Services
                 .Include(b => b.Doctor)
                 .FirstOrDefaultAsync(b => b.BookID == appointment.BookID);
 
+
             return new OkObjectResult(new
             {
                 fullAppointment.BookID,
@@ -92,7 +93,8 @@ namespace HIVTreatment.Services
             var list = await _context.BooksAppointments
                 .Where(a => a.PatientID == patient.PatientID)
                 .Include(a => a.Patient).ThenInclude(p => p.User)
-                .OrderByDescending(a => a.BookDate).ToListAsync();
+                .OrderByDescending(a => a.BookDate.Date)
+.ToListAsync();
 
             var result = list.Select(a => new
             {
@@ -172,7 +174,8 @@ namespace HIVTreatment.Services
             var list = await _context.BooksAppointments
                 .Where(a => a.DoctorID == doctor.DoctorId && a.Status == "Thành công")
                 .Include(a => a.Patient).ThenInclude(p => p.User)
-                .OrderByDescending(a => a.BookDate).ToListAsync();
+                .OrderByDescending(a => a.BookDate.Date).
+ToListAsync();
 
             var result = list.Select(a => new
             {
@@ -196,7 +199,7 @@ namespace HIVTreatment.Services
             var appointments = await _context.BooksAppointments
                 .Where(a => a.DoctorID == doctor.DoctorId)
                 .Include(a => a.Patient).ThenInclude(p => p.User)
-                .OrderByDescending(a => a.BookDate).ToListAsync();
+                .OrderByDescending(a => a.BookDate.Date).ToListAsync();
 
             var result = appointments.Select(a => new
             {
@@ -217,7 +220,7 @@ namespace HIVTreatment.Services
             var list = await _context.BooksAppointments
                 .Where(a => a.Status == "Thành công" || a.Status == "Đã hủy")
                 .Include(a => a.Patient).ThenInclude(p => p.User)
-                .OrderByDescending(a => a.BookDate).ToListAsync();
+                .OrderByDescending(a => a.BookDate.Date).ToListAsync();
 
             var result = list.Select(a => new
             {
