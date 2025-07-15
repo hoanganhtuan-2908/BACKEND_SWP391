@@ -23,13 +23,15 @@ namespace HIVTreatment.Controllers
         private readonly IUserRepository _userRepository;
         private readonly IDoctorService _doctorService;
         private readonly IUserService _userService;
+        private readonly IManagerService _managerService;
 
-        public ManagerController(ApplicationDbContext context, IUserRepository userRepository, IDoctorService doctorService,IUserService userService)
+        public ManagerController(ApplicationDbContext context, IUserRepository userRepository, IDoctorService doctorService,IUserService userService, IManagerService managerService)
         {
             _context = context;
             _userRepository = userRepository;
             _doctorService = doctorService;
             _userService = userService;
+            _managerService = managerService;
         }
 
         [HttpGet("AllUsers")]
@@ -84,7 +86,7 @@ namespace HIVTreatment.Controllers
                 Password = dto.Password,
                 Email = dto.Email,
                 Address = dto.Address,
-                Image = dto.Image
+                Image = "doctor"
             };
 
             try
@@ -298,54 +300,11 @@ namespace HIVTreatment.Controllers
         }
 
         [HttpPut("UpdateDoctorWorkSchedule/{scheduleId}")]
-        public async Task<IActionResult> EditDoctorWorkSchedule(string scheduleId, [FromBody] EditDoctorWorkScheduleDTO dto)
+        public IActionResult EditDoctorWorkSchedule(string scheduleId, [FromBody] EditDoctorWorkScheduleDTO dto)
         {
-            var userRole = User.FindFirstValue(ClaimTypes.Role);
-            var allowedRoles = new[] { "R001", "R002" }; // Admin, Manager
-            if (!allowedRoles.Contains(userRole))
-            {
-                return Forbid("Bạn không có quyền chỉnh sửa lịch làm việc!");
-            }
-
-            var schedule = await _context.DoctorWorkSchedules.FirstOrDefaultAsync(dws => dws.ScheduleID == scheduleId);
-            if (schedule == null)
-            {
-                return NotFound("Không tìm thấy lịch làm việc này.");
-            }
-
-            // Kiểm tra DoctorID hợp lệ
-            var doctor = await _context.Doctors.FirstOrDefaultAsync(d => d.DoctorId == dto.DoctorID);
-            if (doctor == null)
-            {
-                return BadRequest("DoctorID không hợp lệ.");
-            }
-
-            // Kiểm tra SlotID hợp lệ
-            var slot = await _context.Slot.FirstOrDefaultAsync(s => s.SlotID == dto.SlotID);
-            if (slot == null)
-            {
-                return BadRequest("SlotID không hợp lệ.");
-            }
-
-            // Kiểm tra trùng lịch
-            bool isDuplicate = await _context.DoctorWorkSchedules.AnyAsync(dws =>
-                dws.DoctorID == dto.DoctorID &&
-                dws.SlotID == dto.SlotID &&
-                dws.DateWork.Date == dto.DateWork.Date &&
-                dws.ScheduleID != scheduleId
-            );
-            if (isDuplicate)
-            {
-                return BadRequest("Bác sĩ đã có lịch làm việc trùng ca và ngày này.");
-            }
-
-            // Cập nhật thông tin
-            schedule.DoctorID = dto.DoctorID;
-            schedule.SlotID = dto.SlotID;
-            schedule.DateWork = dto.DateWork;
-
-            await _context.SaveChangesAsync();
-
+            var result = _managerService.UpdateDoctorWorkSchedule(scheduleId, dto);
+            if (!result)
+                return NotFound("Không tìm thấy lịch làm việc này hoặc cập nhật không thành công.");
             return Ok(new { message = "Cập nhật lịch làm việc thành công." });
         }
 
@@ -406,6 +365,23 @@ namespace HIVTreatment.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "Thêm lịch làm việc thành công.", scheduleId = newScheduleId });
+        }
+
+        [HttpDelete("DeleteDoctorWorkSchedule/{scheduleId}")]
+        public IActionResult DeleteDoctorWorkSchedule(string scheduleId)
+        {
+            var userRole = User.FindFirstValue(ClaimTypes.Role);
+            var allowedRoles = new[] { "R001", "R002" }; // Admin, Manager
+            if (!allowedRoles.Contains(userRole))
+            {
+                return Forbid("Bạn không có quyền xóa lịch làm việc!");
+            }
+
+            var result = _managerService.DeleteDoctorWorkSchedule(scheduleId);
+            if (!result)
+                return NotFound("Không tìm thấy lịch làm việc để xóa.");
+
+            return Ok(new { message = "Xóa lịch làm việc thành công." });
         }
 
         [HttpGet("AllARVProtocol")]
