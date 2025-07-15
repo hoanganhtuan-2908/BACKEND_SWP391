@@ -22,7 +22,7 @@ namespace HIVTreatment.Repositories
         {
             context.ARVProtocol.Add(protocol);
             context.SaveChanges();
-        }
+        }      
 
         public List<ARVProtocolDTO> GetAllARVProtocol()
         {
