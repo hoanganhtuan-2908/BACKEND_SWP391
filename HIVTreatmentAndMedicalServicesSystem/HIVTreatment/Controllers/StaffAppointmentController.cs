@@ -1,9 +1,7 @@
-﻿using HIVTreatment.Data;
-using HIVTreatment.Models;
+﻿using HIVTreatment.Models;
+using HIVTreatment.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using System.Security.Claims;
 
 namespace HIVTreatment.Controllers
@@ -12,20 +10,17 @@ namespace HIVTreatment.Controllers
     [Route("api/staff/appointments")]
     public class StaffAppointmentController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly StaffAppointmentService _appointmentService;
 
-        public StaffAppointmentController(ApplicationDbContext context)
+        public StaffAppointmentController(StaffAppointmentService appointmentService)
         {
-            _context = context;
+            _appointmentService = appointmentService;
         }
 
         private User GetCurrentUser()
         {
-            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            return _context.Users.FirstOrDefault(u => u.UserId == userId);
+            return _appointmentService.GetCurrentUser(User);
         }
-
-        private bool IsStaff(User user) => user.RoleId == "R004";
 
         /// <summary>
         /// Danh sách lịch đã khám
@@ -35,15 +30,10 @@ namespace HIVTreatment.Controllers
         public IActionResult GetCompletedAppointments()
         {
             var user = GetCurrentUser();
-            if (user == null || !IsStaff(user))
+            if (user == null || !_appointmentService.IsStaff(user))
                 return Forbid();
 
-            var appointments = _context.BooksAppointments
-                .Where(a => a.Status == "Đã khám")
-                .Include(a => a.Patient)
-                .Include(a => a.Doctor)
-                .ToList();
-
+            var appointments = _appointmentService.GetCompletedAppointments();
             return Ok(appointments);
         }
 
@@ -55,15 +45,10 @@ namespace HIVTreatment.Controllers
         public IActionResult GetSuccessfulAppointments()
         {
             var user = GetCurrentUser();
-            if (user == null || !IsStaff(user))
+            if (user == null || !_appointmentService.IsStaff(user))
                 return Forbid();
 
-            var appointments = _context.BooksAppointments
-                .Where(a => a.Status == "Thành công")
-                .Include(a => a.Patient)
-                .Include(a => a.Doctor)
-                .ToList();
-
+            var appointments = _appointmentService.GetSuccessfulAppointments();
             return Ok(appointments);
         }
 
@@ -75,15 +60,10 @@ namespace HIVTreatment.Controllers
         public IActionResult GetCancelledAppointments()
         {
             var user = GetCurrentUser();
-            if (user == null || !IsStaff(user))
+            if (user == null || !_appointmentService.IsStaff(user))
                 return Forbid();
 
-            var appointments = _context.BooksAppointments
-                .Where(a => a.Status == "Đã hủy")
-                .Include(a => a.Patient)
-                .Include(a => a.Doctor)
-                .ToList();
-
+            var appointments = _appointmentService.GetCancelledAppointments();
             return Ok(appointments);
         }
 
@@ -95,15 +75,10 @@ namespace HIVTreatment.Controllers
         public IActionResult GetAllAppointments()
         {
             var user = GetCurrentUser();
-            if (user == null || !IsStaff(user))
+            if (user == null || !_appointmentService.IsStaff(user))
                 return Forbid();
 
-            var appointments = _context.BooksAppointments
-                .Where(a => a.Status == "Thành công" || a.Status == "Đã hủy" || a.Status == "Đã khám")
-                .Include(a => a.Patient)
-                .Include(a => a.Doctor)
-                .ToList();
-
+            var appointments = _appointmentService.GetAllRelevantAppointments();
             return Ok(appointments);
         }
     }
