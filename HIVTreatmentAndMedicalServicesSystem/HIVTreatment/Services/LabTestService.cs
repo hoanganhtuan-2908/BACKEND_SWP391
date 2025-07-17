@@ -137,5 +137,10 @@ namespace HIVTreatment.Services
             _labTestRepository.DeleteLabTest(labTestId);
             return true;
         }
+
+        public List<LabTest> GetLabTestsByPatientId(string patientId)
+        {
+            return _labTestRepository.GetLabTestsByPatientId(patientId);
+        }
     }
 }
