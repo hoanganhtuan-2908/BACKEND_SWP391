@@ -9,7 +9,7 @@ namespace HIVTreatment.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = "R001,R002,R003,R004")]
+    [Authorize(Roles = "R001,R002,R003,R004,R005")]
     public class LabTestController : ControllerBase
     {
         private readonly ILabTestService _labTestService;
@@ -49,6 +49,27 @@ namespace HIVTreatment.Controllers
             }
 
             return Ok(labTest);
+        }
+
+        [HttpGet("LabTestsByPatient/{patientId}")]
+        [Authorize]
+        public IActionResult GetLabTestsByPatient(string patientId)
+        {
+            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            var userRole = User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value;
+
+            // Nếu là patient, chỉ cho phép xem lab test của chính mình
+            if (userRole == "R005")
+            {
+                var patient = _userService.GetPatientByUserId(userId);
+                if (patient == null || !string.Equals(patient.PatientID, patientId, StringComparison.OrdinalIgnoreCase))
+                {
+                    return Forbid("Bạn không có quyền xem lab test của người khác.");
+                }
+            }
+
+            var labTests = _labTestService.GetLabTestsByPatientId(patientId);
+            return Ok(labTests);
         }
 
         [HttpPost("AddLabTest")]

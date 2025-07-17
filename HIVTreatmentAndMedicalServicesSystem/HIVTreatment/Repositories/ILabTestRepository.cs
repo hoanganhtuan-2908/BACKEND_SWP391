@@ -7,6 +7,7 @@ namespace HIVTreatment.Repositories
     {
         List<LabTest> GetAllLabTests();
         LabTest GetLabTestById(string labTestId);
+        List<LabTest> GetLabTestsByPatientId(string patientId);
         void AddLabTest(LabTest labTest);
         void UpdateLabTest(LabTest labTest);
         void DeleteLabTest(string labTestId);
