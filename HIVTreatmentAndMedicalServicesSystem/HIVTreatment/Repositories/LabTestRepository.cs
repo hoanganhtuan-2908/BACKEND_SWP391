@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using HIVTreatment.Data;
 using HIVTreatment.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace HIVTreatment.Repositories
 {
@@ -41,5 +42,14 @@ namespace HIVTreatment.Repositories
                 _context.SaveChanges();
             }
         }
+
+        public List<LabTest> GetLabTestsByPatientId(string patientId)
+        {
+            return (from lt in _context.LabTests
+                    join ba in _context.BooksAppointments on lt.RequestID equals ba.BookID
+                    where ba.PatientID == patientId
+                    select lt).ToList();
+        }
+
     }
 }
