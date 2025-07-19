@@ -7,6 +7,5 @@
         public int SlotNumber { get; set; }
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
-        //public DateTime? BookDate { get; set; }
     }
 }
