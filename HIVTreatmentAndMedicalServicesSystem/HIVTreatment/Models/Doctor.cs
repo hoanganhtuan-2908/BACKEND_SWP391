@@ -4,7 +4,7 @@ namespace HIVTreatment.Models
 {
     public class Doctor
     {
-        public string DoctorId { get; set; } // ✅ sửa đúng tên theo DB
+        public string DoctorId { get; set; }
         
         public string UserId { get; set; }
         public User User { get; set; } // Navigation property

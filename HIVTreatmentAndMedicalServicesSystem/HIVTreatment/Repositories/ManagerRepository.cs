@@ -1,5 +1,6 @@
 ﻿using HIVTreatment.Data;
 using HIVTreatment.DTOs;
+using HIVTreatment.Models;
 
 namespace HIVTreatment.Repositories
 {
@@ -69,6 +70,17 @@ namespace HIVTreatment.Repositories
                                  DateWork = dws.DateWork
                              }).ToList();
             return schedules;
+        }
+
+        public Doctor GetLastDoctor()
+        {
+            return _context.Doctors.OrderByDescending(d => d.DoctorId).FirstOrDefault();
+        }
+
+        public void AddDoctor(Doctor doctor)
+        {
+            _context.Doctors.Add(doctor);
+            _context.SaveChanges();
         }
     }
 }
