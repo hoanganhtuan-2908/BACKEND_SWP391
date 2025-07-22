@@ -1351,27 +1351,27 @@ INSERT INTO Medication VALUES ('MD000010', 'Ritonavir', 'Tablet', '100mg', 'Adul
 
 -- 10. Bảng Prescription
 
-INSERT INTO Prescription VALUES ('PR000001', 'TP000001', 'MD000001', 'DT000001', '10-04-2025', '10-07-2025', '1 viên mỗi ngày', 'First-line', CURRENT_TIMESTAMP);
-INSERT INTO Prescription VALUES ('PR000002', 'TP000002', 'MD000002', 'DT000002', '15-05-2025', '15-08-2025', '1 viên 2 lần mỗi ngày', 'First-line', CURRENT_TIMESTAMP);
-INSERT INTO Prescription VALUES ('PR000003', 'TP000003', 'MD000003', 'DT000003', '20-06-2025', '20-09-2025', '1 viên mỗi ngày', 'Second-line', CURRENT_TIMESTAMP);
-INSERT INTO Prescription VALUES ('PR000004', 'TP000004', 'MD000004', 'DT000004', '25-04-2025', '25-10-2025', '1 viên mỗi tối', 'First-line', CURRENT_TIMESTAMP);
-INSERT INTO Prescription VALUES ('PR000005', 'TP000005', 'MD000005', 'DT000005', '05-05-2025', '05-11-2025', '1 viên 2 lần mỗi ngày', 'Second-line', CURRENT_TIMESTAMP);
-INSERT INTO Prescription VALUES ('PR000006', 'TP000006', 'MD000006', 'DT000006', '10-06-2025', '10-12-2025', '1 viên 2 lần mỗi ngày', 'First-line', CURRENT_TIMESTAMP);
-INSERT INTO Prescription VALUES ('PR000007', 'TP000007', 'MD000007', 'DT000007', '15-04-2025', '15-06-2025', '1 viên 2 lần mỗi ngày', 'Third-line', CURRENT_TIMESTAMP);
-INSERT INTO Prescription VALUES ('PR000008', 'TP000008', 'MD000008', 'DT000008', '20-05-2025', '20-08-2025', '1 viên 2 lần mỗi ngày', 'Second-line', CURRENT_TIMESTAMP);
-INSERT INTO Prescription VALUES ('PR000009', 'TP000009', 'MD000009', 'DT000009', '25-04-2025', '25-09-2025', '1 viên 2 lần mỗi ngày', 'First-line', CURRENT_TIMESTAMP);
-INSERT INTO Prescription VALUES ('PR000010', 'TP000010', 'MD000010', 'DT000010', '30-04-2025', '30-09-2025', '1 viên mỗi ngày với thức ăn', 'Second-line', CURRENT_TIMESTAMP);
+INSERT INTO Prescription VALUES ('PR000001', 'TP000001', 'MD000001', 'DT000001', '10-04-2025', '10-07-2025', N'1 viên mỗi ngày', 'First-line', CURRENT_TIMESTAMP);
+INSERT INTO Prescription VALUES ('PR000002', 'TP000002', 'MD000002', 'DT000002', '15-05-2025', '15-08-2025', N'1 viên 2 lần mỗi ngày', 'First-line', CURRENT_TIMESTAMP);
+INSERT INTO Prescription VALUES ('PR000003', 'TP000003', 'MD000003', 'DT000003', '20-06-2025', '20-09-2025', N'1 viên mỗi ngày', 'Second-line', CURRENT_TIMESTAMP);
+INSERT INTO Prescription VALUES ('PR000004', 'TP000004', 'MD000004', 'DT000004', '25-04-2025', '25-10-2025', N'1 viên mỗi tối', 'First-line', CURRENT_TIMESTAMP);
+INSERT INTO Prescription VALUES ('PR000005', 'TP000005', 'MD000005', 'DT000005', '05-05-2025', '05-11-2025', N'1 viên 2 lần mỗi ngày', 'Second-line', CURRENT_TIMESTAMP);
+INSERT INTO Prescription VALUES ('PR000006', 'TP000006', 'MD000006', 'DT000006', '10-06-2025', '10-12-2025', N'1 viên 2 lần mỗi ngày', 'First-line', CURRENT_TIMESTAMP);
+INSERT INTO Prescription VALUES ('PR000007', 'TP000007', 'MD000007', 'DT000007', '15-04-2025', '15-06-2025', N'1 viên 2 lần mỗi ngày', 'Third-line', CURRENT_TIMESTAMP);
+INSERT INTO Prescription VALUES ('PR000008', 'TP000008', 'MD000008', 'DT000008', '20-05-2025', '20-08-2025', N'1 viên 2 lần mỗi ngày', 'Second-line', CURRENT_TIMESTAMP);
+INSERT INTO Prescription VALUES ('PR000009', 'TP000009', 'MD000009', 'DT000009', '25-04-2025', '25-09-2025', N'1 viên 2 lần mỗi ngày', 'First-line', CURRENT_TIMESTAMP);
+INSERT INTO Prescription VALUES ('PR000010', 'TP000010', 'MD000010', 'DT000010', '30-04-2025', '30-09-2025', N'1 viên mỗi ngày với thức ăn', 'Second-line', CURRENT_TIMESTAMP);
 
-INSERT INTO Prescription VALUES ('PR000011', 'TP000011', 'MD000001', 'DT000011', '11-04-2025', '11-07-2025', '1 viên mỗi ngày', 'First-line', CURRENT_TIMESTAMP);
-INSERT INTO Prescription VALUES ('PR000012', 'TP000012', 'MD000002', 'DT000012', '12-04-2025', '12-07-2025', '1 viên mỗi sáng', 'Second-line', CURRENT_TIMESTAMP);
-INSERT INTO Prescription VALUES ('PR000013', 'TP000013', 'MD000003', 'DT000013', '13-04-2025', '13-07-2025', '1 viên 2 lần mỗi ngày', 'Third-line', CURRENT_TIMESTAMP);
-INSERT INTO Prescription VALUES ('PR000014', 'TP000014', 'MD000004', 'DT000014', '14-04-2025', '14-07-2025', '1 viên sau ăn', 'First-line', CURRENT_TIMESTAMP);
-INSERT INTO Prescription VALUES ('PR000015', 'TP000015', 'MD000005', 'DT000015', '15-04-2025', '15-07-2025', '1 viên mỗi tối', 'Second-line', CURRENT_TIMESTAMP);
-INSERT INTO Prescription VALUES ('PR000016', 'TP000016', 'MD000006', 'DT000016', '16-04-2025', '16-07-2025', '1 viên mỗi ngày', 'First-line', CURRENT_TIMESTAMP);
-INSERT INTO Prescription VALUES ('PR000017', 'TP000017', 'MD000007', 'DT000017', '17-04-2025', '17-07-2025', '1 viên 3 lần mỗi ngày', 'Third-line', CURRENT_TIMESTAMP);
-INSERT INTO Prescription VALUES ('PR000018', 'TP000018', 'MD000008', 'DT000018', '18-04-2025', '18-07-2025', '1 viên buổi trưa', 'Second-line', CURRENT_TIMESTAMP);
-INSERT INTO Prescription VALUES ('PR000019', 'TP000019', 'MD000009', 'DT000019', '19-04-2025', '19-07-2025', '1 viên mỗi ngày với nước ấm', 'First-line', CURRENT_TIMESTAMP);
-INSERT INTO Prescription VALUES ('PR000020', 'TP000020', 'MD000010', 'DT000020', '20-04-2025', '20-07-2025', '1 viên mỗi ngày với thức ăn', 'Second-line', CURRENT_TIMESTAMP);
+INSERT INTO Prescription VALUES ('PR000011', 'TP000011', 'MD000001', 'DT000011', '11-04-2025', '11-07-2025', N'1 viên mỗi ngày', 'First-line', CURRENT_TIMESTAMP);
+INSERT INTO Prescription VALUES ('PR000012', 'TP000012', 'MD000002', 'DT000012', '12-04-2025', '12-07-2025', N'1 viên mỗi sáng', 'Second-line', CURRENT_TIMESTAMP);
+INSERT INTO Prescription VALUES ('PR000013', 'TP000013', 'MD000003', 'DT000013', '13-04-2025', '13-07-2025', N'1 viên 2 lần mỗi ngày', 'Third-line', CURRENT_TIMESTAMP);
+INSERT INTO Prescription VALUES ('PR000014', 'TP000014', 'MD000004', 'DT000014', '14-04-2025', '14-07-2025', N'1 viên sau ăn', 'First-line', CURRENT_TIMESTAMP);
+INSERT INTO Prescription VALUES ('PR000015', 'TP000015', 'MD000005', 'DT000015', '15-04-2025', '15-07-2025', N'1 viên mỗi tối', 'Second-line', CURRENT_TIMESTAMP);
+INSERT INTO Prescription VALUES ('PR000016', 'TP000016', 'MD000006', 'DT000016', '16-04-2025', '16-07-2025', N'1 viên mỗi ngày', 'First-line', CURRENT_TIMESTAMP);
+INSERT INTO Prescription VALUES ('PR000017', 'TP000017', 'MD000007', 'DT000017', '17-04-2025', '17-07-2025', N'1 viên 3 lần mỗi ngày', 'Third-line', CURRENT_TIMESTAMP);
+INSERT INTO Prescription VALUES ('PR000018', 'TP000018', 'MD000008', 'DT000018', '18-04-2025', '18-07-2025', N'1 viên buổi trưa', 'Second-line', CURRENT_TIMESTAMP);
+INSERT INTO Prescription VALUES ('PR000019', 'TP000019', 'MD000009', 'DT000019', '19-04-2025', '19-07-2025', N'1 viên mỗi ngày với nước ấm', 'First-line', CURRENT_TIMESTAMP);
+INSERT INTO Prescription VALUES ('PR000020', 'TP000020', 'MD000010', 'DT000020', '20-04-2025', '20-07-2025', N'1 viên mỗi ngày với thức ăn', 'Second-line', CURRENT_TIMESTAMP);
 
 
 
