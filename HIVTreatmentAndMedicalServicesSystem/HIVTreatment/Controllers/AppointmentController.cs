@@ -19,7 +19,7 @@ namespace HIVTreatment.Controllers
         // ===================== PATIENT =====================
 
         [HttpPost("booking")]
-        [Authorize(Roles = "R005")]
+        [Authorize(Roles = "R005, R003")]
         public async Task<IActionResult> BookAppointment([FromBody] BookAppointmentDTO dto)
         {
             return await _bookingService.BookAppointment(dto, User);
