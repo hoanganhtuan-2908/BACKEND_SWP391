@@ -59,77 +59,32 @@ namespace HIVTreatment.Controllers
         }
 
         [HttpPost("AddDoctor")]
-        public async Task<IActionResult> AddDoctor([FromBody] CreateDoctorDTO dto)
+        public IActionResult AddDoctor([FromBody] CreateDoctorDTO dto)
         {
-            // kiểm tra email đã tồn tại chưa
-            if (_userRepository.EmailExists(dto.Email))
-            {
-                return BadRequest("Email đã tồn tại.");
-            }
-
-            // Tạo UserId
-            var lastUser = _userRepository.GetLastUser();
-            int nextUserId = 1;
-            if (lastUser != null && int.TryParse(lastUser.UserId.Substring(3), out int lastId))
-            {
-                nextUserId = lastId + 1;
-            }
-            string newUserId = $"UI{nextUserId:D6}";
-
-
-            //Tạo User mới
-            var user = new User
-            {
-                UserId = newUserId,
-                RoleId = "R003", //Doctor
-                Fullname = dto.FullName,
-                Password = dto.Password,
-                Email = dto.Email,
-                Address = dto.Address,
-                Image = "doctor"
-            };
-
             try
             {
-                _userRepository.Add(user); // Lưu User vào database
-            }
-            catch (DbUpdateException ex)
-            {
-                return StatusCode(500, $"Tạo user thất bại: {ex.InnerException?.Message ?? ex.Message}");
-            }
+                var result = _managerService.AddDoctor(dto);
 
-            // Tạo DoctorId
-            // DT + 6 số
-            var lastDoctor = _context.Doctors.OrderByDescending(d => d.DoctorId).FirstOrDefault();
-            int nextDoctorId = 1;
-            if (lastDoctor != null && int.TryParse(lastDoctor.DoctorId.Substring(2), out int lastDId))
-            {
-                nextDoctorId = lastDId + 1;
-            }
-            string newDoctorId = $"DT{nextDoctorId:D6}";
+                if (!result.isSuccess)
+                {
+                    return BadRequest(new { message = result.message });
+                }
 
-            // Tạo Doctor mới và gán UserId vừa tạo
-            var doctor = new Doctor
-            {
-                DoctorId = newDoctorId,
-                UserId = newUserId, // Gán UserId từ User vừa tạo
-                Specialization = dto.Specialization,
-                LicenseNumber = dto.LicenseNumber,
-                ExperienceYears = dto.ExperienceYears
-            };
-
-            try
-            {
-                _context.Doctors.Add(doctor);
-                await _context.SaveChangesAsync();
+                return Ok(new
+                {
+                    message = result.message,
+                    doctorId = result.doctorId,
+                    userId = result.userId
+                });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Thêm bác sĩ mới thất bại: {ex.Message}");
+                // Ghi log lỗi nếu có logging
+                return StatusCode(500, new { message = "Server error: " + ex.Message });
             }
-
-            return Ok(new { message = "Thêm bác sĩ thành công.", doctorId = newDoctorId, userId = newUserId });
         }
+
+
 
         [HttpGet("AllDoctors")]
         public IActionResult GetAllDoctors()
