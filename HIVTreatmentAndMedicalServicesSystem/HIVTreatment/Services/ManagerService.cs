@@ -10,10 +10,12 @@ namespace HIVTreatment.Services
         
         private readonly IManagerRepository _managerRepository;
         private readonly IUserRepository _userRepository;
-        public ManagerService(IManagerRepository managerRepository, IUserRepository userRepository)
+        private readonly IDoctorRepository _doctorRepository;
+        public ManagerService(IManagerRepository managerRepository, IUserRepository userRepository, IDoctorRepository doctorRepository)
         {
             _managerRepository = managerRepository;
             _userRepository = userRepository;
+            _doctorRepository = doctorRepository;
         }
         public (bool isSuccess, string message, string doctorId, string userId) AddDoctor(CreateDoctorDTO dto)
         {
@@ -76,12 +78,81 @@ namespace HIVTreatment.Services
         {
             return _managerRepository.GetDoctorWorkScheduleDetail(scheduleId);
         }
+        public (bool isSuccess, string message, string scheduleId) AddDoctorWorkSchedule(EditDoctorWorkScheduleDTO dto)
+        {
+            // 1. Kiểm tra Doctor tồn tại
+            if (!_managerRepository.DoctorExists(dto.DoctorID))
+            {
+                return (false, "Doctor không tồn tại.", null);
+            }
+
+            // 2. Kiểm tra Slot tồn tại
+            if (!_managerRepository.SlotExists(dto.SlotID))
+            {
+                return (false, "Slot không tồn tại.", null);
+            }
+
+            // 3. Kiểm tra lịch đã tồn tại chưa (tránh trùng)
+            if (_managerRepository.ScheduleExists(dto.DoctorID, dto.SlotID, dto.DateWork))
+            {
+                return (false, "Lịch làm việc này đã tồn tại.", null);
+            }
+
+            // 4. Tạo ScheduleID mới: DW000001
+            string lastId = _managerRepository.GetLastScheduleId();
+            int nextId = 1;
+            if (!string.IsNullOrEmpty(lastId) && int.TryParse(lastId.Substring(2), out int parsedId))
+            {
+                nextId = parsedId + 1;
+            }
+            string newScheduleId = $"DW{nextId:D6}";
+
+            // 5. Tạo đối tượng và lưu vào DB
+            var schedule = new DoctorWorkSchedule
+            {
+                ScheduleID = newScheduleId,
+                DoctorID = dto.DoctorID,
+                SlotID = dto.SlotID,
+                DateWork = dto.DateWork
+            };
+
+            _managerRepository.AddDoctorWorkSchedule(schedule);
+            return (true, "Thêm lịch làm việc thành công.", newScheduleId);
+        }
 
         public bool UpdateDoctorWorkSchedule(string scheduleId, EditDoctorWorkScheduleDTO dto)
             => _managerRepository.UpdateDoctorWorkSchedule(scheduleId, dto);
         public bool DeleteDoctorWorkSchedule(string scheduleId)
         => _managerRepository.DeleteDoctorWorkSchedule(scheduleId);
 
-        
+        public bool AddARVProtocol(CreateARVProtocolDTO dto)
+        {
+            // Kiểm tra trùng ARVCode hoặc ARVName
+            var allProtocols = _doctorRepository.GetAllARVProtocol();
+            if (allProtocols.Any(a => a.ARVCode == dto.ARVCode || a.ARVName == dto.ARVName))
+                return false;
+
+            // Sinh ARVID mới
+            var last = allProtocols.OrderByDescending(a => a.ARVID).FirstOrDefault();
+            int nextId = 1;
+            if (last != null && int.TryParse(last.ARVID.Substring(2), out int lastId))
+                nextId = lastId + 1;
+            string newARVID = $"AP{nextId:D6}";
+
+            var protocol = new ARVProtocol
+            {
+                ARVID = newARVID,
+                ARVCode = dto.ARVCode,
+                ARVName = dto.ARVName,
+                Description = dto.Description,
+                AgeRange = dto.AgeRange,
+                ForGroup = dto.ForGroup
+            };
+
+            _managerRepository.AddARVProtocol(protocol);
+            return true;
+        }
+
+
     }
 }

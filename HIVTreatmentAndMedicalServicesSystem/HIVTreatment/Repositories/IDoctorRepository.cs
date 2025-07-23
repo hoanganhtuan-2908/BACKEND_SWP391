@@ -21,6 +21,5 @@ namespace HIVTreatment.Repositories
         void updateARVProtocol(ARVProtocol ARVProtocol);
         public List<DoctorScheduleDTO> GetScheduleByDoctorId(string doctorId);
         public InfoDoctorDTO GetInfoDoctorByUserId(string UserID);
-        void AddARVProtocol(ARVProtocol protocol);
     }
 }

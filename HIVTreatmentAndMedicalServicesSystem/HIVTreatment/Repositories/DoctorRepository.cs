@@ -16,13 +16,7 @@ namespace HIVTreatment.Repositories
         {
             context.Add(doctor);
             context.SaveChanges();
-        }
-
-        public void AddARVProtocol(ARVProtocol protocol)
-        {
-            context.ARVProtocol.Add(protocol);
-            context.SaveChanges();
-        }      
+        }    
 
         public List<ARVProtocolDTO> GetAllARVProtocol()
         {
