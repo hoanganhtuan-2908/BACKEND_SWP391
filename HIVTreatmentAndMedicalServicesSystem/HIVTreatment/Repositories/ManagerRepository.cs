@@ -12,6 +12,32 @@ namespace HIVTreatment.Repositories
             _context = context;
         }
 
+
+        public bool DoctorExists(string doctorId)
+        {
+            return _context.Doctors.Any(d => d.DoctorId == doctorId);
+        }
+
+        public bool SlotExists(string slotId)
+        {
+            return _context.Slot.Any(s => s.SlotID == slotId);
+        }
+
+        public bool ScheduleExists(string doctorId, string slotId, DateTime dateWork)
+        {
+            return _context.DoctorWorkSchedules.Any(s =>
+                s.DoctorID == doctorId &&
+                s.SlotID == slotId &&
+                s.DateWork.Date == dateWork.Date);
+        }
+
+        public string GetLastScheduleId()
+        {
+            return _context.DoctorWorkSchedules
+                .OrderByDescending(s => s.ScheduleID)
+                .Select(s => s.ScheduleID)
+                .FirstOrDefault();
+        }
         public bool UpdateDoctorWorkSchedule(string scheduleId, EditDoctorWorkScheduleDTO dto)
         {
             var schedule = _context.DoctorWorkSchedules.FirstOrDefault(dws => dws.ScheduleID == scheduleId);
@@ -82,5 +108,19 @@ namespace HIVTreatment.Repositories
             _context.Doctors.Add(doctor);
             _context.SaveChanges();
         }
+
+        public void AddDoctorWorkSchedule(DoctorWorkSchedule schedule)
+        {
+            _context.DoctorWorkSchedules.Add(schedule);
+            _context.SaveChanges();
+        }
+
+        public void AddARVProtocol(ARVProtocol protocol)
+        {
+            _context.ARVProtocol.Add(protocol);
+            _context.SaveChanges();
+        }
+
+
     }
 }
