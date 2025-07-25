@@ -1,4 +1,5 @@
 ﻿using HIVTreatment.DTOs;
+using HIVTreatment.Models;
 
 namespace HIVTreatment.Services
 {
@@ -12,5 +13,14 @@ namespace HIVTreatment.Services
         bool DeleteDoctorWorkSchedule(string scheduleId);
         bool AddARVProtocol(CreateARVProtocolDTO dto);
         bool DeleteStaff(string userId);
+        List<UserDTO> GetAllManagers();
+        public UserDTO GetManagerById(string userId);
+        (bool isSuccess, string message, string userId) AddManager(AddManagerDTO dto);
+        bool UpdateManager(string userId, UpdateManagerDTO managerDTO);
+        bool DeleteManager(string userId);
+
+
+
+
     }
 }

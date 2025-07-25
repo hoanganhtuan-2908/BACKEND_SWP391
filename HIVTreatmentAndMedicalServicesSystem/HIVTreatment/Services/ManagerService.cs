@@ -155,7 +155,103 @@ namespace HIVTreatment.Services
 
         public bool DeleteStaff(string userId)
         {
-            return _managerRepository.DeleteStaff(userId);
+            var user = _userRepository.GetByUserId(userId);
+
+            // Kiểm tra tk Staff
+            if (user == null || user.RoleId != "R004")
+                return false;
+
+            return _managerRepository.DeleteByUserId(userId);
         }
+
+
+        public List<UserDTO> GetAllManagers()
+        {
+            var managers = _managerRepository.GetAllManagers();
+            return managers.Select(u => new UserDTO
+            {
+                UserId = u.UserId,
+                RoleId = u.RoleId,
+                Fullname = u.Fullname,
+                Password = u.Password,
+                Email = u.Email,
+                Address = u.Address
+            }).ToList();
+        }
+
+        public UserDTO GetManagerById(string userId)
+        {
+            var manager = _managerRepository.GetManagerById(userId);
+            if (manager == null) return null;
+
+            return new UserDTO
+            {
+                UserId = manager.UserId,
+                RoleId = manager.RoleId,
+                Fullname = manager.Fullname,
+                Password = manager.Password,
+                Email = manager.Email,
+                Address = manager.Address
+            };
+        }
+
+       public (bool isSuccess, string message, string userId) AddManager(AddManagerDTO dto)
+        {
+            if (_userRepository.EmailExists(dto.Email))
+            {
+                return (false, "Email này đã tồn tại trong hệ thống!", null);
+            }
+
+            var lastUser = _userRepository.GetLastUser();
+            int nextUserId = 1;
+            if (lastUser != null && int.TryParse(lastUser.UserId.Substring(2), out int lastId))
+            {
+                nextUserId = lastId + 1;
+            }
+            string newUserId = $"UI{nextUserId:D6}";
+
+            var newManager = new User
+            {
+                UserId = newUserId,
+                RoleId = "R002",
+                Fullname = dto.Fullname,
+                Password = dto.Password,
+                Email = dto.Email,
+                Address = dto.Address
+            };
+
+            _managerRepository.AddUser(newManager);
+
+            return (true, "Thêm mới Manager thành công!", newUserId);
+        }
+
+        public bool UpdateManager(string userId, UpdateManagerDTO managerDTO)
+        {
+            var user = _userRepository.GetByUserId(userId);
+            if (user == null || user.RoleId != "R002")
+                return false; // Chỉ cho phép sửa manager
+
+            // Kiểm tra trùng email (nếu đổi email)
+            if (user.Email != managerDTO.Email && _userRepository.EmailExists(managerDTO.Email))
+                return false;
+
+            user.Fullname = managerDTO.Fullname;
+            user.Email = managerDTO.Email;
+            user.Address = managerDTO.Address;
+            user.Image = string.IsNullOrEmpty(managerDTO.Image) ? "manager.png" : managerDTO.Image;
+
+            _userRepository.Update(user);
+            return true;
+        }
+
+        public bool DeleteManager(string userId)
+        {
+            var user = _userRepository.GetByUserId(userId);
+            if (user == null || user.RoleId != "R002")  // Chỉ xóa nếu là Manager
+                return false;
+            return _managerRepository.DeleteByUserId(userId);
+        }
+
+        
     }
 }
