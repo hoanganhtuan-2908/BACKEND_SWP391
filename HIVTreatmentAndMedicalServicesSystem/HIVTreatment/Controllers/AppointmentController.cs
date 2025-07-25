@@ -84,5 +84,20 @@ namespace HIVTreatment.Controllers
         {
             return await _bookingService.GetAllAppointmentsForStaff();
         }
+
+        [HttpPost("re-examination")]
+        [Authorize(Roles = "R001, R003")]
+        public async Task<IActionResult> AddReExaminationAppointment([FromBody] ReExaminationAppointment dto)
+        {
+            try
+            {
+                var result = await _bookingService.CreateBookingDoctor(dto);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

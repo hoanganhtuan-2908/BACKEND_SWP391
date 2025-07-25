@@ -1,5 +1,6 @@
 ﻿
 using HIVTreatment.Data;
+using HIVTreatment.DTOs;
 using Microsoft.EntityFrameworkCore;
 
 public class AppointmentRepository : IAppointmentRepository
@@ -24,6 +25,23 @@ public class AppointmentRepository : IAppointmentRepository
         {
             BookID = bookId,
             // Removed PatientID assignment since BookAppointmentDTO does not contain PatientID
+            DoctorID = dto.DoctorID,
+            BookingType = dto.BookingType,
+            BookDate = dto.BookDate,
+            Status = "Pending",
+            Note = dto.Note
+        };
+        _context.BooksAppointments.Add(appointment);
+        await _context.SaveChangesAsync();
+        return appointment;
+    }
+    public async Task<BooksAppointment> CreateBookingDoctor(ReExaminationAppointment dto)
+    {
+        var bookId = "B" + Guid.NewGuid().ToString("N").Substring(0, 9).ToUpper();
+        var appointment = new BooksAppointment // Changed from ReExaminationAppointment to BooksAppointment
+        {
+            BookID = bookId,
+            PatientID = dto.PatientID, // Assuming PatientID is part of ReExaminationAppointment
             DoctorID = dto.DoctorID,
             BookingType = dto.BookingType,
             BookDate = dto.BookDate,
