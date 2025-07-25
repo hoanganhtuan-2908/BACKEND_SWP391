@@ -121,6 +121,16 @@ namespace HIVTreatment.Repositories
             _context.SaveChanges();
         }
 
+        public bool DeleteStaff(string userId)
+        {
+            // Tìm user với RoleId = R003 (Staff)
+            var user = _context.Users.FirstOrDefault(u => u.UserId == userId && u.RoleId == "R004");
+            if (user == null)
+                return false;
 
+            _context.Users.Remove(user);
+            _context.SaveChanges();
+            return true;
+        }
     }
 }
