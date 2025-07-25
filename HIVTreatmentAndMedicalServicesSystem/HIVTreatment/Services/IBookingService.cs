@@ -15,5 +15,6 @@ namespace HIVTreatment.Services
         Task<IActionResult> GetAppointmentsOfMyPatients(ClaimsPrincipal user);
         Task<IActionResult> GetDoctorAppointments(ClaimsPrincipal user);
         Task<IActionResult> GetAllAppointmentsForStaff();
+        Task<BooksAppointment> CreateBookingDoctor(ReExaminationAppointment dto);
     }
 }

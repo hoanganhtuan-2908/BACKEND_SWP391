@@ -234,5 +234,26 @@ ToListAsync();
 
             return new OkObjectResult(result);
         }
+
+        public async Task<BooksAppointment> CreateBookingDoctor(ReExaminationAppointment dto)
+        {
+
+
+            var appointment = new BooksAppointment
+            {
+                BookID = "BK" + Guid.NewGuid().ToString("N").Substring(0, 6).ToUpper(),
+                PatientID = dto.PatientID,
+                DoctorID = dto.DoctorID,
+                BookingType = dto.BookingType,
+                BookDate = dto.BookDate,
+                Status = "Thành công",
+                Note = dto.Note
+            };
+
+            _context.BooksAppointments.Add(appointment);
+            await _context.SaveChangesAsync();
+
+            return appointment;
+        }
     }
 }
