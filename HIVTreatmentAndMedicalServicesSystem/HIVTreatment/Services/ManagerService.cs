@@ -153,6 +153,9 @@ namespace HIVTreatment.Services
             return true;
         }
 
-
+        public bool DeleteStaff(string userId)
+        {
+            return _managerRepository.DeleteStaff(userId);
+        }
     }
 }

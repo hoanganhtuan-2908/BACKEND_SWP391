@@ -18,5 +18,7 @@ namespace HIVTreatment.Repositories
         bool UpdateDoctorWorkSchedule(string scheduleId, EditDoctorWorkScheduleDTO dto);
         bool DeleteDoctorWorkSchedule(string scheduleId);
         void AddARVProtocol(ARVProtocol protocol);
+        bool DeleteStaff(string userId);
+
     }
 }

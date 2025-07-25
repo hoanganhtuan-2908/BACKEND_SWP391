@@ -411,6 +411,24 @@ namespace HIVTreatment.Controllers
             return Ok("Cập nhật staff thành công.");
         }
 
+        [HttpDelete("DeleteStaff/{userId}")]
+        public IActionResult DeleteStaff(string userId)
+        {
+            try
+            {
+                var success = _managerService.DeleteStaff(userId);
+                if (!success)
+                    return NotFound(new { message = "Xóa Staff thất bại!" });
+
+                return Ok(new { message = "Xóa Staff thành công." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Có lỗi xảy ra khi xóa Staff.", detail = ex.Message });
+            }
+        }
+
+
     }
 
 
