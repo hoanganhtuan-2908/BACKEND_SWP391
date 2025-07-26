@@ -412,6 +412,7 @@ namespace HIVTreatment.Controllers
         }
 
         [HttpDelete("DeleteStaff/{userId}")]
+        [Authorize(Roles = "R001,R002")]
         public IActionResult DeleteStaff(string userId)
         {
             try
@@ -425,6 +426,97 @@ namespace HIVTreatment.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, new { message = "Có lỗi xảy ra khi xóa Staff.", detail = ex.Message });
+            }
+        }
+
+        
+        [HttpGet("GetAllManagers")]
+        [Authorize(Roles = "R001")]
+        public IActionResult GetAllManagers()
+        {
+            var managers = _managerService.GetAllManagers();
+            return Ok(managers);
+        }
+
+        [HttpGet("GetManagerById/{userId}")]
+        [Authorize(Roles = "R001")]
+        public IActionResult GetManagerById(string userId)
+        {
+            var manager = _managerService.GetManagerById(userId);
+
+            if (manager == null)
+            {
+                return NotFound("Không tìm thấy Manager.");
+            }
+
+            return Ok(manager);
+        }
+
+        [HttpPost("AddManager")]
+        [Authorize(Roles = "R001")]
+        public IActionResult AddManager([FromBody] AddManagerDTO dto)
+        {
+            try
+            {
+                var result = _managerService.AddManager(dto);
+                if (!result.isSuccess)
+                {
+                    return BadRequest(new { message = result.message });
+                }
+
+                return Ok(new { message = result.message, userId = result.userId });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Đã xảy ra lỗi!", detail = ex.Message });
+            }
+        }
+
+        [HttpPut("UpdateManager/{userId}")]
+        [Authorize(Roles = "R001")]
+        public IActionResult UpdateManager(string userId, [FromBody] UpdateManagerDTO dto)
+        {
+            try
+            {
+                var result = _managerService.UpdateManager(userId, dto);
+                if (!result)
+                {
+                    return BadRequest(new
+                    {
+                        message = "Cập nhật thất bại. Không tìm thấy Manager hoặc email đã tồn tại."
+                    });
+                }
+
+                return Ok(new
+                {
+                    message = "Cập nhật tài khoản Manager thành công."
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = "Đã xảy ra lỗi trong quá trình xử lý.",
+                    detail = ex.Message
+                });
+            }
+        }
+
+        [HttpDelete("DeleteManager/{userId}")]
+        [Authorize(Roles = "R001")]
+        public IActionResult DeleteManager(string userId)
+        {
+            try
+            {
+                var result = _managerService.DeleteManager(userId);
+                if (!result)
+                    return NotFound(new { message = "Không tìm thấy Manager hoặc không có quyền xóa." });
+
+                return Ok(new { message = "Xóa Manager thành công." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Đã xảy ra lỗi khi xóa.", detail = ex.Message });
             }
         }
 
