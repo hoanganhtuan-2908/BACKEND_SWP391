@@ -8,6 +8,6 @@
     public string ResultValue { get; set; }
     public int? CD4Initial { get; set; }
     public int? ViralLoadInitial { get; set; }
-    public string Status { get; set; }
+    //public string Status { get; set; } để mặc định là: Đang xử lý
     public string Description { get; set; }
 }

@@ -92,7 +92,7 @@ namespace HIVTreatment.Services
                 ResultValue = dto.ResultValue,
                 CD4Initial = dto.CD4Initial,
                 ViralLoadInitial = dto.ViralLoadInitial,
-                Status = dto.Status,
+                Status = "Đang xử lý",
                 Description = dto.Description
             };
 

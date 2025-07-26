@@ -79,9 +79,17 @@ namespace HIVTreatment.Controllers
             if (dto == null)
                 return BadRequest("Dữ liệu không hợp lệ.");
 
-            _labTestService.CreateLabTest(dto);
-            return Ok("Tạo mới LabTest thành công!");
+            try
+            {
+                _labTestService.CreateLabTest(dto);
+                return Ok("Tạo mới LabTest thành công!");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Đã xảy ra lỗi khi tạo LabTest: {ex.Message}");
+            }
         }
+
 
         [HttpPut("UpdateLabTest/{labTestId}")]
         [Authorize(Roles = "R001,R002,R003,R004")]
