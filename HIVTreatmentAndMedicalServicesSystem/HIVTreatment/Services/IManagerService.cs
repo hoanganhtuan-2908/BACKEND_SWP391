@@ -18,6 +18,15 @@ namespace HIVTreatment.Services
         (bool isSuccess, string message, string userId) AddManager(AddManagerDTO dto);
         bool UpdateManager(string userId, UpdateManagerDTO managerDTO);
         bool DeleteManager(string userId);
+        int GetTotalUsers();
+        Dictionary<string, int> GetUsersByRole();
+        int GetTotalDoctors();
+        int GetTotalPatients();
+        int GetTotalLabTests();
+        int GetTotalTreatmentPlans();
+        int GetTotalPrescriptions();
+        ManagerDashboardDTO GetDashboardStatistics();
+
 
 
 

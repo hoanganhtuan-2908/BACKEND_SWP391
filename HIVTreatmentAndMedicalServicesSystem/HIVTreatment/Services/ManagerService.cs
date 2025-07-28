@@ -252,6 +252,53 @@ namespace HIVTreatment.Services
             return _managerRepository.DeleteByUserId(userId);
         }
 
-        
+        public int GetTotalUsers()
+        {
+            return _managerRepository.GetTotalUsers();
+        }
+
+        public Dictionary<string, int> GetUsersByRole()
+        {
+            return _managerRepository.GetUsersByRole();
+        }
+
+        public int GetTotalDoctors()
+        {
+            return _managerRepository.GetTotalDoctors();
+        }
+
+        public int GetTotalPatients()
+        {
+            return _managerRepository.GetTotalPatients();
+        }
+
+        public int GetTotalLabTests()
+        {
+            return _managerRepository.GetTotalLabTests();
+        }
+
+        public int GetTotalTreatmentPlans()
+        {
+            return _managerRepository.GetTotalTreatmentPlans();
+        }
+
+        public int GetTotalPrescriptions()
+        {
+            return _managerRepository.GetTotalPrescriptions();
+        }
+
+        public ManagerDashboardDTO GetDashboardStatistics()
+        {
+            return new ManagerDashboardDTO
+            {
+                TotalUsers = _managerRepository.GetTotalUsers(),
+                UsersByRole = _managerRepository.GetUsersByRole(),
+                TotalDoctors = _managerRepository.GetTotalDoctors(),
+                TotalPatients = _managerRepository.GetTotalPatients(),
+                TotalLabTests = _managerRepository.GetTotalLabTests(),
+                TotalTreatmentPlans = _managerRepository.GetTotalTreatmentPlans(),
+                TotalPrescriptions = _managerRepository.GetTotalPrescriptions()
+            };
+        }
     }
 }
