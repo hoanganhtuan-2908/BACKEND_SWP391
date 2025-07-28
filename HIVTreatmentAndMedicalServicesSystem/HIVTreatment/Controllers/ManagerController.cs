@@ -429,7 +429,23 @@ namespace HIVTreatment.Controllers
             }
         }
 
-        
+        [HttpGet("dashboard")]
+        [Authorize(Roles = "R001,R002")]
+        public ActionResult<ManagerDashboardDTO> GetDashboard()
+        {
+            try
+            {
+                var data = _managerService.GetDashboardStatistics();
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Đã xảy ra lỗi khi lấy dữ liệu thống kê.", error = ex.Message });
+            }
+        }
+
+
+
         [HttpGet("GetAllManagers")]
         [Authorize(Roles = "R001")]
         public IActionResult GetAllManagers()

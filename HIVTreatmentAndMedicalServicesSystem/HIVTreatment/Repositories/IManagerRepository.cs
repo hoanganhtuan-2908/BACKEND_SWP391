@@ -22,7 +22,13 @@ namespace HIVTreatment.Repositories
         List<User> GetAllManagers();
         public User GetManagerById(string userId);
         public void AddUser(User user);
-
+        int GetTotalUsers();
+        Dictionary<string, int> GetUsersByRole();
+        int GetTotalDoctors();
+        int GetTotalPatients();
+        int GetTotalLabTests();
+        int GetTotalTreatmentPlans();
+        int GetTotalPrescriptions();
 
     }
 }
