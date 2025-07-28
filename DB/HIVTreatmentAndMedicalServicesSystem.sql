@@ -892,16 +892,16 @@ INSERT INTO TreatmentPlan VALUES ('TP000014', 'PT000014', 'DT000014', 'AP000014'
 INSERT INTO TreatmentPlan VALUES ('TP000015', 'PT000015', 'DT000015', 'AP000015', 1, 'HIV stage 1', N'Tiến triển chậm', CURRENT_TIMESTAMP);
 INSERT INTO TreatmentPlan VALUES ('TP000016', 'PT000016', 'DT000016', 'AP000016', 3, 'HIV stage 3', N'Điều trị kháng thuốc', CURRENT_TIMESTAMP);
 INSERT INTO TreatmentPlan VALUES ('TP000017', 'PT000017', 'DT000017', 'AP000017', 2, 'HIV stage 2', N'Ổn định sau điều trị', CURRENT_TIMESTAMP);
-INSERT INTO TreatmentPlan VALUES ('TP000018', 'PT000018', 'DT000018', 'AP000018', 1, 'HIV stage 2', N'Trung bình, cần theo dõi', CURRENT_TIMESTAMP);
-INSERT INTO TreatmentPlan VALUES ('TP000019', 'PT000019', 'DT000019', 'AP000019', 2, 'HIV stage 2', N'Đã đạt tải lượng virus không phát hiện', CURRENT_TIMESTAMP);
-INSERT INTO TreatmentPlan VALUES ('TP000020', 'PT000020', 'DT000020', 'AP000020', 3, 'HIV stage 2', N'Tiến hành điều trị phối hợp', CURRENT_TIMESTAMP);
+INSERT INTO TreatmentPlan VALUES ('TP000018', 'PT000018', 'DT000018', 'AP000011', 1, 'HIV stage 2', N'Trung bình, cần theo dõi', CURRENT_TIMESTAMP);
+INSERT INTO TreatmentPlan VALUES ('TP000019', 'PT000019', 'DT000019', 'AP000012', 2, 'HIV stage 2', N'Đã đạt tải lượng virus không phát hiện', CURRENT_TIMESTAMP);
+INSERT INTO TreatmentPlan VALUES ('TP000020', 'PT000020', 'DT000020', 'AP000013', 3, 'HIV stage 2', N'Tiến hành điều trị phối hợp', CURRENT_TIMESTAMP);
 
 
 
 -- 9. Bảng Medication
 
-INSERT INTO Medication VALUES ('MD000001', 'Tenofovir-Lamivudine(or Emtricitabine)-Dolutegravir', 'Tablet', '300mg', 'Adults including pregnant or breastfeeding women and children aged 10 years and older', CURRENT_TIMESTAMP);
-INSERT INTO Medication VALUES ('MD000002', 'Tenofovir-Lamivudine-Efavirenz', 'Tablet', '150mg', 'Adults including pregnant or breastfeeding women and children aged 10 years and older', CURRENT_TIMESTAMP);
+INSERT INTO Medication VALUES ('MD000001', 'Tenofovir-Lamivudine(or Emtricitabine)-Dolutegravir', 'Tablet', '300mg', 'aldults', CURRENT_TIMESTAMP);
+INSERT INTO Medication VALUES ('MD000002', 'Tenofovir-Lamivudine-Efavirenz', 'Tablet', '150mg', 'Aldults', CURRENT_TIMESTAMP);
 INSERT INTO Medication VALUES ('MD000003', 'Abacavir-Lamivudine-Dolutegravir', 'Tablet', '50mg', 'Children under 10 years old', CURRENT_TIMESTAMP);
 INSERT INTO Medication VALUES ('MD000004', 'Abacavir-Lamivudine-Lopinavir/Ritonavir', 'Tablet', '200mg', 'Children', CURRENT_TIMESTAMP);
 INSERT INTO Medication VALUES ('MD000005', 'Zidovudine(or Abacavir)-Lamivudine-Raltegravir', 'Capsule', '10mg', 'Babies', CURRENT_TIMESTAMP);
@@ -991,8 +991,6 @@ INSERT INTO LabTests VALUES ('LT000015', 'BK000015', 'TP000015', 'HIV Resistance
 INSERT INTO LabTests VALUES ('LT000016', 'BK000016', 'TP000016', 'Tuberculosis Test', 'TB-016', 'Microbiology', 'Negative', 450, 800, N'Hoàn thành', N'Không phát hiện lao');
 INSERT INTO LabTests VALUES ('LT000017', 'BK000017', 'TP000017', 'CD4 Count', 'CD4-017', 'Immunology', '510 cells/mm³', 450, 700, N'Hoàn thành', N'CD4 ổn định');
 INSERT INTO LabTests VALUES ('LT000018', 'BK000018', 'TP000018', 'Kidney Function Test', 'KFT-018', 'Biochemistry', 'Creatinine: 1.0', 350, 900, N'Hoàn thành', N'Đang kiểm tra thêm');
-INSERT INTO LabTests VALUES ('LT000019', 'BK000019', 'TP000019', 'Hepatitis Co-infection', 'HEP-019', 'Serology', 'Negative for Hep B and C', 400, 1000, N'Hoàn thành', N'Không có đồng nhiễm');
-INSERT INTO LabTests VALUES ('LT000020', 'BK000020', 'TP000020', 'Viral Load', 'VL-020', 'Virology', '<50 copies/ml', 350, 12000, N'Hoàn thành', N'Kiểm soát virus tốt');
 
 
 --13. Bảng Reminder
@@ -1010,14 +1008,14 @@ INSERT INTO Reminder VALUES ('RM000010', 'PT000010', 'TP000010', 'PR000010', 'Ap
 
 INSERT INTO Reminder VALUES ('RM000011', 'PT000011', 'TP000011', 'PR000011', 'Medication', '26-06-2025 08:30:00', N'Nhắc uống thuốc Lamivudine');
 INSERT INTO Reminder VALUES ('RM000012', 'PT000012', 'TP000012', 'PR000012', 'Appointment', '27-06-2025 09:45:00', N'Nhắc lịch hẹn khám tổng quát lúc 10:00');
-INSERT INTO Reminder VALUES ('RM000013', 'PT000013', 'TP000013', 'PR000013', 'Lab Test', '28-06-2025 10:15:00', N'Nhắc xét nghiệm máu định kỳ');
-INSERT INTO Reminder VALUES ('RM000014', 'PT000014', 'TP000014', 'PR000014', 'Medication', '29-06-2025 11:00:00', N'Nhắc uống thuốc Efavirenz');
+--INSERT INTO Reminder VALUES ('RM000013', 'PT000013', 'TP000013', 'PR000013', 'Lab Test', '28-06-2025 10:15:00', N'Nhắc xét nghiệm máu định kỳ');
+--INSERT INTO Reminder VALUES ('RM000014', 'PT000014', 'TP000014', 'PR000014', 'Medication', '29-06-2025 11:00:00', N'Nhắc uống thuốc Efavirenz');
 INSERT INTO Reminder VALUES ('RM000015', 'PT000015', 'TP000015', 'PR000015', 'Lab Test', '30-06-2025 13:30:00', N'Nhắc xét nghiệm chức năng gan');
 INSERT INTO Reminder VALUES ('RM000016', 'PT000016', 'TP000016', 'PR000016', 'Appointment', '01-07-2025 14:45:00', N'Nhắc lịch hẹn tư vấn lúc 15:00');
 INSERT INTO Reminder VALUES ('RM000017', 'PT000017', 'TP000017', 'PR000017', 'Medication', '02-07-2025 15:00:00', N'Nhắc uống thuốc Emtricitabine');
 INSERT INTO Reminder VALUES ('RM000018', 'PT000018', 'TP000018', 'PR000018', 'Lab Test', '03-07-2025 16:20:00', N'Nhắc kiểm tra tải lượng virus');
 INSERT INTO Reminder VALUES ('RM000019', 'PT000019', 'TP000019', 'PR000019', 'Medication', '04-07-2025 17:00:00', N'Nhắc uống thuốc Rilpivirine');
-INSERT INTO Reminder VALUES ('RM000020', 'PT000020', 'TP000020', 'PR000020', 'Appointment', '05-07-2025 17:45:00', N'Nhắc lịch tái khám lúc 14:00 ngày mai');
+--INSERT INTO Reminder VALUES ('RM000020', 'PT000020', 'TP000020', 'PR000020', 'Appointment', '05-07-2025 17:45:00', N'Nhắc lịch tái khám lúc 14:00 ngày mai');
 
 
 
