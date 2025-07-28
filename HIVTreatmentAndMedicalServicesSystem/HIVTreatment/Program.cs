@@ -142,6 +142,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(@"D:\SWP BE\BACKEND_SWP391\DB\image"),
+    RequestPath = "/image"
+});
 
 app.UseCors("AllowReactApp");
 
