@@ -150,5 +150,42 @@ namespace HIVTreatment.Repositories
             _context.SaveChanges();
             return true;
         }
+
+        public int GetTotalUsers()
+        {
+            return _context.Users.Count();
+        }
+
+        public Dictionary<string, int> GetUsersByRole()
+        {
+            return _context.Users
+                .GroupBy(u => u.RoleId)
+                .ToDictionary(g => g.Key, g => g.Count());
+        }
+
+        public int GetTotalDoctors()
+        {
+            return _context.Doctors.Count();
+        }
+
+        public int GetTotalPatients()
+        {
+            return  _context.Patients.Count();
+        }
+
+        public int GetTotalLabTests()
+        {
+            return _context.LabTests.Count();
+        }
+
+        public int GetTotalTreatmentPlans()
+        {
+            return _context.TreatmentPlan.Count();
+        }
+
+        public int GetTotalPrescriptions()
+        {
+            return _context.Prescription.Count();
+        }
     }
 }
