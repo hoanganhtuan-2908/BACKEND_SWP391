@@ -107,6 +107,9 @@ CREATE TABLE [Medication] (
   [DosageForm] nvarchar(50),
   [Strength] nvarchar(50),
   [TargetGroup] nvarchar(50),
+  Advantage nvarchar(100),
+  [Use] nvarchar(100),
+  [Note] nvarchar(255),
   [CreatedAt] datetime DEFAULT (CURRENT_TIMESTAMP)
 )
 GO
@@ -149,7 +152,6 @@ GO
 CREATE TABLE [LabTests] (
   [LabTestID] varchar(8) PRIMARY KEY,--LT000001
   [RequestID] varchar(8) NOT NULL,
-  [TreatmentPlantID] varchar(8) NOT NULL,
   [TestName] nvarchar(100) NOT NULL,
   [TestCode] nvarchar(50) UNIQUE,
   [TestType] nvarchar(50),
@@ -224,8 +226,6 @@ GO
 ALTER TABLE [LabTests] ADD FOREIGN KEY ([RequestID]) REFERENCES [Booking] ([BookID])
 GO
 
-ALTER TABLE [LabTests] ADD FOREIGN KEY ([TreatmentPlantID]) REFERENCES [TreatmentPlan] ([TreatmentPlanID])
-GO
 
 --ALTER TABLE [Payment] ADD FOREIGN KEY ([BookID]) REFERENCES [Booking] ([BookID])
 --GO
@@ -900,16 +900,16 @@ INSERT INTO TreatmentPlan VALUES ('TP000020', 'PT000020', 'DT000020', 'AP000013'
 
 -- 9. Bảng Medication
 
-INSERT INTO Medication VALUES ('MD000001', 'Tenofovir-Lamivudine(or Emtricitabine)-Dolutegravir', 'Tablet', '300mg', 'aldults', CURRENT_TIMESTAMP);
-INSERT INTO Medication VALUES ('MD000002', 'Tenofovir-Lamivudine-Efavirenz', 'Tablet', '150mg', 'Aldults', CURRENT_TIMESTAMP);
-INSERT INTO Medication VALUES ('MD000003', 'Abacavir-Lamivudine-Dolutegravir', 'Tablet', '50mg', 'Children under 10 years old', CURRENT_TIMESTAMP);
-INSERT INTO Medication VALUES ('MD000004', 'Abacavir-Lamivudine-Lopinavir/Ritonavir', 'Tablet', '200mg', 'Children', CURRENT_TIMESTAMP);
-INSERT INTO Medication VALUES ('MD000005', 'Zidovudine(or Abacavir)-Lamivudine-Raltegravir', 'Capsule', '10mg', 'Babies', CURRENT_TIMESTAMP);
-INSERT INTO Medication VALUES ('MD000006', 'Zidovudine-Lamivudine-Nevirapine', 'Tablet', '10mg', 'Babies', CURRENT_TIMESTAMP);
-INSERT INTO Medication VALUES ('MD000007', 'Tenofovir-Lamivudine(or Emtricitabine)-Protease inhibitor/Ritonavir', 'Tablet', '300mg', 'Children', CURRENT_TIMESTAMP);
-INSERT INTO Medication VALUES ('MD000008', 'Abacavir-Lamivudine-Efavirenz(or Nevirapine)', 'Tablet', '400mg', 'Children', CURRENT_TIMESTAMP);
-INSERT INTO Medication VALUES ('MD000009', 'Zidovudine-Lamivudine-Lopinavir/Ritonavir', 'Tablet', '10mg', 'Babies', CURRENT_TIMESTAMP);
-INSERT INTO Medication VALUES ('MD000010', 'Zidovudine + Lamivudine + Lopinavir/ritonavir', 'Tablet', '100mg', 'Adults and children aged 10 years and above', CURRENT_TIMESTAMP);
+INSERT INTO Medication VALUES ('MD000001', 'Tenofovir-Lamivudine(or Emtricitabine)-Dolutegravir', 'Tablet', '300mg', 'aldults', 'a', 'a', 'a',CURRENT_TIMESTAMP);
+INSERT INTO Medication VALUES ('MD000002', 'Tenofovir-Lamivudine-Efavirenz', 'Tablet', '150mg', 'Aldults','a', 'a', 'a', CURRENT_TIMESTAMP);
+INSERT INTO Medication VALUES ('MD000003', 'Abacavir-Lamivudine-Dolutegravir', 'Tablet', '50mg', 'Children under 10 years old', 'a', 'a', 'a',CURRENT_TIMESTAMP);
+INSERT INTO Medication VALUES ('MD000004', 'Abacavir-Lamivudine-Lopinavir/Ritonavir', 'Tablet', '200mg', 'Children', 'a', 'a', 'a',CURRENT_TIMESTAMP);
+INSERT INTO Medication VALUES ('MD000005', 'Zidovudine(or Abacavir)-Lamivudine-Raltegravir', 'Capsule', '10mg', 'Babies','a', 'a', 'a', CURRENT_TIMESTAMP);
+INSERT INTO Medication VALUES ('MD000006', 'Zidovudine-Lamivudine-Nevirapine', 'Tablet', '10mg', 'Babies','a', 'a', 'a', CURRENT_TIMESTAMP);
+INSERT INTO Medication VALUES ('MD000007', 'Tenofovir-Lamivudine(or Emtricitabine)-Protease inhibitor/Ritonavir', 'Tablet', '300mg', 'Children', 'a', 'a', 'a',CURRENT_TIMESTAMP);
+INSERT INTO Medication VALUES ('MD000008', 'Abacavir-Lamivudine-Efavirenz(or Nevirapine)', 'Tablet', '400mg', 'Children','a', 'a', 'a', CURRENT_TIMESTAMP);
+INSERT INTO Medication VALUES ('MD000009', 'Zidovudine-Lamivudine-Lopinavir/Ritonavir', 'Tablet', '10mg', 'Babies','a', 'a', 'a', CURRENT_TIMESTAMP);
+INSERT INTO Medication VALUES ('MD000010', 'Zidovudine + Lamivudine + Lopinavir/ritonavir', 'Tablet', '100mg', 'Adults and children aged 10 years and above', 'a', 'a', 'a',CURRENT_TIMESTAMP);
 /*
 CREATE TABLE [Medication] (
   [MedicationID] varchar(8) PRIMARY KEY, --MD000001
@@ -917,6 +917,9 @@ CREATE TABLE [Medication] (
   [DosageForm] nvarchar(50),
   [Strength] nvarchar(50),
   [TargetGroup] nvarchar(50),
+  Advantage nvarchar(100),
+  [Use] nvarchar(100),
+  [Note] nvarchar(255),
   [CreatedAt] datetime DEFAULT (CURRENT_TIMESTAMP)
 )
 GO
@@ -971,7 +974,7 @@ INSERT INTO Booking VALUES ('BK000019', 'PT000019', 'DT000019', N'Tư vấn', 'N
 INSERT INTO Booking VALUES ('BK000020', 'PT000020', 'DT000020', N'Tái khám', 'Full Panel', '16-06-2025 14:30:00', N'Thành công', N'Tổng kiểm tra giữa năm');
 
 --12. Bảng LabTests
-
+/*
 INSERT INTO LabTests VALUES ('LT000001', 'BK000001', 'TP000001', 'CD4 Count', 'CD4-001', 'Immunology', '450 cells/mm³', 350, 10000, N'Hoàn thành', N'Cần theo dõi');
 INSERT INTO LabTests VALUES ('LT000002', 'BK000002', 'TP000002', 'Viral Load', 'VL-002', 'Virology', 'Undetectable <20 copies/ml', 350, 100000, N'Hoàn thành', N'Kết quả tốt');
 INSERT INTO LabTests VALUES ('LT000003', 'BK000003', 'TP000003', 'Complete Blood Count', 'CBC-003', 'Hematology', 'Normal', 400, 9000, N'Hoàn thành', N'Đang xử lý kết quả');
@@ -991,7 +994,7 @@ INSERT INTO LabTests VALUES ('LT000015', 'BK000015', 'TP000015', 'HIV Resistance
 INSERT INTO LabTests VALUES ('LT000016', 'BK000016', 'TP000016', 'Tuberculosis Test', 'TB-016', 'Microbiology', 'Negative', 450, 800, N'Hoàn thành', N'Không phát hiện lao');
 INSERT INTO LabTests VALUES ('LT000017', 'BK000017', 'TP000017', 'CD4 Count', 'CD4-017', 'Immunology', '510 cells/mm³', 450, 700, N'Hoàn thành', N'CD4 ổn định');
 INSERT INTO LabTests VALUES ('LT000018', 'BK000018', 'TP000018', 'Kidney Function Test', 'KFT-018', 'Biochemistry', 'Creatinine: 1.0', 350, 900, N'Hoàn thành', N'Đang kiểm tra thêm');
-
+*/
 
 --13. Bảng Reminder
 
