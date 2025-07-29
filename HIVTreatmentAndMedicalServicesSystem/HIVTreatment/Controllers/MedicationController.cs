@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HIVTreatment.Controllers
 {
-    [Authorize(Roles = "R001,R002, R003, R004")]
+    [Authorize(Roles = "R001,R002, R003, R004, R005")]
     [Route("api/[controller]")]
     [ApiController]
     public class MedicationController : ControllerBase
