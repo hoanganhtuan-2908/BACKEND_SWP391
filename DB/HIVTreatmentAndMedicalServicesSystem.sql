@@ -153,7 +153,7 @@ CREATE TABLE [LabTests] (
   [LabTestID] varchar(8) PRIMARY KEY,--LT000001
   [RequestID] varchar(8) NOT NULL,
   [TestName] nvarchar(100) NOT NULL,
-  [TestCode] nvarchar(50) UNIQUE,
+  --[TestCode] nvarchar(50) UNIQUE,
   [TestType] nvarchar(50),
   [ResultValue] nvarchar(100),
   [CD4Initial] int,
@@ -223,7 +223,7 @@ GO
 ALTER TABLE [Reminder] ADD FOREIGN KEY ([PrescriptionID]) REFERENCES [Prescription] ([PrescriptionID])
 GO
 
-ALTER TABLE [LabTests] ADD FOREIGN KEY ([RequestID]) REFERENCES [Booking] ([BookID])
+	
 GO
 
 
@@ -899,7 +899,7 @@ INSERT INTO TreatmentPlan VALUES ('TP000020', 'PT000020', 'DT000020', 'AP000013'
 
 
 -- 9. Bảng Medication
-
+/*
 INSERT INTO Medication VALUES ('MD000001', 'Tenofovir-Lamivudine(or Emtricitabine)-Dolutegravir', 'Tablet', '300mg', 'aldults', 'a', 'a', 'a',CURRENT_TIMESTAMP);
 INSERT INTO Medication VALUES ('MD000002', 'Tenofovir-Lamivudine-Efavirenz', 'Tablet', '150mg', 'Aldults','a', 'a', 'a', CURRENT_TIMESTAMP);
 INSERT INTO Medication VALUES ('MD000003', 'Abacavir-Lamivudine-Dolutegravir', 'Tablet', '50mg', 'Children under 10 years old', 'a', 'a', 'a',CURRENT_TIMESTAMP);
@@ -910,20 +910,18 @@ INSERT INTO Medication VALUES ('MD000007', 'Tenofovir-Lamivudine(or Emtricitabin
 INSERT INTO Medication VALUES ('MD000008', 'Abacavir-Lamivudine-Efavirenz(or Nevirapine)', 'Tablet', '400mg', 'Children','a', 'a', 'a', CURRENT_TIMESTAMP);
 INSERT INTO Medication VALUES ('MD000009', 'Zidovudine-Lamivudine-Lopinavir/Ritonavir', 'Tablet', '10mg', 'Babies','a', 'a', 'a', CURRENT_TIMESTAMP);
 INSERT INTO Medication VALUES ('MD000010', 'Zidovudine + Lamivudine + Lopinavir/ritonavir', 'Tablet', '100mg', 'Adults and children aged 10 years and above', 'a', 'a', 'a',CURRENT_TIMESTAMP);
-/*
-CREATE TABLE [Medication] (
-  [MedicationID] varchar(8) PRIMARY KEY, --MD000001
-  [MedicationName] nvarchar(100) NOT NULL,
-  [DosageForm] nvarchar(50),
-  [Strength] nvarchar(50),
-  [TargetGroup] nvarchar(50),
-  Advantage nvarchar(100),
-  [Use] nvarchar(100),
-  [Note] nvarchar(255),
-  [CreatedAt] datetime DEFAULT (CURRENT_TIMESTAMP)
-)
-GO
 */
+INSERT INTO Medication VALUES ('MD000001', 'Tenofovir-Lamivudine(or Emtricitabine)-Dolutegravir', 'Tablet', '300mg', 'Adults', N'Effective first-line treatment', N'Take once daily', N'Monitor kidney function', CURRENT_TIMESTAMP);
+INSERT INTO Medication VALUES ('MD000002', 'Tenofovir-Lamivudine-Efavirenz', 'Tablet', '150mg', 'Adults', N'Widely used and available', N'Take at bedtime', N'Can cause vivid dreams', CURRENT_TIMESTAMP);
+INSERT INTO Medication VALUES ('MD000003', 'Abacavir-Lamivudine-Dolutegravir', 'Tablet', '50mg', 'Children under 10 years old', N'Good resistance profile', N'Take once daily', N'Test for HLA-B*5701', CURRENT_TIMESTAMP);
+INSERT INTO Medication VALUES ('MD000004', 'Abacavir-Lamivudine-Lopinavir/Ritonavir', 'Tablet', '200mg', 'Children', N'Effective pediatric option', N'Take with food', N'May cause diarrhea', CURRENT_TIMESTAMP);
+INSERT INTO Medication VALUES ('MD000005', 'Zidovudine(or Abacavir)-Lamivudine-Raltegravir', 'Capsule', '10mg', 'Babies', N'Used in neonates', N'Twice daily dosing', N'Monitor anemia', CURRENT_TIMESTAMP);
+INSERT INTO Medication VALUES ('MD000006', 'Zidovudine-Lamivudine-Nevirapine', 'Tablet', '10mg', 'Babies', N'Used in infants', N'Give after birth', N'Monitor liver function', CURRENT_TIMESTAMP);
+INSERT INTO Medication VALUES ('MD000007', 'Tenofovir-Lamivudine(or Emtricitabine)-Protease inhibitor/Ritonavir', 'Tablet', '300mg', 'Children', N'Strong viral suppression', N'Take with food', N'Monitor cholesterol', CURRENT_TIMESTAMP);
+INSERT INTO Medication VALUES ('MD000008', 'Abacavir-Lamivudine-Efavirenz(or Nevirapine)', 'Tablet', '400mg', 'Children', N'Alternative regimen', N'Take at bedtime', N'Monitor for rash', CURRENT_TIMESTAMP);
+INSERT INTO Medication VALUES ('MD000009', 'Zidovudine-Lamivudine-Lopinavir/Ritonavir', 'Tablet', '10mg', 'Babies', N'Commonly used for babies', N'Oral option available', N'Store properly', CURRENT_TIMESTAMP);
+INSERT INTO Medication VALUES ('MD000010', 'Zidovudine + Lamivudine + Lopinavir/ritonavir', 'Tablet', '100mg', 'Adults and children aged 10 years and above', N'Fixed-dose combination', N'Take with food', N'Monitor blood count', CURRENT_TIMESTAMP);
+
 -- 10. Bảng Prescription
 
 INSERT INTO Prescription VALUES ('PR000001', 'TP000001', 'MD000001', 'DT000001', '10-04-2025', '10-07-2025', N'1 viên mỗi ngày', 'First-line', CURRENT_TIMESTAMP);
@@ -973,27 +971,27 @@ INSERT INTO Booking VALUES ('BK000018', 'PT000018', 'DT000018', N'Khám mới', 
 INSERT INTO Booking VALUES ('BK000019', 'PT000019', 'DT000019', N'Tư vấn', 'None', '02-05-2025 09:00:00', N'Thành công',  N'Hỗ trợ tâm lý');
 INSERT INTO Booking VALUES ('BK000020', 'PT000020', 'DT000020', N'Tái khám', 'Full Panel', '16-06-2025 14:30:00', N'Thành công', N'Tổng kiểm tra giữa năm');
 --12. Bảng LabTests
-/*
-INSERT INTO LabTests VALUES ('LT000001', 'BK000001', 'TP000001', 'CD4 Count', 'CD4-001', 'Immunology', '450 cells/mm³', 350, 10000, N'Hoàn thành', N'Cần theo dõi');
-INSERT INTO LabTests VALUES ('LT000002', 'BK000002', 'TP000002', 'Viral Load', 'VL-002', 'Virology', 'Undetectable <20 copies/ml', 350, 100000, N'Hoàn thành', N'Kết quả tốt');
-INSERT INTO LabTests VALUES ('LT000003', 'BK000003', 'TP000003', 'Complete Blood Count', 'CBC-003', 'Hematology', 'Normal', 400, 9000, N'Hoàn thành', N'Đang xử lý kết quả');
-INSERT INTO LabTests VALUES ('LT000004', 'BK000004', 'TP000004', 'Liver Function Test', 'LFT-004', 'Biochemistry', 'ALT: 45, AST: 42', 350, 10000, N'Hoàn thành', N'Chức năng gan bình thường');
-INSERT INTO LabTests VALUES ('LT000005', 'BK000005', 'TP000005', 'Kidney Function Test', 'KFT-005', 'Biochemistry', 'Creatinine: 0.9', 350, 8000, N'Hoàn thành', N'Đang xử lý kết quả');
-INSERT INTO LabTests VALUES ('LT000006', 'BK000006', 'TP000006', 'CD4 Count', 'CD4-006', 'Immunology', '650 cells/mm³', 600, 7000, N'Hoàn thành', N'Kết quả tốt');
-INSERT INTO LabTests VALUES ('LT000007', 'BK000007', 'TP000007', 'HIV Resistance Test', 'RES-007', 'Molecular', 'No resistance detected', 400, 8000, N'Hoàn thành', N'Không phát hiện kháng thuốc');
-INSERT INTO LabTests VALUES ('LT000008', 'BK000008', 'TP000008', 'Tuberculosis Test', 'TB-008', 'Microbiology', 'Negative', 500, 10000, N'Hoàn thành', N'Cần thực hiện lại');
-INSERT INTO LabTests VALUES ('LT000009', 'BK000009', 'TP000009', 'Viral Load', 'VL-009', 'Virology', '<50 copies/ml', 400, 5000, N'Hoàn thành', N'Kiểm soát virus tốt');
-INSERT INTO LabTests VALUES ('LT000010', 'BK000010', 'TP000010', 'Hepatitis Co-infection', 'HEP-010', 'Serology', 'Negative for Hep B and C', 400, 10000, N'Hoàn thành', N'Đang chờ kết quả');
 
-INSERT INTO LabTests VALUES ('LT000011', 'BK000011', 'TP000011', 'CD4 Count', 'CD4-011', 'Immunology', '480 cells/mm³', 400, 800, N'Hoàn thành', N'Theo dõi định kỳ');
-INSERT INTO LabTests VALUES ('LT000012', 'BK000012', 'TP000012', 'Viral Load', 'VL-012', 'Virology', 'Undetectable <20 copies/ml', 400, 80000, N'Hoàn thành', N'Kết quả rất tốt');
-INSERT INTO LabTests VALUES ('LT000013', 'BK000013', 'TP000013', 'Liver Function Test', 'LFT-013', 'Biochemistry', 'ALT: 39, AST: 36', 450, 1000, N'Hoàn thành', N'Chức năng gan ổn');
-INSERT INTO LabTests VALUES ('LT000014', 'BK000014', 'TP000014', 'Complete Blood Count', 'CBC-014', 'Hematology', 'Normal', 400, 2000, N'Hoàn thành', N'Huyết học ổn định');
-INSERT INTO LabTests VALUES ('LT000015', 'BK000015', 'TP000015', 'HIV Resistance Test', 'RES-015', 'Molecular', 'No resistance detected', 400, 700, N'Hoàn thành', N'Không có kháng thuốc');
-INSERT INTO LabTests VALUES ('LT000016', 'BK000016', 'TP000016', 'Tuberculosis Test', 'TB-016', 'Microbiology', 'Negative', 450, 800, N'Hoàn thành', N'Không phát hiện lao');
-INSERT INTO LabTests VALUES ('LT000017', 'BK000017', 'TP000017', 'CD4 Count', 'CD4-017', 'Immunology', '510 cells/mm³', 450, 700, N'Hoàn thành', N'CD4 ổn định');
-INSERT INTO LabTests VALUES ('LT000018', 'BK000018', 'TP000018', 'Kidney Function Test', 'KFT-018', 'Biochemistry', 'Creatinine: 1.0', 350, 900, N'Hoàn thành', N'Đang kiểm tra thêm');
-*/
+INSERT INTO LabTests VALUES ('LT000001', 'BK000001', 'CD4 Count', 'Immunology', '450 cells/mm³', 350, 10000, N'Hoàn thành', N'Cần theo dõi');
+INSERT INTO LabTests VALUES ('LT000002', 'BK000002', 'Viral Load', 'Virology', 'Undetectable <20 copies/ml', 350, 100000, N'Hoàn thành', N'Kết quả tốt');
+INSERT INTO LabTests VALUES ('LT000003', 'BK000003', 'Complete Blood Count', 'Hematology', 'Normal', 400, 9000, N'Hoàn thành', N'Đang xử lý kết quả');
+INSERT INTO LabTests VALUES ('LT000004', 'BK000004', 'Liver Function Test', 'Biochemistry', 'ALT: 45, AST: 42', 350, 10000, N'Hoàn thành', N'Chức năng gan bình thường');
+INSERT INTO LabTests VALUES ('LT000005', 'BK000005', 'Kidney Function Test', 'Biochemistry', 'Creatinine: 0.9', 350, 8000, N'Hoàn thành', N'Đang xử lý kết quả');
+INSERT INTO LabTests VALUES ('LT000006', 'BK000006', 'CD4 Count', 'Immunology', '650 cells/mm³', 600, 7000, N'Hoàn thành', N'Kết quả tốt');
+INSERT INTO LabTests VALUES ('LT000007', 'BK000007', 'HIV Resistance Test', 'Molecular', 'No resistance detected', 400, 8000, N'Hoàn thành', N'Không phát hiện kháng thuốc');
+INSERT INTO LabTests VALUES ('LT000008', 'BK000008', 'Tuberculosis Test', 'Microbiology', 'Negative', 500, 10000, N'Hoàn thành', N'Cần thực hiện lại');
+INSERT INTO LabTests VALUES ('LT000009', 'BK000009', 'Viral Load', 'Virology', '<50 copies/ml', 400, 5000, N'Hoàn thành', N'Kiểm soát virus tốt');
+INSERT INTO LabTests VALUES ('LT000010', 'BK000010', 'Hepatitis Co-infection', 'Serology', 'Negative for Hep B and C', 400, 10000, N'Hoàn thành', N'Đang chờ kết quả');
+
+INSERT INTO LabTests VALUES ('LT000011', 'BK000011', 'CD4 Count', 'Immunology', '480 cells/mm³', 400, 800, N'Hoàn thành', N'Theo dõi định kỳ');
+INSERT INTO LabTests VALUES ('LT000012', 'BK000012', 'Viral Load', 'Virology', 'Undetectable <20 copies/ml', 400, 80000, N'Hoàn thành', N'Kết quả rất tốt');
+INSERT INTO LabTests VALUES ('LT000013', 'BK000013', 'Liver Function Test', 'Biochemistry', 'ALT: 39, AST: 36', 450, 1000, N'Hoàn thành', N'Chức năng gan ổn');
+INSERT INTO LabTests VALUES ('LT000014', 'BK000014', 'Complete Blood Count', 'Hematology', 'Normal', 400, 2000, N'Hoàn thành', N'Huyết học ổn định');
+INSERT INTO LabTests VALUES ('LT000015', 'BK000015', 'HIV Resistance Test', 'Molecular', 'No resistance detected', 400, 700, N'Hoàn thành', N'Không có kháng thuốc');
+INSERT INTO LabTests VALUES ('LT000016', 'BK000016', 'Tuberculosis Test', 'Microbiology', 'Negative', 450, 800, N'Hoàn thành', N'Không phát hiện lao');
+INSERT INTO LabTests VALUES ('LT000017', 'BK000017', 'CD4 Count', 'Immunology', '510 cells/mm³', 450, 700, N'Hoàn thành', N'CD4 ổn định');
+INSERT INTO LabTests VALUES ('LT000018', 'BK000018', 'Kidney Function Test', 'Biochemistry', 'Creatinine: 1.0', 350, 900, N'Hoàn thành', N'Đang kiểm tra thêm');
+
 
 --13. Bảng Reminder
 
