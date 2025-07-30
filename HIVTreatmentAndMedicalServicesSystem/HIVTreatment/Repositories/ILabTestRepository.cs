@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using HIVTreatment.DTOs;
 using HIVTreatment.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace HIVTreatment.Repositories
 {
@@ -11,5 +13,7 @@ namespace HIVTreatment.Repositories
         void AddLabTest(LabTest labTest);
         void UpdateLabTest(LabTest labTest);
         void DeleteLabTest(string labTestId);
+        BooksAppointment CreateBookingLabTest(BookingLabTestDTO dto);
+        
     }
 }

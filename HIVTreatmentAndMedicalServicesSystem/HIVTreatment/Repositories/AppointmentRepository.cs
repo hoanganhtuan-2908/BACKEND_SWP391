@@ -10,6 +10,8 @@ public class AppointmentRepository : IAppointmentRepository
     {
         _context = context;
     }
+
+
     public async Task<IEnumerable<BooksAppointment>> GetAllAsync()
     {
         return await _context.BooksAppointments.ToListAsync();
@@ -52,6 +54,8 @@ public class AppointmentRepository : IAppointmentRepository
         await _context.SaveChangesAsync();
         return appointment;
     }
+
+    
 }
 
 

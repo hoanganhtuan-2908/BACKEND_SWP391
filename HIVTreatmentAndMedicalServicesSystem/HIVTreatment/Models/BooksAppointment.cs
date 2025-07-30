@@ -8,7 +8,8 @@ public class BooksAppointment
     [StringLength(10)]
     public string BookID { get; set; }
     public string PatientID { get; set; }
-    public string DoctorID { get; set; }
+
+    public string? DoctorID { get; set; }
     public string BookingType { get; set; }
     public DateTime BookDate { get; set; }
     public string Status { get; set; }
