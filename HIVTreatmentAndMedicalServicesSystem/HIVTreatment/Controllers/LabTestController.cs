@@ -143,6 +143,21 @@ namespace HIVTreatment.Controllers
             }
         }
 
+        [HttpGet("Staff/LabtestBookings")]
+        public IActionResult GetAllLabtestBookingsForStaff()
+        {
+            try
+            {
+                var bookings = _labTestService.StaffGetAllBookingsLabtest();
+                return Ok(bookings); 
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Đã xảy ra lỗi khi lấy danh sách xét nghiệm.", error = ex.Message });
+            }
+        }
+
+
 
     }
 }

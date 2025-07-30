@@ -69,5 +69,31 @@ namespace HIVTreatment.Repositories
             _context.SaveChanges();
             return appointment;
         }
+
+        public List<StaffLabtestDTO> StaffGetAllBookingsLabtest()
+        {
+            var result = (from b in _context.BooksAppointments
+                          join p in _context.Patients on b.PatientID equals p.PatientID
+                          join u in _context.Users on p.UserID equals u.UserId
+                          where b.BookingType == "Xét nghiệm"
+                          select new StaffLabtestDTO
+                          {
+                              BookID = b.BookID,
+                              BookDate = b.BookDate,
+                              BookingType = b.BookingType,
+                              Status = b.Status,
+
+                              PatientID = p.PatientID,
+                              DateOfBirth = p.DateOfBirth,
+                              Gender = p.Gender,
+                              Phone = p.Phone,
+                              BloodType = p.BloodType,
+                              Allergy = p.Allergy,
+
+                              Fullname = u.Fullname
+                          }).ToList();
+
+            return result;
+        }
     }
 }

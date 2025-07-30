@@ -29,9 +29,8 @@ namespace HIVTreatment.Services
                 {
                     LabTestID = l.LabTestID,
                     RequestID = l.RequestID,
-                    TreatmentPlantID = l.TreatmentPlantID,
+                    //TreatmentPlantID = l.TreatmentPlantID,
                     TestName = l.TestName,
-                    TestCode = l.TestCode,
                     TestType = l.TestType,
                     ResultValue = l.ResultValue,
                     CD4Initial = l.CD4Initial,
@@ -56,9 +55,8 @@ namespace HIVTreatment.Services
             {
                 LabTestID = labTest.LabTestID,
                 RequestID = labTest.RequestID,
-                TreatmentPlantID = labTest.TreatmentPlantID,
+                //TreatmentPlantID = labTest.TreatmentPlantID,
                 TestName = labTest.TestName,
-                TestCode = labTest.TestCode,
                 TestType = labTest.TestType,
                 ResultValue = labTest.ResultValue,
                 CD4Initial = labTest.CD4Initial,
@@ -85,9 +83,8 @@ namespace HIVTreatment.Services
             {
                 LabTestID = newLabTestId,
                 RequestID = dto.RequestID,
-                TreatmentPlantID = dto.TreatmentPlantID,
+                //TreatmentPlantID = dto.TreatmentPlantID,
                 TestName = dto.TestName,
-                TestCode = dto.TestCode,
                 TestType = dto.TestType,
                 ResultValue = dto.ResultValue,
                 CD4Initial = dto.CD4Initial,
@@ -101,11 +98,6 @@ namespace HIVTreatment.Services
 
         public bool UpdateLabTest(string labTestId, UpdateLabTestDTO dto)
         {
-            // Kiểm tra trùng TestCode (trừ bản đang sửa)
-            if (_context.LabTests.Any(l => l.TestCode == dto.TestCode && l.LabTestID != labTestId))
-            {
-                throw new Exception("TestCode đã tồn tại, vui lòng chọn mã khác.");
-            }
 
             // Lấy bản ghi cần sửa
             var labTest = _labTestRepository.GetLabTestById(labTestId);
@@ -114,9 +106,8 @@ namespace HIVTreatment.Services
 
             // Cập nhật các trường (không cập nhật LabTestID)
             labTest.RequestID = dto.RequestID;
-            labTest.TreatmentPlantID = dto.TreatmentPlantID;
+            //labTest.TreatmentPlantID = dto.TreatmentPlantID;
             labTest.TestName = dto.TestName;
-            labTest.TestCode = dto.TestCode;
             labTest.TestType = dto.TestType;
             labTest.ResultValue = dto.ResultValue;
             labTest.CD4Initial = dto.CD4Initial;
@@ -146,6 +137,11 @@ namespace HIVTreatment.Services
         public BooksAppointment CreateBookingLabTest(BookingLabTestDTO dto)
         {
             return _labTestRepository.CreateBookingLabTest(dto);
+        }
+
+        public List<StaffLabtestDTO> StaffGetAllBookingsLabtest()
+        {
+            return _labTestRepository.StaffGetAllBookingsLabtest();
         }
     }
 }

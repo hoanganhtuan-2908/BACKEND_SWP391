@@ -145,7 +145,7 @@ if (app.Environment.IsDevelopment())
 }
 app.UseStaticFiles(new StaticFileOptions
 {
-    FileProvider = new PhysicalFileProvider(@"D:\SWP391\Backend-SWP391\BACKEND_SWP391\DB\image"),
+    FileProvider = new PhysicalFileProvider(@"D:\SU25_NVH(ki5)\SWP_Repo_Git\SWP391-BE\BACKEND_SWP391\DB\image"),
     RequestPath = "/image"
 });
 
