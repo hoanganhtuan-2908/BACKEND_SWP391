@@ -142,5 +142,10 @@ namespace HIVTreatment.Services
         {
             return _labTestRepository.GetLabTestsByPatientId(patientId);
         }
+
+        public BooksAppointment CreateBookingLabTest(BookingLabTestDTO dto)
+        {
+            return _labTestRepository.CreateBookingLabTest(dto);
+        }
     }
 }

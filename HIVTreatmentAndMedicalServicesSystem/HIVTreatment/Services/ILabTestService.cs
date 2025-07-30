@@ -11,5 +11,6 @@ namespace HIVTreatment.Services
         void CreateLabTest(CreateLabTestDTO dto);
         public bool UpdateLabTest(string labTestId, UpdateLabTestDTO dto);
         bool DeleteLabTest(string labTestId);
+        public BooksAppointment CreateBookingLabTest(BookingLabTestDTO dto);
     }
 }

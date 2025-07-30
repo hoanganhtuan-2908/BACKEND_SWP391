@@ -128,6 +128,21 @@ namespace HIVTreatment.Controllers
             return Ok("Xóa LabTest thành công!");
         }
 
+        [HttpPost("LabTest")]
+        [Authorize(Roles = "R001, R005")]
+        public IActionResult AddLabTestAppointment([FromBody] BookingLabTestDTO dto)
+        {
+            try
+            {
+                var result = _labTestService.CreateBookingLabTest(dto);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
 
     }
 }
