@@ -80,7 +80,7 @@ GO
 CREATE TABLE [Booking] (
   [BookID] varchar(8) PRIMARY KEY, --BK000001
   [PatientID] varchar(8) NOT NULL,
-  [DoctorID] varchar(8) NOT NULL,
+  [DoctorID] varchar(8),
   [BookingType] nvarchar(50),
   [LabRequest] nvarchar(50),
   [BookDate] datetime NOT NULL,
@@ -972,7 +972,6 @@ INSERT INTO Booking VALUES ('BK000017', 'PT000017', 'DT000017', N'Tái khám', '
 INSERT INTO Booking VALUES ('BK000018', 'PT000018', 'DT000018', N'Khám mới', 'None', '19-04-2025 10:00:00', N'Đã hủy',  N'Bệnh nhân tự hủy lịch');
 INSERT INTO Booking VALUES ('BK000019', 'PT000019', 'DT000019', N'Tư vấn', 'None', '02-05-2025 09:00:00', N'Thành công',  N'Hỗ trợ tâm lý');
 INSERT INTO Booking VALUES ('BK000020', 'PT000020', 'DT000020', N'Tái khám', 'Full Panel', '16-06-2025 14:30:00', N'Thành công', N'Tổng kiểm tra giữa năm');
-
 --12. Bảng LabTests
 /*
 INSERT INTO LabTests VALUES ('LT000001', 'BK000001', 'TP000001', 'CD4 Count', 'CD4-001', 'Immunology', '450 cells/mm³', 350, 10000, N'Hoàn thành', N'Cần theo dõi');
