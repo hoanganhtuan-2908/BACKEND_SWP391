@@ -12,5 +12,6 @@ namespace HIVTreatment.Services
         public bool UpdateLabTest(string labTestId, UpdateLabTestDTO dto);
         bool DeleteLabTest(string labTestId);
         public BooksAppointment CreateBookingLabTest(BookingLabTestDTO dto);
+        List<StaffLabtestDTO> StaffGetAllBookingsLabtest();
     }
 }

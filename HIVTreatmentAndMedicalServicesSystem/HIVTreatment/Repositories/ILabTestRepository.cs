@@ -14,6 +14,7 @@ namespace HIVTreatment.Repositories
         void UpdateLabTest(LabTest labTest);
         void DeleteLabTest(string labTestId);
         BooksAppointment CreateBookingLabTest(BookingLabTestDTO dto);
-        
+        List<StaffLabtestDTO> StaffGetAllBookingsLabtest();
+
     }
 }
