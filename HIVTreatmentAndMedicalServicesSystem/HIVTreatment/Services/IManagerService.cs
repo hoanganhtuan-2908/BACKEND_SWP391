@@ -26,7 +26,7 @@ namespace HIVTreatment.Services
         int GetTotalTreatmentPlans();
         int GetTotalPrescriptions();
         ManagerDashboardDTO GetDashboardStatistics();
-
+        string EditDoctor(string doctorId, EditDoctorDTO dto);
 
 
 
