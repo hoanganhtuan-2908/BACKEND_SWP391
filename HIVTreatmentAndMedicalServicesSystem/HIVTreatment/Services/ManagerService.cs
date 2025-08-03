@@ -300,5 +300,50 @@ namespace HIVTreatment.Services
                 TotalPrescriptions = _managerRepository.GetTotalPrescriptions()
             };
         }
+
+        public string EditDoctor(string doctorId, EditDoctorDTO dto)
+        {
+            // 1. Lấy doctor theo doctorId
+            var doctor = _managerRepository.GetDoctorById(doctorId);
+            if (doctor == null)
+                return "Không tìm thấy bác sĩ.";
+
+            // 2. Lấy user theo doctor.UserId
+            var user = _userRepository.GetByUserId(doctor.UserId);
+            if (user == null)
+                return "Không tìm thấy tài khoản bác sĩ.";
+
+            // 3. Kiểm tra trùng email (nếu thay đổi)
+            if (user.Email != dto.Email)
+            {
+                if (_userRepository.EmailExists(dto.Email))
+                {
+                    return "Email đã tồn tại.";
+                }
+            }
+
+            // 4. Kiểm tra trùng LicenseNumber (nếu thay đổi)
+            if (doctor.LicenseNumber != dto.LicenseNumber &&
+                _managerRepository.IsLicenseNumberExists(dto.LicenseNumber, doctorId))
+            {
+                return "Số giấy phép đã tồn tại.";
+            }
+
+            // 5. Cập nhật thông tin
+            user.Fullname = dto.FullName;
+            user.Email = dto.Email;
+            if (!string.IsNullOrEmpty(dto.Address)) user.Address = dto.Address;
+            if (!string.IsNullOrEmpty(dto.Image)) user.Image = dto.Image;
+
+            doctor.Specialization = dto.Specialization;
+            doctor.LicenseNumber = dto.LicenseNumber;
+            doctor.ExperienceYears = dto.ExperienceYears;
+
+            // 6. Lưu thay đổi
+            _userRepository.Update(user);
+            _doctorRepository.Update(doctor);
+
+            return "Cập nhật thông tin bác sĩ thành công.";
+        }
     }
 }

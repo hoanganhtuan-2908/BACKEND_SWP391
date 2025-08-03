@@ -144,6 +144,7 @@ namespace HIVTreatment.Controllers
         }
 
         [HttpGet("Staff/LabtestBookings")]
+        [Authorize(Roles = "R001, R002, R004")]
         public IActionResult GetAllLabtestBookingsForStaff()
         {
             try

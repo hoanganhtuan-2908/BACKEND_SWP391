@@ -123,48 +123,21 @@ namespace HIVTreatment.Controllers
         
 
         [HttpPut("UpdateDoctor/{doctorId}")]
-        public async Task<IActionResult> EditDoctor(string doctorId, [FromBody] EditDoctorDTO dto)
+        public IActionResult EditDoctor(string doctorId, [FromBody] EditDoctorDTO dto)
         {
-            // 1. Tìm doctor theo doctorId
-            var doctor = await _context.Doctors.FirstOrDefaultAsync(d => d.DoctorId == doctorId);
-            if (doctor == null)
-                return NotFound("Không tìm thấy bác sĩ.");
-
-            // 2. Tìm user theo UserId
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == doctor.UserId);
-            if (user == null)
-                return NotFound("Không tìm thấy tài khoản bác sĩ.");
-
-            // 3. Kiểm tra trùng email (nếu email thay đổi)
-            if (user.Email != dto.Email)
+            try
             {
-                var emailExists = await _context.Users.AnyAsync(u => u.Email == dto.Email && u.UserId != user.UserId);
-                if (emailExists)
-                    return BadRequest("Email đã tồn tại.");
-            }
+                var result = _managerService.EditDoctor(doctorId, dto);
 
-            // 4. Kiểm tra trùng LicenseNumber (nếu thay đổi)
-            if (doctor.LicenseNumber != dto.LicenseNumber)
+                if (result == "Cập nhật thông tin bác sĩ thành công.")
+                    return Ok(new { message = result });
+
+                return BadRequest(new { message = result });
+            }
+            catch (Exception ex)
             {
-                var licenseExists = await _context.Doctors.AnyAsync(d => d.LicenseNumber == dto.LicenseNumber && d.DoctorId != doctorId);
-                if (licenseExists)
-                    return BadRequest("Số giấy phép đã tồn tại.");
+                return StatusCode(500, new { message = "Đã xảy ra lỗi trong quá trình cập nhật.", error = ex.Message });
             }
-
-            // 5. Cập nhật thông tin
-            user.Fullname = dto.FullName;
-            user.Email = dto.Email;
-            if (!string.IsNullOrEmpty(dto.Address)) user.Address = dto.Address;
-            if (!string.IsNullOrEmpty(dto.Image)) user.Image = dto.Image;
-
-            doctor.Specialization = dto.Specialization;
-            doctor.LicenseNumber = dto.LicenseNumber;
-            doctor.ExperienceYears = dto.ExperienceYears;
-
-            // 6. Lưu thay đổi
-            await _context.SaveChangesAsync();
-
-            return Ok(new { message = "Cập nhật thông tin bác sĩ thành công." });
         }
 
         [HttpGet("AllDoctorWorkSchedules")]

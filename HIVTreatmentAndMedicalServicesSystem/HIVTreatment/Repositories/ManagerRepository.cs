@@ -187,5 +187,15 @@ namespace HIVTreatment.Repositories
         {
             return _context.Prescription.Count();
         }
+
+        public bool IsLicenseNumberExists(string licenseNumber, string excludeDoctorId)
+        {
+            return _context.Doctors.Any(d => d.LicenseNumber == licenseNumber && d.DoctorId != excludeDoctorId);
+        }
+
+        public Doctor GetDoctorById(string doctorId)
+        {
+            return _context.Doctors.FirstOrDefault(d => d.DoctorId == doctorId);
+        }
     }
 }
