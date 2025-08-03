@@ -6,6 +6,8 @@ namespace HIVTreatment.Repositories
     public interface IManagerRepository
     {
         bool DoctorExists(string doctorId);
+        Doctor GetDoctorById(string doctorId);
+        bool IsLicenseNumberExists(string licenseNumber, string excludeDoctorId);
         bool SlotExists(string slotId);
         bool ScheduleExists(string doctorId, string slotId, DateTime dateWork);
         string GetLastScheduleId();
